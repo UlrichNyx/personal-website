@@ -64,10 +64,7 @@ const Home: React.FunctionComponent = () => {
         />
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh' }}>
           <Fade in={fadeIn}>
-            <Typography variant='h4'>
-              {' '}
-              Welcome to my <span style={{}}>domain!</span>
-            </Typography>
+            <Typography variant='h4'> Welcome to my domain!</Typography>
           </Fade>
           <Divider style={{ backgroundColor: Colors.sylemsBlue, height: 1.5 }} />
 
@@ -317,22 +314,7 @@ const Home: React.FunctionComponent = () => {
         </div>
       </div>
 
-      <div
-        style={{
-          minWidth: 100,
-          minHeight: 100,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <div className='arrow-up' />
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
-          <div className='arrow-up' />
-          <div className='arrow-up' />
-        </div>
-      </div>
+      <TriforceDivider upward />
       <div
         className='content-box'
         style={{

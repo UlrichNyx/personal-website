@@ -1,0 +1,11 @@
+.error-screen {
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}

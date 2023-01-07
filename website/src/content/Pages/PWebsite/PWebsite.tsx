@@ -1,19 +1,28 @@
 import Typography from '@mui/material/Typography';
 import Colors from '../../../styles/Colors';
 import Code from '../../../comps/Code';
+import FolderStructure from '../../../assets/pwebsite/folder-structure.png';
+import FolderIcon from '@mui/icons-material/Folder';
+import Image from '../../../comps/Image';
+import IconText from '../../../comps/IconText';
+import ColorPalette from '../../../comps/ColorPalette';
+import { archives } from '../../Archives';
 
 const content = {
   description:
-    'Welcome to the first post on the archives section! I intend for this section to be used as a blog of sorts in which I go over some of my recent experiences/ things I have been working on and so on. For the very first post we have an explanation of the structure I have created for this website, how I went about it designing it and so on.',
+    'Welcome to the first post on the archives section! I intend for this section to be used as a blog of sorts in which I go over some of my recent experiences/ things I have been working on and so on. For the very first post we have an explanation of the structure I have created for this website, how I went about it designing it and so on. I do not go into excruciating detail in terms of the steps I took, however, you will find many useful external links which can help you with any processes you might been having trouble with. ',
   html: (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '10vh' }}>
       <div
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '5vh',
+          gap: '10vh',
           marginLeft: '5vw',
           marginRight: '5vw',
+          textAlign: 'justify',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
         <Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
@@ -65,8 +74,6 @@ const content = {
           </Typography>
           <ol
             style={{
-              alignSelf: 'center',
-              justifyContent: 'center',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'flex-start',
@@ -153,28 +160,137 @@ const content = {
             </strong>{' '}
             extensions.
           </Typography>
-
-          <Typography>...</Typography>
         </div>
+        <Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
+          2. Folder structure and organization
+        </Typography>
+        <Image src={FolderStructure} style={{ width: 200, height: 400 }} />
+
+        <Typography variant='caption'>The internal structure of this project.</Typography>
+        <Typography>
+          As I am keen on having a scalable and mechanically flexible website, it is really
+          important to create a sustainable folder system as the content is going to keep on
+          expanding over time.
+        </Typography>
+
+        <ul
+          style={{
+            alignSelf: 'center',
+
+            alignItems: 'center',
+            display: 'table',
+            margin: '0 auto',
+          }}
+        >
+          <li
+            style={{
+              cursor: 'pointer',
+              textDecoration: 'underline',
+              color: Colors.brillianceCoral,
+              alignContent: 'center',
+            }}
+          >
+            <IconText icon={<FolderIcon fontSize='inherit' />}>assets</IconText>
+          </li>
+          <li
+            style={{
+              cursor: 'pointer',
+              textDecoration: 'underline',
+              color: Colors.braveryPurple,
+            }}
+          >
+            <IconText icon={<FolderIcon fontSize='inherit' />}>comps</IconText>
+          </li>
+          <li
+            style={{
+              cursor: 'pointer',
+              textDecoration: 'underline',
+              color: Colors.idleYellow,
+            }}
+          >
+            <IconText icon={<FolderIcon fontSize='inherit' />}>content</IconText>
+          </li>
+          <li
+            style={{
+              cursor: 'pointer',
+              textDecoration: 'underline',
+              color: Colors.balanceTurqoise,
+            }}
+          >
+            <IconText icon={<FolderIcon fontSize='inherit' />}>screens</IconText>
+          </li>
+        </ul>
+
+        <Typography>
+          Every <strong style={{ color: Colors.brillianceCoral }}>asset</strong> (primarily being
+          images) is stored in a folder named after the screen in which it can be found.{' '}
+          <strong style={{ color: Colors.braveryPurple }}>Components</strong> do not have any
+          substructure as there are currently not that many of them.{' '}
+          <strong style={{ color: Colors.balanceTurqoise }}>Screens</strong> are split into{' '}
+          <strong>Home</strong>, <strong>Archives</strong> and <strong>Portfolio</strong>. There is
+          a very important component here, <strong>ContentPage</strong>, which is the generic
+          component which hosts any content, either from the Archives or the Portfolio and although
+          it has some basic structure, it also can be injected with new HTML so as to keep the
+          structure of each content unique, according to the nature of the content in question.
+        </Typography>
+        <Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
+          3. MUI Theming, react-router-dom
+        </Typography>
+
+        <Typography>
+          I am personally a big fan of dark mode when it comes to any UI and as such it was my go to
+          when choosing the options for{' '}
+          <strong style={{ color: Colors.balanceTurqoise }}>MUI Theme</strong>. When setting up the
+          application, it is really important to set up the mode (light/dark) as well as any{' '}
+          <strong>baseline CSS </strong>you will be using throughout it. This will signficantly
+          decrease the amount of styling you have to do for each component and will bring uniformity
+          across your front-end. More specifically, in terms of MUI, it will allow for any
+          subsequent components you use from it to automatically adapt to the styling requirements
+          of the current mode you are using.
+        </Typography>
+
+        <Typography>
+          Once that was done, what I focused on next was using the{' '}
+          <strong style={{ color: Colors.balanceTurqoise }}>MUI Appbar</strong> component along with{' '}
+          <strong style={{ color: Colors.idleYellow }}>react-router-dom</strong> to create some
+          basic navigation for the website. This allowed me to split my work for this website into
+          chunks according to each screen I had to individually work with.
+        </Typography>
+
+        <Typography>
+          Below you can find the color palette that I oftenly use for my applications, including
+          this website. You can copy individual colors to the clipboard by clicking on them or the
+          entire array by clicking on the <strong>Copy Palette</strong> button.
+        </Typography>
+        <ColorPalette />
+
+        <Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
+          4. Content Architecture
+        </Typography>
+        <Typography>
+          The technicalities of each page will not be discussed as they are fairly unique to this
+          website, however there will be a mention of some notable features that I think are worth
+          mentioning. This feature in particular has its own section due to its importance. In a
+          previous section I had mentioned the ContentPage component, which is paramount for showing
+          screens like the one you are seeing now! The way I have designed this system is by
+          automatically generating content based on the route in which it exists. For example, in
+          your current url, you will see the route:
+        </Typography>
+
+        <Code>/archives/Personal-Website</Code>
+
+        <Typography>
+          If you take a look at the other content on this website you will see that they follow the
+          exact same pattern. The latter end of the route (the title of the content) is always
+          capitalized on the first letter and any spaces are denoted by -. This is because of the
+          way they are stored within the JSON files (in this case a .ts) of the website. Below is a
+          snippet of how this page in particular is being represented in code.
+        </Typography>
+
+        <Code>{JSON.stringify(archives[0])}</Code>
       </div>
     </div>
   ),
 };
 
 export default { ...content };
-
-/*
-
-<Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
-        2. Folder structure and public folder
-      </Typography>
-      <Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
-        3. MUI Theming, React router dom
-      </Typography>
-      <Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
-        4. CSS and Colors
-      </Typography>
-      <Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
-        5. Content Architecture
-      </Typography>
-*/

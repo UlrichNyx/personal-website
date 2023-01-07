@@ -6,6 +6,7 @@ import Home from './screens/Home';
 import Portfolio from './screens/Portfolio';
 import Archives from './screens/Archives';
 import ContentPage from './screens/ContentPage';
+import Error from './screens/Error';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import ScrollToTop from '../src/screens/ScrollToTop';
@@ -29,6 +30,7 @@ const App: React.FunctionComponent = () => {
         <ScrollToTop />
         <Navbar />
         <Routes>
+          <Route path='*' element={<Error />} />
           <Route path='/' element={<Home />} />
           <Route path='/portfolio' element={<Portfolio />} />
           <Route path='/archives' element={<Archives />} />

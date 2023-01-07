@@ -6,6 +6,7 @@ import IB from '../assets/ib/ib.png';
 import HarvardX from '../assets/harvardx/harvardx.jpeg';
 import ACT from '../assets/act/act.jpeg';
 import FLL from '../assets/fll/fll.png';
+import Sylems from '../assets/sylems/sylems-logo.png';
 import { tags } from './Tags';
 import { TagType } from '../comps/Tag';
 
@@ -79,6 +80,16 @@ export const projects: ProjectProps[] = [
     color: Colors.blurple,
     backgroundColor: Colors.white,
     tags: [tags[2]],
+  },
+
+  {
+    title: 'Sylems',
+    subtitle: 'Unity Games Studios',
+    date: '2023',
+    image: Sylems,
+    color: Colors.sylemsBlue,
+    tags: [tags[0], tags[1], tags[2]],
+    backgroundColor: Colors.vsAlmostBlack,
   },
 ];
 

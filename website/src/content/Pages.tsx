@@ -6,6 +6,7 @@ import HardvardX from './Pages/HarvardX/HardvardX';
 import ACT from './Pages/ACT/ACT';
 import FLL from './Pages/FLL/FLL';
 import PWebsite from './Pages/PWebsite/PWebsite';
+import Sylems from './Pages/Sylems/Sylems';
 
 export const pages = {
   'University of Southampton': University,
@@ -15,5 +16,6 @@ export const pages = {
   HarvardX: HardvardX,
   ACT,
   FLL,
+  Sylems,
   'Personal Website': PWebsite,
 };

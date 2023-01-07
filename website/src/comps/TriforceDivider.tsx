@@ -1,6 +1,11 @@
 import * as React from 'react';
 
-const TriforceDivider: React.FunctionComponent = () => {
+interface Props {
+  upward?: boolean;
+}
+
+const TriforceDivider: React.FunctionComponent<Props> = (props) => {
+  const { upward } = props;
   return (
     <div
       style={{
@@ -13,12 +18,19 @@ const TriforceDivider: React.FunctionComponent = () => {
         margin: 100,
       }}
     >
-      <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <div className='arrow-down' />
-        <div className='arrow-down' />
-      </div>
-
-      <div className='arrow-down' />
+      {upward === true ? <div className='arrow-up' /> : null}
+      {upward === true ? (
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <div className='arrow-up' />
+          <div className='arrow-up' />
+        </div>
+      ) : (
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <div className='arrow-down' />
+          <div className='arrow-down' />
+        </div>
+      )}
+      {upward === true ? null : <div className='arrow-down' />}
     </div>
   );
 };
