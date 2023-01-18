@@ -282,12 +282,31 @@ const content = {
         <Typography>
           If you take a look at the other content on this website you will see that they follow the
           exact same pattern. The latter end of the route (the title of the content) is always
-          capitalized on the first letter and any spaces are denoted by -. This is because of the
-          way they are stored within the JSON files (in this case a .ts) of the website. Below is a
-          snippet of how this page in particular is being represented in code.
+          capitalized on the first letter and any spaces are denoted by &ldquo;-&ldquo;. This is
+          because of the way they are stored within the JSON files (in this case a .ts) of the
+          website. Below is a snippet of how this page in particular is being represented in code.
         </Typography>
 
-        <Code>{JSON.stringify(archives[0])}</Code>
+        <Code language='json'>{JSON.stringify(archives[0], null, 2)}</Code>
+
+        <Typography>
+          Every single page that is to be displayed through the Archives, either as a preview of the
+          thumbnail or the actual page itself is defined through this JSON structure, allowing for
+          easy editing of the title, thumbnail, coloring, tags etc. of each page. For any content
+          which cannot easily be defined through the standard structure of the page component, a
+          separate .tsx file is used. This is done so that each page can exhibit some new and
+          interesting component I have been working on (such as the color palette you saw above!)
+          that are unique to each post.
+        </Typography>
+
+        <Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
+          5. Final remarks
+        </Typography>
+        <Typography>
+          That is about it for now, I hope you have enjoyed the first post on this here blog, please
+          stay tuned in for more (even non-programming related) content! :))
+        </Typography>
+        <Typography>~ Filippos</Typography>
       </div>
     </div>
   ),

@@ -1,7 +1,7 @@
 import Colors from '../styles/Colors';
 
 import { archiveTags } from './Tags';
-import website from '../assets/pwebsite/website-thumbnail.png';
+import website from '../assets/pwebsite/website-thumbnail.jpeg';
 import { ProjectProps } from './Projects';
 
 export const archives: ProjectProps[] = [
