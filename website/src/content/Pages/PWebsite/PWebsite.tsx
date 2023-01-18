@@ -79,7 +79,7 @@ const content = {
               alignItems: 'flex-start',
             }}
           >
-            <li>Log in to the account</li>
+            <li>Log in to your account</li>
             <li>Set up a new repository</li>
             <li>Copy the code for cloning into an existing repository</li>
             <li>Run the command in the terminal</li>
@@ -300,7 +300,50 @@ const content = {
         </Typography>
 
         <Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
-          5. Final remarks
+          5. Deployment & Final Remarks
+        </Typography>
+        <Typography>
+          {' '}
+          For the deployment of this website I used the service provided by{' '}
+          <strong
+            style={{
+              cursor: 'pointer',
+              textDecoration: 'underline',
+              color: Colors.white,
+            }}
+            onClick={() => window.open('https://vercel.com/dashboard')}
+          >
+            Vercel
+          </strong>
+          , which allowed me to hook up my Github repository with the production build (as such
+          anything that gets pushed to main is automatically production!). Getting a custom domain
+          name was a bit tricky as it would initially not work properly in my case. It basically
+          requires some back and forth between your domain provider (in my recommended case,{' '}
+          <strong
+            style={{
+              cursor: 'pointer',
+              textDecoration: 'underline',
+              color: Colors.brillianceCoral,
+            }}
+            onClick={() => window.open('https://aws.amazon.com/route53/')}
+          >
+            Amazon Route 53
+          </strong>
+          ) and your Vercel project settings, in order to properly set up your DNS certificates.
+          Here is a quick quide on how to do it (and a generally useful link to{' '}
+          <strong
+            style={{
+              cursor: 'pointer',
+              textDecoration: 'underline',
+              color: Colors.hyperlinkBlue,
+            }}
+            onClick={() =>
+              window.open('https://vercel.com/docs/concepts/projects/domains/add-a-domain')
+            }
+          >
+            Vercel docs
+          </strong>
+          ).
         </Typography>
         <Typography>
           That is about it for now, I hope you have enjoyed the first post on this here blog, please
