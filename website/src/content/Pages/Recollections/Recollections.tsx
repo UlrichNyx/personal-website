@@ -196,7 +196,9 @@ const Recollections: React.FunctionComponent = () => {
               corresponds to a poem. The tracks are all fairly distinct from one another and they
               represent or in some cases, embody, the melodies that accompanied me in my journey or
               perhaps inspired some of my works. With that consideration, please excuse the
-              alternation of genres, for such is the nature of this chaotic existence.
+              alternation of genres, for such is the nature of this chaotic existence. To access the
+              non-preview versions of the songs please log in to your spotify account on your
+              browser and the cookies will do the rest.
             </Typography>
 
             <iframe
