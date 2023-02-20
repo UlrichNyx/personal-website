@@ -9,17 +9,6 @@ interface CodeType {
 const Code: React.FunctionComponent<CodeType> = (props) => {
   const { children, language } = props;
 
-  const parseInput = (children: React.ReactNode): React.ReactNode | string => {
-    if (language === 'json') {
-      if (typeof children === 'string') {
-        children.replaceAll('.', '\n');
-        console.log(children);
-        return children;
-      }
-    }
-    return children;
-  };
-
   return (
     <div style={{ margin: 50 }}>
       <code>
@@ -32,7 +21,7 @@ const Code: React.FunctionComponent<CodeType> = (props) => {
             overflow: 'auto',
           }}
         >
-          {parseInput(children)}
+          {children}
         </pre>
       </code>
     </div>

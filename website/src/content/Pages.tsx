@@ -7,6 +7,7 @@ import ACT from './Pages/ACT/ACT';
 import FLL from './Pages/FLL/FLL';
 import PWebsite from './Pages/PWebsite/PWebsite';
 import Sylems from './Pages/Sylems/Sylems';
+import Recollections from './Pages/Recollections/Recollections';
 
 export const pages = {
   'University of Southampton': University,
@@ -18,4 +19,5 @@ export const pages = {
   FLL,
   Sylems,
   'Personal Website': PWebsite,
+  // 'Recollections of a Drowned Mind': Recollections,
 };

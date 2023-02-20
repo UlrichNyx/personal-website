@@ -1,0 +1,9 @@
+.recollections-section {
+    max-width: 80%;
+    align-self: center;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    align-items: center;
+}

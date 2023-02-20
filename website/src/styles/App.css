@@ -13,3 +13,7 @@
     outline: 1px solid #3e3e42;
 
 }
+
+* {
+    scroll-behavior: smooth;
+}

@@ -8,6 +8,7 @@ import Archives from './screens/Archives';
 import ContentPage from './screens/ContentPage';
 import Error from './screens/Error';
 import CssBaseline from '@mui/material/CssBaseline';
+import Recollections from './content/Pages/Recollections/Recollections';
 
 import ScrollToTop from '../src/screens/ScrollToTop';
 
@@ -36,6 +37,7 @@ const App: React.FunctionComponent = () => {
           <Route path='/archives' element={<Archives />} />
           <Route path='/portfolio/:post' element={<ContentPage />} />
           <Route path='/archives/:post' element={<ContentPage />} />
+          <Route path='/archives/Recollections-of-a-Drowned-Mind' element={<Recollections />} />
         </Routes>
       </Router>
     </ThemeProvider>
