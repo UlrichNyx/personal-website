@@ -503,7 +503,7 @@ const Recollections: React.FunctionComponent = () => {
             </Typography>
             {<Haiku {...haikus[44]} />}
           </div>
-
+          <HDivider />
           <Typography
             ref={(el) => titlesRef.current.push(el)}
             variant='h4'
@@ -550,6 +550,7 @@ const Recollections: React.FunctionComponent = () => {
             {<Haiku {...haikus[52]} />}
             {<Haiku {...haikus[53]} />}
           </div>
+          <HDivider />
           <Typography
             ref={(el) => titlesRef.current.push(el)}
             variant='h4'
@@ -580,6 +581,7 @@ const Recollections: React.FunctionComponent = () => {
             {<Haiku {...haikus[60]} />}
             {<Haiku {...haikus[61]} />}
           </div>
+          <HDivider />
           <Typography
             ref={(el) => titlesRef.current.push(el)}
             variant='h4'
@@ -601,7 +603,7 @@ const Recollections: React.FunctionComponent = () => {
             {<Haiku {...haikus[65]} />}
             {<Haiku {...haikus[66]} />}
           </div>
-
+          <HDivider />
           <Typography
             ref={(el) => titlesRef.current.push(el)}
             variant='h4'
@@ -641,6 +643,7 @@ const Recollections: React.FunctionComponent = () => {
             {<Haiku {...haikus[74]} />}
             {<Haiku {...haikus[75]} />}
           </div>
+          <HDivider />
           <Typography
             ref={(el) => titlesRef.current.push(el)}
             variant='h4'
