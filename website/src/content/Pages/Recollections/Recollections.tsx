@@ -193,7 +193,10 @@ const Recollections: React.FunctionComponent = () => {
             <Typography style={{ margin: '5vw' }}>
               I have chosen a set of records to go along with the narration. Each track corresponds
               to each chapter of this collection. Once you reach the epilogue, each track
-              corresponds to a poem.
+              corresponds to a poem. The tracks are all fairly distinct from one another and they
+              represent or in some cases, embody, the melodies that accompanied me in my journey or
+              perhaps inspired some of my works. With that consideration, please excuse the
+              alternation of genres, for such is the nature of this chaotic existence.
             </Typography>
 
             <iframe
