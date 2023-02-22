@@ -15,6 +15,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import DND from '../assets/tags/dnd.jpeg';
 
 import { projects } from '../content/Projects';
+import { archives } from '../content/Archives';
 
 import Sylems from '../assets/home/SylemsNoStem.png';
 import Cursor from '../assets/home/cursor.png';
@@ -100,16 +101,16 @@ const Home: React.FunctionComponent = () => {
           </Fade>
         </div>
       </div>
-
-      <TriforceDivider />
-
+      <TriforceDivider color={Colors.sylemsBlue} />
       <div
         className='content-box'
         style={{
           gap: '5vw',
         }}
       >
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh' }}>
+        <div
+          style={{ display: 'flex', flexDirection: 'column', gap: '2vh', justifyContent: 'center' }}
+        >
           <Typography variant='h4'>About me</Typography>
           <Divider style={{ backgroundColor: Colors.dndRed, height: 1.5 }} />
 
@@ -144,13 +145,22 @@ const Home: React.FunctionComponent = () => {
               {' '}
               Archives
             </Button>
+            <Typography style={{ margin: '2vh' }}>Below you can find my latest post: </Typography>
+            <div style={{ width: '100%', alignSelf: 'center' }}>
+              <ContentPreview
+                {...archives[archives.length - 1]}
+                target='archives'
+                archive
+                onClick={(path: string) => navigate(path)}
+              />
+            </div>
           </div>
         </div>
       </div>
 
       <Image src={DND} style={{ width: 120, height: 120, borderRadius: 4 }} />
 
-      <TriforceDivider />
+      <TriforceDivider color={Colors.dndRed} />
 
       <div className='content-box' style={{ display: 'flex', flexDirection: 'column', gap: '2vh' }}>
         <Typography variant='h4'>Frameworks</Typography>
@@ -196,7 +206,7 @@ const Home: React.FunctionComponent = () => {
         <Pong />
       </div>
 
-      <TriforceDivider />
+      <TriforceDivider color={Colors.onlineGreen} />
       <div
         className='content-box'
         style={{
@@ -214,6 +224,19 @@ const Home: React.FunctionComponent = () => {
           In this section you will find the projects I have been working on
           <strong style={{ color: Colors.idleYellow }}> recently</strong>.
         </Typography>
+        <Button
+          variant='contained'
+          style={{
+            color: Colors.white,
+            backgroundColor: Colors.idleYellow,
+            textTransform: 'none',
+          }}
+          endIcon={<ArrowForwardIosIcon />}
+          onClick={() => navigate('/portfolio')}
+        >
+          {' '}
+          Portfolio
+        </Button>
       </div>
 
       <div
@@ -242,7 +265,7 @@ const Home: React.FunctionComponent = () => {
       </div>
 
       <Image src={Nyan} style={{ width: 200, height: 200, borderRadius: 4 }} />
-      <TriforceDivider />
+      <TriforceDivider color={Colors.idleYellow} />
       <div
         className='content-box'
         style={{ display: 'flex', flexDirection: 'column', gap: '2vh', textAlign: 'center' }}
@@ -314,7 +337,7 @@ const Home: React.FunctionComponent = () => {
         </div>
       </div>
 
-      <TriforceDivider upward />
+      <TriforceDivider upward color={Colors.streamerPurple} />
       <div
         className='content-box'
         style={{

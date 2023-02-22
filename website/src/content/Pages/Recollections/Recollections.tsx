@@ -5,13 +5,16 @@ import { archives } from '../../../content/Archives';
 
 import '../../../styles/screens/Recollections.css';
 
-import { Divider, IconButton, Fade } from '@mui/material';
+import { Divider, IconButton, Fade, Button, Icon } from '@mui/material';
 import TriforceDivider from '../../../comps/TriforceDivider';
 import Image from '../../../comps/Image';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { extractHaikus, HaikuProps } from './Haikus';
 import { extractPoems, PoemProps } from './Poems';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
+import SpotifyImage from '../../../assets/recollections/spotify_icon_white.png';
 
 const chapters = [
   'In the morning sun of Haikus',
@@ -47,7 +50,7 @@ const HDivider: React.FunctionComponent = () => {
         justifyContent: 'center',
         alignItems: 'center',
         gap: '5vw',
-        margin: '5vw',
+        margin: '10vh 5vw 10vh 5vw',
       }}
     >
       <div style={{ height: 1, width: '40%', backgroundColor: color }} />
@@ -69,7 +72,7 @@ const VDivider: React.FunctionComponent = () => {
         justifyContent: 'center',
         alignItems: 'center',
         gap: '1vh',
-        margin: '5vw',
+        margin: '10vh 5vw 10vh 5vw',
       }}
     >
       <div style={{ height: 10, width: 1, backgroundColor: color }} />
@@ -188,18 +191,36 @@ const Recollections: React.FunctionComponent = () => {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              marginLeft: '5vw',
+              marginRight: '5vw',
             }}
           >
-            <Typography style={{ margin: '5vw' }}>
+            <Typography style={{ marginTop: '5vw', marginBottom: '5vw', textAlign: 'justify' }}>
               I have chosen a set of records to go along with the narration. Each track corresponds
               to each chapter of this collection. Once you reach the epilogue, each track
               corresponds to a poem. The tracks are all fairly distinct from one another and they
               represent or in some cases, embody, the melodies that accompanied me in my journey or
               perhaps inspired some of my works. With that consideration, please excuse the
               alternation of genres, for such is the nature of this chaotic existence. To access the
-              non-preview versions of the songs please log in to your spotify account on your
-              browser and the cookies will do the rest.
+              non-preview versions of the songs please log in to your{' '}
+              <strong style={{ color: '#1DB954' }}>Spotify</strong> account on your browser and the
+              cookies will do the rest.
             </Typography>
+
+            <Typography> Here is a quick link for your convenience:</Typography>
+            <Button
+              style={{
+                margin: '5vw',
+                backgroundColor: '#1DB954',
+                color: 'white',
+                textTransform: 'none',
+              }}
+              startIcon={<Image src={SpotifyImage} style={{ width: 30, height: 30 }} />}
+              endIcon={<ChevronRightIcon />}
+              onClick={() => window.open('https://open.spotify.com/', '_blank')}
+            >
+              Log in
+            </Button>
 
             <iframe
               src='https://open.spotify.com/embed/playlist/3LDmJkk92aGHx2JXyoT48N?utm_source=generator&theme=0'
@@ -736,7 +757,6 @@ const Recollections: React.FunctionComponent = () => {
               {height === '100' && fadeIn ? <ExpandMoreIcon /> : <ExpandLessIcon />}
             </IconButton>
           </div>
-          <div style={{ marginTop: 100 }} />
         </div>
       </div>
     </div>

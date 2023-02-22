@@ -46,7 +46,12 @@ const ContentPage: React.FunctionComponent = () => {
     >
       <div
         className='content-box'
-        style={{ display: 'flex', flexDirection: 'column', gap: '1vh', alignItems: 'center' }}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1vh',
+          alignItems: 'center',
+        }}
       >
         <Image
           src={cont.image}
@@ -70,7 +75,7 @@ const ContentPage: React.FunctionComponent = () => {
         <Typography style={{ marginLeft: '10vw', marginRight: '10vw', textAlign: 'justify' }}>
           {page.description}
         </Typography>
-        <TriforceDivider />
+        <TriforceDivider color={cont.color} />
         {page.html}
       </div>
     </div>

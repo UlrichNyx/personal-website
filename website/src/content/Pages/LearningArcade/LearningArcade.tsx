@@ -19,7 +19,10 @@ const content = {
           The front end was built using React as well as Material UI components.
         </Typography>
         <ImageSlider images={images} width='80vw' color={Colors.braveryPurple} />
-        <TriforceDivider />
+        <div style={{ width: '100vw' }}>
+          <TriforceDivider color={Colors.braveryPurple} />
+        </div>
+
         <Typography variant='h4' style={{ color: Colors.onlineGreen }}>
           Documentation & Research
         </Typography>
@@ -76,6 +79,7 @@ const content = {
           </li>
         </ul>
       </div>
+      <TriforceDivider upward color={Colors.onlineGreen} />
     </div>
   ),
 };

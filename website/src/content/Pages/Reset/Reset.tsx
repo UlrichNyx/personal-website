@@ -28,9 +28,7 @@ const content = {
         </div>
         <ImageSlider images={adminImages} color={Colors.boostPink} />
       </div>
-      <div style={{ marginTop: '20vh' }}>
-        <TriforceDivider />
-      </div>
+      <TriforceDivider color={Colors.boostPink} />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh', maxWidth: '80vw' }}>
         <Typography variant='h4' style={{ color: Colors.braveryPurple }}>
@@ -58,9 +56,9 @@ const content = {
           {' '}
           Mobile App
         </Button>
-        <ImageSlider images={mobileImages} width={380} color={Colors.boostPink} />
+        <ImageSlider images={mobileImages} width={380} color={Colors.braveryPurple} />
       </div>
-      <TriforceDivider />
+      <TriforceDivider color={Colors.braveryPurple} />
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh', maxWidth: '80vw' }}>
         <Typography variant='h4' style={{ color: Colors.blurple }}>
           Server
@@ -74,6 +72,7 @@ const content = {
         </Typography>
       </div>
       <LogoSlider logos={logos} />
+      <TriforceDivider upward color={Colors.blurple} />
     </div>
   ),
 };

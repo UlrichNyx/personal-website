@@ -5,6 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Colors from '../../../styles/Colors';
+import TriforceDivider from '../../../comps/TriforceDivider';
 
 const moduleURL = 'https://www.southampton.ac.uk/courses/modules/';
 
@@ -61,59 +62,71 @@ const content = {
   description:
     'In September of 2018 I began my studies in Computer Science at the University of Southampton. During my years in university I participated in numerous projects and coursework which helped hone my skills and knowledge on this field. You can view all projects I have archived over the years on my Github. After arduous effort, I was able to graduate with First Class honours from the university. ',
   html: (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}
+    >
       <Typography>Below is a list of every single subject I undertook while studying:</Typography>
-      <List style={{ textAlign: 'center' }}>
-        <ListItem>
-          <ListItemText primary='Year 1' />
-        </ListItem>
-        {subjects['Year 1' as keyof typeof subjects].map((sub, index) => (
-          <ListItemButton
-            key={index}
-            style={{ backgroundColor: Colors.vsDarkGray }}
-            onClick={() => window.open(moduleURL + sub.code, '_blank')}
-          >
-            <ListItemText primary={sub.code + ' - ' + sub.module} />
-          </ListItemButton>
-        ))}
-        <ListItem>
-          <ListItemText primary='Year 2' />
-        </ListItem>
-        {subjects['Year 2' as keyof typeof subjects].map((sub, index) => (
-          <ListItemButton
-            key={index}
-            style={{ backgroundColor: Colors.vsDarkGray }}
-            onClick={() => window.open(moduleURL + sub.code, '_blank')}
-          >
-            <ListItemText primary={sub.code + ' - ' + sub.module} />
-          </ListItemButton>
-        ))}
+      <div>
+        <List style={{ textAlign: 'center' }}>
+          <ListItem>
+            <ListItemText primary='Year 1' />
+          </ListItem>
+          {subjects['Year 1' as keyof typeof subjects].map((sub, index) => (
+            <ListItemButton
+              key={index}
+              style={{ backgroundColor: Colors.vsDarkGray }}
+              onClick={() => window.open(moduleURL + sub.code, '_blank')}
+            >
+              <ListItemText primary={sub.code + ' - ' + sub.module} />
+            </ListItemButton>
+          ))}
+          <ListItem>
+            <ListItemText primary='Year 2' />
+          </ListItem>
+          {subjects['Year 2' as keyof typeof subjects].map((sub, index) => (
+            <ListItemButton
+              key={index}
+              style={{ backgroundColor: Colors.vsDarkGray }}
+              onClick={() => window.open(moduleURL + sub.code, '_blank')}
+            >
+              <ListItemText primary={sub.code + ' - ' + sub.module} />
+            </ListItemButton>
+          ))}
 
-        <ListItem>
-          <ListItemText primary='Year 3' />
-        </ListItem>
-        {subjects['Year 3' as keyof typeof subjects].map((sub, index) => (
-          <ListItemButton
-            key={index}
-            style={{ backgroundColor: Colors.vsDarkGray }}
-            onClick={() => window.open(moduleURL + sub.code, '_blank')}
-          >
-            <ListItemText primary={sub.code + ' - ' + sub.module} />
-          </ListItemButton>
-        ))}
-        <ListItem>
-          <ListItemText primary='Year 4' />
-        </ListItem>
-        {subjects['Year 4' as keyof typeof subjects].map((sub, index) => (
-          <ListItemButton
-            key={index}
-            style={{ backgroundColor: Colors.vsDarkGray }}
-            onClick={() => window.open(moduleURL + sub.code, '_blank')}
-          >
-            <ListItemText primary={sub.code + ' - ' + sub.module} />
-          </ListItemButton>
-        ))}
-      </List>
+          <ListItem>
+            <ListItemText primary='Year 3' />
+          </ListItem>
+          {subjects['Year 3' as keyof typeof subjects].map((sub, index) => (
+            <ListItemButton
+              key={index}
+              style={{ backgroundColor: Colors.vsDarkGray }}
+              onClick={() => window.open(moduleURL + sub.code, '_blank')}
+            >
+              <ListItemText primary={sub.code + ' - ' + sub.module} />
+            </ListItemButton>
+          ))}
+          <ListItem>
+            <ListItemText primary='Year 4' />
+          </ListItem>
+          {subjects['Year 4' as keyof typeof subjects].map((sub, index) => (
+            <ListItemButton
+              key={index}
+              style={{ backgroundColor: Colors.vsDarkGray }}
+              onClick={() => window.open(moduleURL + sub.code, '_blank')}
+            >
+              <ListItemText primary={sub.code + ' - ' + sub.module} />
+            </ListItemButton>
+          ))}
+        </List>
+      </div>
+      <div style={{ width: '100vw' }}>
+        <TriforceDivider upward color={Colors.vsBlue} />
+      </div>
     </div>
   ),
 };

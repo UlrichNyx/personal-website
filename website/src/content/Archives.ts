@@ -14,7 +14,6 @@ export const archives: ProjectProps[] = [
     color: Colors.hyperlinkBlue,
     tags: [archiveTags.science[0]],
   },
-
   {
     title: 'Recollections of a Drowned Mind',
     subtitle: 'A poem collection.',
