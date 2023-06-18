@@ -278,7 +278,7 @@ const Recollections: React.FunctionComponent = () => {
                     cursor: 'pointer',
                     margin: 10,
                   }}
-                  onClick={() => scrollTo(50 + index)}
+                  onClick={() => scrollTo(30 + index)}
                 >
                   <Typography
                     variant='h6'
