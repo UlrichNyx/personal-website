@@ -11,9 +11,9 @@ const Error: React.FunctionComponent = () => {
       <Image
         src={Suicune}
         style={{
-          maxHeight: '20vw',
+          maxHeight: '50vh',
           borderRadius: 4,
-          minWidth: '20vw',
+          minWidth: '30vw',
           maxWidth: '80vw',
         }}
       />
@@ -21,7 +21,7 @@ const Error: React.FunctionComponent = () => {
       <Typography variant='body1' style={{ fontWeight: 'bold' }}>
         You got a 404.
       </Typography>
-      <Typography variant='body2'>
+      <Typography variant='body2' style={{ margin: '5vw' }}>
         Good news is you also found a rare{' '}
         <strong style={{ color: Colors.hyperlinkBlue }}>Suicune</strong> so, yay!
       </Typography>

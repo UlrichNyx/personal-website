@@ -70,9 +70,7 @@ const content = {
           </List>
         ))}
       </div>
-      <div style={{ width: '100vw' }}>
-        <TriforceDivider upward color={Colors.hyperlinkBlue} />
-      </div>
+      <TriforceDivider upward color={Colors.hyperlinkBlue} />
     </div>
   ),
 };

@@ -13,9 +13,10 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { extractHaikus, HaikuProps } from './Haikus';
 import { extractPoems, PoemProps } from './Poems';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Tooltip from '@mui/material/Tooltip';
 
 import SpotifyImage from '../../../assets/recollections/spotify_icon_white.png';
-
+import TocIcon from '@mui/icons-material/Toc';
 const chapters = [
   'In the morning sun of Haikus',
   'Travel to the Underworld',
@@ -50,7 +51,7 @@ const HDivider: React.FunctionComponent = () => {
         justifyContent: 'center',
         alignItems: 'center',
         gap: '5vw',
-        margin: '10vh 5vw 10vh 5vw',
+        margin: '5vh 5vw 5vh 5vw',
       }}
     >
       <div style={{ height: 1, width: '40%', backgroundColor: color }} />
@@ -72,7 +73,6 @@ const VDivider: React.FunctionComponent = () => {
         justifyContent: 'center',
         alignItems: 'center',
         gap: '1vh',
-        margin: '10vh 5vw 10vh 5vw',
       }}
     >
       <div style={{ height: 10, width: 1, backgroundColor: color }} />
@@ -87,10 +87,12 @@ const VDivider: React.FunctionComponent = () => {
 const Poem: React.FunctionComponent<PoemProps> = (props) => {
   const { title, verses } = props;
 
+  const index: number = props.index ?? 0;
+
   return (
     <div>
-      <Typography variant='h5' style={{ fontWeight: 'bold', margin: 10 }}>
-        {title}
+      <Typography variant='h5' style={{ fontWeight: 'bold' }}>
+        ({chapters.length + index + 1}) {title}
       </Typography>
       <Typography style={{ whiteSpace: 'pre-line' }}>{verses}</Typography>
     </div>
@@ -119,7 +121,7 @@ const Recollections: React.FunctionComponent = () => {
     }).catch((err) => console.error(err));
   }, []);
 
-  const titlesRef = React.useRef<Array<HTMLSpanElement | null>>([]);
+  const titlesRef = React.useRef<Array<HTMLElement | null>>([]);
   const _fadeIn = (): void => {
     setHeight('400');
     const timeout = setInterval(() => {
@@ -130,6 +132,7 @@ const Recollections: React.FunctionComponent = () => {
 
   const scrollTo = (index: number): void => {
     const i = index;
+
     if (titlesRef !== null) {
       if (titlesRef.current !== null) {
         if (titlesRef.current[i] !== null) {
@@ -182,8 +185,9 @@ const Recollections: React.FunctionComponent = () => {
         <Typography style={{ maxWidth: '80%', textAlign: 'justify' }}>
           {content.description}
         </Typography>
-
-        <VDivider />
+        <div style={{ marginTop: '5vh', marginBottom: '5vh' }}>
+          <VDivider />
+        </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10vh' }}>
           <div
@@ -195,7 +199,7 @@ const Recollections: React.FunctionComponent = () => {
               marginRight: '5vw',
             }}
           >
-            <Typography style={{ marginTop: '5vw', marginBottom: '5vw', textAlign: 'justify' }}>
+            <Typography style={{ marginBottom: '5vw', textAlign: 'justify' }}>
               I have chosen a set of records to go along with the narration. Each track corresponds
               to each chapter of this collection. Once you reach the epilogue, each track
               corresponds to a poem. The tracks are all fairly distinct from one another and they
@@ -222,25 +226,16 @@ const Recollections: React.FunctionComponent = () => {
               Log in
             </Button>
 
-            <iframe
-              src='https://open.spotify.com/embed/playlist/3LDmJkk92aGHx2JXyoT48N?utm_source=generator&theme=0'
-              width='500'
-              style={{ maxWidth: '90%', borderRadius: 12 }}
-              frameBorder={0}
-              height='380'
-              allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
-              loading='lazy'
-            ></iframe>
             <HDivider />
             <Typography
               variant='h4'
               style={{
                 color: cont.color,
-                textAlign: 'center',
                 marginTop: '5vh',
-                fontWeight: 'bold',
+                scrollMargin: 100,
                 fontFamily: 'inherit',
               }}
+              ref={(el) => titlesRef.current.push(el)}
             >
               Table of Contents
             </Typography>
@@ -254,13 +249,43 @@ const Recollections: React.FunctionComponent = () => {
                     cursor: 'pointer',
                     margin: 10,
                   }}
-                  onClick={() => scrollTo(index)}
+                  onClick={() => scrollTo(index + 1)}
                 >
                   <Typography
                     variant='h6'
                     style={{ textAlign: 'left', fontFamily: 'Times New Roman' }}
                   >
                     {item}
+                  </Typography>
+                </li>
+              ))}
+              <Typography
+                variant='h5'
+                style={{
+                  color: cont.color,
+                  textAlign: 'left',
+                  fontWeight: 'bold',
+                  fontFamily: 'inherit',
+                }}
+              >
+                - Poems -
+              </Typography>
+              {poems.map((item, index) => (
+                <li
+                  key={index}
+                  style={{
+                    fontSize: 20,
+                    cursor: 'pointer',
+                    margin: 10,
+                  }}
+                  onClick={() => scrollTo(10 + index)}
+                >
+                  <Typography
+                    variant='h6'
+                    style={{ textAlign: 'left', fontFamily: 'Times New Roman' }}
+                    key={index}
+                  >
+                    {item.title}
                   </Typography>
                 </li>
               ))}
@@ -271,7 +296,7 @@ const Recollections: React.FunctionComponent = () => {
           <Typography
             ref={(el) => titlesRef.current.push(el)}
             variant='h4'
-            style={{ color: cont.color, paddingTop: 100, fontFamily: 'inherit' }}
+            style={{ color: cont.color, scrollMargin: 100, fontFamily: 'inherit' }}
           >
             1. {chapters[0]}
           </Typography>
@@ -312,7 +337,7 @@ const Recollections: React.FunctionComponent = () => {
           <Typography
             ref={(el) => titlesRef.current.push(el)}
             variant='h4'
-            style={{ color: cont.color, paddingTop: 100, fontFamily: 'inherit' }}
+            style={{ color: cont.color, scrollMargin: 100, fontFamily: 'inherit' }}
           >
             2. {chapters[1]}
           </Typography>
@@ -339,14 +364,14 @@ const Recollections: React.FunctionComponent = () => {
             </Typography>
             {<Haiku {...haikus[2]} />}
             <Typography>
-              Walking in the freezing cold streets of Hague, our group and my friends, steps ahead
-              of me. I took a moment to show my respects and passed through the torii gate leading
-              into another part of town.
+              Walking in the freezing cold streets of Hague, our group and my friends steps ahead of
+              me. I took a moment to show my respects and passed through the torii gate leading into
+              another part of town.
             </Typography>
             {<Haiku {...haikus[3]} />}
             <Typography>
               One of my many purposes in this trip was to reunite with an old acquaintance from the
-              city of light who I hadn’t seen in over a year. Seeing her again somehow seemed like a
+              City of Light who I hadn’t seen in over a year. Seeing her again somehow seemed like a
               work of god, if one would take into account the circumstances.
             </Typography>
             {<Haiku {...haikus[4]} />}
@@ -382,7 +407,7 @@ const Recollections: React.FunctionComponent = () => {
           <Typography
             ref={(el) => titlesRef.current.push(el)}
             variant='h4'
-            style={{ color: cont.color, paddingTop: 100, fontFamily: 'inherit' }}
+            style={{ color: cont.color, scrollMargin: 100, fontFamily: 'inherit' }}
           >
             3. {chapters[2]}
           </Typography>
@@ -476,7 +501,7 @@ const Recollections: React.FunctionComponent = () => {
           <Typography
             ref={(el) => titlesRef.current.push(el)}
             variant='h4'
-            style={{ color: cont.color, paddingTop: 100, fontFamily: 'inherit' }}
+            style={{ color: cont.color, scrollMargin: 100, fontFamily: 'inherit' }}
           >
             4. {chapters[3]}
           </Typography>
@@ -528,7 +553,7 @@ const Recollections: React.FunctionComponent = () => {
           <Typography
             ref={(el) => titlesRef.current.push(el)}
             variant='h4'
-            style={{ color: cont.color, paddingTop: 100, fontFamily: 'inherit' }}
+            style={{ color: cont.color, scrollMargin: 100, fontFamily: 'inherit' }}
           >
             5. {chapters[4]}
           </Typography>
@@ -575,7 +600,7 @@ const Recollections: React.FunctionComponent = () => {
           <Typography
             ref={(el) => titlesRef.current.push(el)}
             variant='h4'
-            style={{ color: cont.color, paddingTop: 100, fontFamily: 'inherit' }}
+            style={{ color: cont.color, scrollMargin: 100, fontFamily: 'inherit' }}
           >
             6. {chapters[5]}
           </Typography>
@@ -606,7 +631,7 @@ const Recollections: React.FunctionComponent = () => {
           <Typography
             ref={(el) => titlesRef.current.push(el)}
             variant='h4'
-            style={{ color: cont.color, paddingTop: 100, fontFamily: 'inherit' }}
+            style={{ color: cont.color, scrollMargin: 100, fontFamily: 'inherit' }}
           >
             7. {chapters[6]}
           </Typography>
@@ -628,7 +653,7 @@ const Recollections: React.FunctionComponent = () => {
           <Typography
             ref={(el) => titlesRef.current.push(el)}
             variant='h4'
-            style={{ color: cont.color, paddingTop: 100, fontFamily: 'inherit' }}
+            style={{ color: cont.color, scrollMargin: 100, fontFamily: 'inherit' }}
           >
             8. {chapters[7]}
           </Typography>
@@ -668,7 +693,7 @@ const Recollections: React.FunctionComponent = () => {
           <Typography
             ref={(el) => titlesRef.current.push(el)}
             variant='h4'
-            style={{ color: cont.color, paddingTop: 100, fontFamily: 'inherit' }}
+            style={{ color: cont.color, scrollMargin: 100, fontFamily: 'inherit' }}
           >
             9. {chapters[8]}
           </Typography>
@@ -715,12 +740,24 @@ const Recollections: React.FunctionComponent = () => {
             <Typography>~ Filippos</Typography>
           </div>
 
-          {poems.map((item, index) => (
-            <div key={index} className='recollections-section' style={{ textAlign: 'center' }}>
-              <VDivider />
-              <Poem {...item} />
-            </div>
-          ))}
+          <div>
+            {poems.map((item, index) => (
+              <div
+                key={index}
+                style={{
+                  textAlign: 'center',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '5vh',
+                  marginTop: '5vh',
+                }}
+                ref={(el) => titlesRef.current.push(el)}
+              >
+                <VDivider />
+                <Poem {...item} index={index} />
+              </div>
+            ))}
+          </div>
           <HDivider />
           <div
             style={{
@@ -744,18 +781,38 @@ const Recollections: React.FunctionComponent = () => {
                 loading='lazy'
               ></iframe>
             </Fade>
-            <IconButton
-              style={{ width: 32, height: 32, marginTop: height === '100' ? -20 : 0 }}
-              onClick={() =>
-                height === '100' && fadeIn
-                  ? setFadeIn(false)
-                  : height === '400'
-                  ? setHeight('100')
-                  : _fadeIn()
-              }
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: height === '100' ? -20 : 0,
+              }}
             >
-              {height === '100' && fadeIn ? <ExpandMoreIcon /> : <ExpandLessIcon />}
-            </IconButton>
+              <Tooltip title='Table of Contents' disableFocusListener disableTouchListener>
+                <IconButton style={{ width: 32, height: 32 }} onClick={() => scrollTo(0)}>
+                  <TocIcon />
+                </IconButton>
+              </Tooltip>
+              <Tooltip
+                title={height === '100' && fadeIn ? 'Hide' : height === '400' ? 'Compress' : 'Show'}
+                disableFocusListener
+                disableTouchListener
+              >
+                <IconButton
+                  style={{ width: 32, height: 32 }}
+                  onClick={() =>
+                    height === '100' && fadeIn
+                      ? setFadeIn(false)
+                      : height === '400'
+                      ? setHeight('100')
+                      : _fadeIn()
+                  }
+                >
+                  {height === '100' && fadeIn ? <ExpandMoreIcon /> : <ExpandLessIcon />}
+                </IconButton>
+              </Tooltip>
+            </div>
           </div>
         </div>
       </div>

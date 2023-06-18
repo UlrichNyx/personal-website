@@ -9,6 +9,7 @@ import ContentPage from './screens/ContentPage';
 import Error from './screens/Error';
 import CssBaseline from '@mui/material/CssBaseline';
 import Recollections from './content/Pages/Recollections/Recollections';
+import Homebrew from './content/Pages/DND/Homebrew/Homebrew';
 
 import ScrollToTop from '../src/screens/ScrollToTop';
 
@@ -38,6 +39,7 @@ const App: React.FunctionComponent = () => {
           <Route path='/portfolio/:post' element={<ContentPage />} />
           <Route path='/archives/:post' element={<ContentPage />} />
           <Route path='/archives/Recollections-of-a-Drowned-Mind' element={<Recollections />} />
+          <Route path='/archives/Wedding-night-in-the-bowels-of-hell' element={<Homebrew />} />
         </Routes>
       </Router>
     </ThemeProvider>

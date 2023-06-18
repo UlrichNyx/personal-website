@@ -13,7 +13,15 @@ const content = {
   description:
     'Reset is a fitness and wellbeing appliation project which I have been working on for some time now. It is an application I have been working on Full Stack and have closely collaborated with my employer througout the process.',
   html: (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '10vh', alignItems: 'center' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10vh',
+        alignItems: 'center',
+        width: '100%',
+      }}
+    >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh', maxWidth: '80vw' }}>
         <Typography variant='h4' style={{ color: Colors.boostPink }}>
           Admin App

@@ -13,13 +13,13 @@ const TriforceDivider: React.FunctionComponent<Props> = (props) => {
       style={{
         display: 'flex',
         flexDirection: 'row',
-        width: '90%',
+        width: '90vw',
         justifyContent: 'center',
         alignItems: 'center',
-        margin: '10vh 5vw 10vh 5vw',
+        alignSelf: 'center',
       }}
     >
-      <div style={{ height: 1, width: '40%', backgroundColor: color }} />
+      <div style={{ height: 1, width: '40vw', backgroundColor: color }} />
       <div
         style={{
           minWidth: 100,
@@ -28,7 +28,6 @@ const TriforceDivider: React.FunctionComponent<Props> = (props) => {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          margin: 10,
         }}
       >
         {upward === true ? <div className='arrow-up' style={{ borderBottomColor: color }} /> : null}
@@ -45,7 +44,7 @@ const TriforceDivider: React.FunctionComponent<Props> = (props) => {
         )}
         {upward === true ? null : <div className='arrow-down' style={{ borderTopColor: color }} />}
       </div>
-      <div style={{ height: 1, width: '40%', backgroundColor: color }} />
+      <div style={{ height: 1, width: '40vw', backgroundColor: color }} />
     </div>
   );
 };

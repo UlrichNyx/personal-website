@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 
 import ScienceIcon from '@mui/icons-material/Science';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 
 interface FilterType {
   value: string;
@@ -75,21 +76,7 @@ const FilterSelect: React.FunctionComponent<FilterType> = (props) => {
             <Typography>Arts & Languages</Typography>
           </div>
         </MenuItem>
-      </Select>
-    </FormControl>
-  );
-};
 
-export default FilterSelect;
-
-/*
-
-
-import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
-import SelfImprovementIcon from '@mui/icons-material/SelfImprovement';
-import SpaIcon from '@mui/icons-material/Spa';
-
-        
         <MenuItem value='vgc'>
           <div
             style={{
@@ -105,6 +92,22 @@ import SpaIcon from '@mui/icons-material/Spa';
             <Typography>Board/Video Game Collection</Typography>
           </div>
         </MenuItem>
+      </Select>
+    </FormControl>
+  );
+};
+
+export default FilterSelect;
+
+/*
+
+
+
+import SelfImprovementIcon from '@mui/icons-material/SelfImprovement';
+import SpaIcon from '@mui/icons-material/Spa';
+
+        
+        
         <MenuItem value='wellbeing'>
           <div
             style={{

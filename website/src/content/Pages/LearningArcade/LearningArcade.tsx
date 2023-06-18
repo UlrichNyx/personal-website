@@ -9,7 +9,14 @@ const content = {
   description:
     'This was an internship that I worked on directly after graduation regarding the use of gamification in education. The purpose of the project was to build an application that students could use in and out of class in order to improve their understanding of the subjects they were studying in a fun and engaging way. The initial step of this project was to create a template application similar to Kahoot where students could create accounts and compete on/create online quizzes that regard a certain subject. I was mostly responsible for the Front-end of the application as well as some of the research that was conducted for the project.',
   html: (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '10vh', alignItems: 'center' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10vh',
+        alignItems: 'center',
+      }}
+    >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh', alignItems: 'center' }}>
         <Typography variant='h4' style={{ color: Colors.braveryPurple }}>
           Front-End
@@ -19,9 +26,7 @@ const content = {
           The front end was built using React as well as Material UI components.
         </Typography>
         <ImageSlider images={images} width='80vw' color={Colors.braveryPurple} />
-        <div style={{ width: '100vw' }}>
-          <TriforceDivider color={Colors.braveryPurple} />
-        </div>
+        <TriforceDivider color={Colors.braveryPurple} />
 
         <Typography variant='h4' style={{ color: Colors.onlineGreen }}>
           Documentation & Research

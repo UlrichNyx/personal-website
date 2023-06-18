@@ -124,9 +124,7 @@ const content = {
           ))}
         </List>
       </div>
-      <div style={{ width: '100vw' }}>
-        <TriforceDivider upward color={Colors.vsBlue} />
-      </div>
+      <TriforceDivider upward color={Colors.vsBlue} />
     </div>
   ),
 };
