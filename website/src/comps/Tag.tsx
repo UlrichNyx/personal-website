@@ -22,6 +22,7 @@ const Tag: React.FunctionComponent<TagType> = (props) => {
         style={{
           backgroundColor: props.color ?? 'white',
           color: 'white',
+          borderRadius: 4,
           opacity: props.isActive ? 1 : 0.5,
         }}
         onClick={() => (props.setActive !== undefined ? props.setActive(props.index ?? 0) : null)}

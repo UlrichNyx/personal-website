@@ -1,7 +1,7 @@
 import Colors from '../styles/Colors';
 
 import { archiveTags } from './Tags';
-import website from '../assets/pwebsite/website-thumbnail.jpeg';
+import website from '../assets/pwebsite/bedroom.gif';
 import kanagawa from '../assets/recollections/kanagawa.jpeg';
 import wedding from '../assets/homebrew/thumbnail.jpeg';
 import { ProjectProps } from './Projects';

@@ -13,12 +13,12 @@ const content = {
   description:
     'Welcome to the first post on the archives section! I intend for this section to be used as a blog of sorts in which I go over some of my recent experiences/ things I have been working on and so on. For the very first post we have an explanation of the structure I have created for this website, how I went about it designing it and so on. I do not go into excruciating detail in terms of the steps I took, however, you will find many useful external links which can help you with any processes you might been having trouble with. ',
   html: (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '10vh', width: '98%' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '5vh', width: '98%' }}>
       <div
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '10vh',
+          gap: '5vh',
           textAlign: 'justify',
           justifyContent: 'center',
           alignItems: 'center',
@@ -28,7 +28,7 @@ const content = {
         <Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
           1. Setting up the stack
         </Typography>
-
+        <TriforceDivider color={Colors.hyperlinkBlue} />
         <Typography>
           This application was created using{' '}
           <strong
@@ -160,10 +160,11 @@ const content = {
           extensions.
         </Typography>
       </div>
-      <TriforceDivider color={Colors.hyperlinkBlue} />
+
       <Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
         2. Folder structure and organization
       </Typography>
+      <TriforceDivider color={Colors.hyperlinkBlue} />
       <Image src={FolderStructure} style={{ width: 200, height: 400, alignSelf: 'center' }} />
 
       <Typography variant='caption'>The internal structure of this project.</Typography>
@@ -233,11 +234,11 @@ const content = {
         basic structure, it also can be injected with new HTML so as to keep the structure of each
         content unique, according to the nature of the content in question.
       </Typography>
-      <TriforceDivider color={Colors.hyperlinkBlue} />
+
       <Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
         3. MUI Theming, react-router-dom
       </Typography>
-
+      <TriforceDivider color={Colors.hyperlinkBlue} />
       <Typography>
         I am personally a big fan of dark mode when it comes to any UI and as such it was my go to
         when choosing the options for{' '}
@@ -266,10 +267,11 @@ const content = {
       <div style={{ alignSelf: 'center' }}>
         <ColorPalette />
       </div>
-      <TriforceDivider color={Colors.hyperlinkBlue} />
+
       <Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
         4. Content Architecture
       </Typography>
+      <TriforceDivider color={Colors.hyperlinkBlue} />
       <Typography>
         The technicalities of each page will not be discussed as they are fairly unique to this
         website, however there will be a mention of some notable features that I think are worth
@@ -304,10 +306,11 @@ const content = {
         interesting component I have been working on (such as the color palette you saw above!) that
         are unique to each post.
       </Typography>
-      <TriforceDivider color={Colors.hyperlinkBlue} />
+
       <Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
         5. Deployment & Final Remarks
       </Typography>
+      <TriforceDivider color={Colors.hyperlinkBlue} />
       <Typography>
         {' '}
         For the deployment of this website I used the service provided by{' '}

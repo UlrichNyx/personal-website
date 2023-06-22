@@ -24,6 +24,9 @@ const ContentPreview: React.FunctionComponent<Props> = (props) => {
         flexDirection: 'column',
         gap: '1px',
         alignItems: 'center',
+        padding: 10,
+        borderRadius: 10,
+        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
       }}
     >
       <Image
@@ -49,7 +52,7 @@ const ContentPreview: React.FunctionComponent<Props> = (props) => {
       >
         {props.title}
       </Typography>
-      <Typography variant='caption' style={{ maxWidth: '80%' }}>
+      <Typography variant='caption' style={{ maxWidth: '90%' }}>
         {props.subtitle}
       </Typography>
     </div>

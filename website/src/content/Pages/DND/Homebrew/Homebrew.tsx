@@ -10,7 +10,7 @@ import Image from '../../../../comps/Image';
 import Spoiler from '../../../../comps/Spoiler';
 import PromAndZeus from '../../../../assets/homebrew/pnz.jpeg';
 import MotherSah from '../../../../assets/homebrew/mother-shahraz.jpeg';
-import IllidanPortrait from '../../../../assets/homebrew/illidan-portrait.jpeg';
+import IllidanPortrait from '../../../../assets/homebrew/illidan-p.jpeg';
 import Illidan from '../../../../assets/homebrew/illidan.jpeg';
 import Enellava from '../../../../assets/homebrew/enellava.jpg';
 import Letter from '../../../../assets/homebrew/letter.jpeg';
@@ -18,20 +18,48 @@ import SBLord from '../../../../assets/homebrew/lord-sinister.png';
 import './Style.css';
 import './Font.css';
 
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
+
 const chapters = [
   'Motivation',
   'Excerpt',
   'Introduction',
   'The Invitation Letter',
   'Characters',
-  'Palace of Enellava',
+  'Locations',
   'Events',
   'Music',
-  'Creatures',
-  'Extra Tools',
+  'Tools',
   'Conclusion',
-  'Package',
 ];
+
+interface childrenType {
+  number: number;
+  gender: 'female' | 'male';
+  sexuality: 'heterosexual';
+}
+interface childrenNameType {
+  [name: string]: childrenType;
+}
+
+const childrenData: childrenNameType = {
+  Aurelia: { number: 1, gender: 'female', sexuality: 'heterosexual' },
+  Delilah: { number: 2, gender: 'female', sexuality: 'heterosexual' },
+  Esmeralda: { number: 4, gender: 'female', sexuality: 'heterosexual' },
+  Miranda: { number: 6, gender: 'female', sexuality: 'heterosexual' },
+  Okami: { number: 8, gender: 'female', sexuality: 'heterosexual' },
+  Nareen: { number: 12, gender: 'female', sexuality: 'heterosexual' },
+  Alwyn: { number: 3, gender: 'male', sexuality: 'heterosexual' },
+  Wolfgang: { number: 3, gender: 'male', sexuality: 'heterosexual' },
+  Abelardo: { number: 7, gender: 'male', sexuality: 'heterosexual' },
+  Kaiden: { number: 3, gender: 'male', sexuality: 'heterosexual' },
+  Edward: { number: 3, gender: 'male', sexuality: 'heterosexual' },
+  Seth: { number: 3, gender: 'male', sexuality: 'heterosexual' },
+};
 
 const VDivider: React.FunctionComponent = () => {
   const color = Colors.dndRed;
@@ -57,6 +85,25 @@ const VDivider: React.FunctionComponent = () => {
 
 const Homebrew: React.FunctionComponent = () => {
   const cont = archives[2];
+
+  const handleChange = (event: SelectChangeEvent): void => {
+    setChildName(event.target.value);
+  };
+
+  const [playerName, setPlayerName] = React.useState('Aenemon');
+  const [childName, setChildName] = React.useState('Miranda');
+
+  const produceNumber = (num: number): string => {
+    let suffix = 'th';
+    if (num === 1) {
+      suffix = 'st';
+    } else if (num === 2) {
+      suffix = 'nd';
+    } else if (num === 3) {
+      suffix = 'rd';
+    }
+    return num.toString() + suffix;
+  };
 
   const titlesRef = React.useRef<Array<HTMLSpanElement | null>>([]);
   const scrollTo = (index: number): void => {
@@ -123,11 +170,10 @@ const Homebrew: React.FunctionComponent = () => {
         <Typography variant='h5' style={{ color: Colors.vsGray }}>
           {cont.date}
         </Typography>
-        <Divider style={{ backgroundColor: Colors.dndRed, height: 1.5, width: '80vw' }} />
+        <TriforceDivider color={Colors.dndRed} />
         <Typography style={{ maxWidth: '80%', textAlign: 'justify' }}>
           {content.description}
         </Typography>
-        <TriforceDivider color={Colors.dndRed} />
 
         <Typography
           variant='h4'
@@ -397,6 +443,34 @@ const Homebrew: React.FunctionComponent = () => {
         <Typography>Why are these important to know? Well...</Typography>
         <TriforceDivider color={Colors.dndRed} />
         <ChapterHeader index={3} />
+
+        <div
+          style={{ display: 'flex', flexDirection: 'row', gap: '1vw', justifyContent: 'center' }}
+        >
+          <TextField
+            label='Player Name'
+            variant='outlined'
+            defaultValue={'Aenemon'}
+            value={playerName}
+            onChange={(e) => setPlayerName(e.target.value)}
+          />
+          <FormControl fullWidth>
+            <InputLabel id='demo-simple-select-label'>Sinister Child</InputLabel>
+            <Select
+              labelId='demo-simple-select-label'
+              id='demo-simple-select'
+              value={childName}
+              label='Sinister Children'
+              onChange={handleChange}
+            >
+              {Object.keys(childrenData).map((item, index) => (
+                <MenuItem key={index} value={item}>
+                  {item}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
         <Image
           src={Letter}
           style={{ minWidth: '50vw', maxWidth: '90vw', height: '50vh', borderRadius: 4 }}
@@ -405,8 +479,9 @@ const Homebrew: React.FunctionComponent = () => {
           &#34;You are formally invited to Lord & Lady&apos;s special wedding, joining the lives of:
         </Typography>
         <Typography style={{ fontFamily: 'Dungeon', fontSize: 24, textAlign: 'justify' }}>
-          [Player Character Name] & Miranda, 6th daughter of the Sinister hosted in the lavish
-          palace of Enellava tomorrow at noon.&#34;
+          {playerName} & {childName}, {produceNumber(childrenData[childName].number)}{' '}
+          {childrenData[childName].gender === 'female' ? 'daughter' : 'son'} of the Sinister hosted
+          in the lavish palace of Enellava tomorrow at noon.&#34;
         </Typography>
         <Typography style={{ fontFamily: 'Dungeon', fontSize: 24, textAlign: 'justify' }}>
           - Lord and Lady Sinister
@@ -481,11 +556,12 @@ const Homebrew: React.FunctionComponent = () => {
           }}
         >
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <Image src={IllidanPortrait} style={{}} />
-            <Image src={SBLord} style={{ borderRadius: 4, maxWidth: '90vw' }} />
+            <Image src={IllidanPortrait} style={{ borderRadius: 4 }} />
           </div>
-          <div>
-            <Typography> One of our two main attractions from this oneshot.</Typography>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5vh' }}
+          >
+            <Image src={SBLord} style={{ borderRadius: 4, maxWidth: '90%' }} />
             <Typography>
               Lord Sinister is one of those types of people you never wanna mess with. Stoic and yet
               friendly, in his own frightening manner, Lord Sinister is an avid collector of art and
@@ -499,7 +575,37 @@ const Homebrew: React.FunctionComponent = () => {
             </Typography>
           </div>
         </div>
-        <Typography>Lady Sinister</Typography>
+        <div
+          className='stat-block-grid'
+          style={{
+            backgroundColor: Colors.vsDarkGray,
+            borderRadius: 4,
+            padding: 10,
+            gap: '1vh',
+            maxWidth: '90vw',
+            textAlign: 'justify',
+          }}
+        >
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Image src={IllidanPortrait} style={{ borderRadius: 4 }} />
+          </div>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5vh' }}
+          >
+            <Image src={SBLord} style={{ borderRadius: 4, maxWidth: '90%' }} />
+            <Typography>
+              Lady Sinister is one of those types of people you never wanna mess with. Stoic and yet
+              friendly, in his own frightening manner, Lord Sinister is an avid collector of art and
+              weapons alike. He is also very deeply interested in philosophy. One too many times he
+              will pose ethically challenging questions to characters in order to judge their grasp
+              or perhaps opinion regarding the matter. Lord Sinister shows some partial respect to
+              the players as they themselves are noteworthy criminals and will make light talk about
+              their achievements, or perhaps the contributions that they can make as new members of
+              the family. He is particularly harsh regarding his offspring, especially the ones that
+              do not fare off so well.
+            </Typography>
+          </div>
+        </div>
         <Typography>Marcus</Typography>
         <Typography>Prometheus the Animated Fire</Typography>
         <Typography>The Help</Typography>

@@ -28,14 +28,21 @@ const Portfolio: React.FunctionComponent = () => {
             display: 'flex',
             flexDirection: 'column',
             gap: '10px',
-            marginTop: 70,
             borderRadius: 4,
-
             alignItems: 'center',
           }}
         >
           <FilterSelect value={time} setValue={setTime} mode='time' />
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: '10px',
+              overflowX: 'auto',
+              maxWidth: '80vw',
+              paddingBottom: 20,
+            }}
+          >
             {tags.map((item, index) => {
               return (
                 <Tag

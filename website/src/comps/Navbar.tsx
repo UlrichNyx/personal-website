@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import Logo from '../assets/home/Suicune.png';
+import Triforce from '../assets/triforce.png';
 import Colors from '../styles/Colors';
 
 import { useNavigate } from 'react-router-dom';
@@ -15,14 +16,25 @@ import ArticleIcon from '@mui/icons-material/Article';
 import BookIcon from '@mui/icons-material/Book';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-
+import ElseCaller from '../assets/elsecaller.png';
 import Image from './Image';
 
 const Navbar: React.FunctionComponent = () => {
   const navigate = useNavigate();
 
+  const pokemonNum = Math.floor(Math.random() * 1010 + 1);
+
+  let pokemonSrc = 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/';
+  if (pokemonNum < 10) {
+    pokemonSrc += '00' + pokemonNum.toString() + '.png';
+  } else if (pokemonNum < 100) {
+    pokemonSrc += '0' + pokemonNum.toString() + '.png';
+  } else {
+    pokemonSrc += pokemonNum.toString() + '.png';
+  }
+
   return (
-    <AppBar position='fixed'>
+    <AppBar position='fixed' color='transparent' enableColorOnDark>
       <Toolbar
         style={{
           display: 'flex',
@@ -42,8 +54,7 @@ const Navbar: React.FunctionComponent = () => {
           }}
           onClick={() => navigate('/')}
         >
-          <Image src={Logo} style={{ width: 32, height: 32, borderRadius: 32, margin: 5 }} />
-          <Divider orientation='vertical' style={{ height: '3vh', backgroundColor: 'white' }} />
+          <Image src={pokemonSrc} style={{ width: 32, height: 32, borderRadius: 32, margin: 5 }} />
         </div>
         <Button
           color='inherit'
@@ -51,7 +62,7 @@ const Navbar: React.FunctionComponent = () => {
           onClick={() => navigate('/portfolio')}
           style={{ textTransform: 'none' }}
         >
-          Portfolio
+          Projects
         </Button>
         <Button
           color='inherit'

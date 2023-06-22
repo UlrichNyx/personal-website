@@ -34,13 +34,20 @@ const Archives: React.FunctionComponent = () => {
             display: 'flex',
             flexDirection: 'column',
             gap: '10px',
-            marginTop: 70,
             borderRadius: 4,
             alignItems: 'center',
           }}
         >
           <FilterSelect value={section} setValue={setSection} mode='sections' />
-          <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto auto' }}>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'auto auto auto auto',
+              maxWidth: '80vw',
+              overflowX: 'auto',
+              paddingBottom: 20,
+            }}
+          >
             {archiveTags[section as keyof typeof archiveTags].map((item, index) => {
               return (
                 <Tag

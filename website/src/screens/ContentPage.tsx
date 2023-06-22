@@ -71,11 +71,11 @@ const ContentPage: React.FunctionComponent = () => {
         <Typography variant='h5' style={{ color: Colors.vsGray }}>
           {cont.date}
         </Typography>
-        <Divider style={{ backgroundColor: cont.color, height: 1.5, width: '80vw' }} />
+        <TriforceDivider color={cont.color} />
         <Typography style={{ marginLeft: '10vw', marginRight: '10vw', textAlign: 'justify' }}>
           {page.description}
         </Typography>
-        <TriforceDivider color={cont.color} />
+
         {page.html}
       </div>
     </div>

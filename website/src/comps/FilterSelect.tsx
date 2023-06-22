@@ -24,10 +24,11 @@ const FilterSelect: React.FunctionComponent<FilterType> = (props) => {
     <FormControl>
       <InputLabel>Year Range</InputLabel>
       <Select
+        variant='standard'
         value={props.value}
         onChange={handleChange}
-        autoWidth
-        style={{ color: 'white' }}
+        fullWidth
+        style={{ color: 'white', width: 340 }}
         label='Year Range'
       >
         <MenuItem value='2000-2024'>(2000 - 2024) Total Year Range</MenuItem>
@@ -40,10 +41,10 @@ const FilterSelect: React.FunctionComponent<FilterType> = (props) => {
     <FormControl>
       <InputLabel>Section</InputLabel>
       <Select
+        variant='standard'
         value={props.value}
         onChange={handleChange}
-        autoWidth
-        style={{ color: 'white' }}
+        style={{ color: 'white', width: 340 }}
         label='Section'
       >
         <MenuItem value='science'>
