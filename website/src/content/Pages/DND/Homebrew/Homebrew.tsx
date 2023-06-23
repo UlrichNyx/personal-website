@@ -71,7 +71,7 @@ const VDivider: React.FunctionComponent = () => {
         justifyContent: 'center',
         alignItems: 'center',
         gap: '1vh',
-        margin: '10vh 5vw 10vh 5vw',
+        margin: '5vh 0vw 5vh 0vw',
       }}
     >
       <div style={{ height: 10, width: 1, backgroundColor: color }} />
@@ -174,7 +174,7 @@ const Homebrew: React.FunctionComponent = () => {
         <Typography style={{ maxWidth: '80%', textAlign: 'justify' }}>
           {content.description}
         </Typography>
-
+        <VDivider />
         <Typography
           variant='h4'
           style={{
@@ -547,7 +547,6 @@ const Homebrew: React.FunctionComponent = () => {
         <div
           className='stat-block-grid'
           style={{
-            backgroundColor: Colors.vsDarkGray,
             borderRadius: 4,
             padding: 10,
             gap: '1vh',
@@ -561,7 +560,9 @@ const Homebrew: React.FunctionComponent = () => {
           <div
             style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5vh' }}
           >
-            <Image src={SBLord} style={{ borderRadius: 4, maxWidth: '90%' }} />
+            <div style={{ borderRadius: 4, maxWidth: '100%', maxHeight: '35%', overflowY: 'auto' }}>
+              <Image src={SBLord} style={{}} />
+            </div>
             <Typography>
               Lord Sinister is one of those types of people you never wanna mess with. Stoic and yet
               friendly, in his own frightening manner, Lord Sinister is an avid collector of art and
@@ -575,37 +576,7 @@ const Homebrew: React.FunctionComponent = () => {
             </Typography>
           </div>
         </div>
-        <div
-          className='stat-block-grid'
-          style={{
-            backgroundColor: Colors.vsDarkGray,
-            borderRadius: 4,
-            padding: 10,
-            gap: '1vh',
-            maxWidth: '90vw',
-            textAlign: 'justify',
-          }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <Image src={IllidanPortrait} style={{ borderRadius: 4 }} />
-          </div>
-          <div
-            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5vh' }}
-          >
-            <Image src={SBLord} style={{ borderRadius: 4, maxWidth: '90%' }} />
-            <Typography>
-              Lady Sinister is one of those types of people you never wanna mess with. Stoic and yet
-              friendly, in his own frightening manner, Lord Sinister is an avid collector of art and
-              weapons alike. He is also very deeply interested in philosophy. One too many times he
-              will pose ethically challenging questions to characters in order to judge their grasp
-              or perhaps opinion regarding the matter. Lord Sinister shows some partial respect to
-              the players as they themselves are noteworthy criminals and will make light talk about
-              their achievements, or perhaps the contributions that they can make as new members of
-              the family. He is particularly harsh regarding his offspring, especially the ones that
-              do not fare off so well.
-            </Typography>
-          </div>
-        </div>
+        <Typography>Lady Sinister</Typography>
         <Typography>Marcus</Typography>
         <Typography>Prometheus the Animated Fire</Typography>
         <Typography>The Help</Typography>

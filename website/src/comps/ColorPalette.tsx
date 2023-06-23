@@ -46,6 +46,8 @@ const ColorPalette: React.FunctionComponent = () => {
           display: 'grid',
           gridTemplateColumns: 'auto auto auto auto auto',
           gridRowGap: '5px',
+          gridColumnGap: '5px',
+          justifyContent: 'center',
         }}
       >
         {palette.map((color, index) => (
@@ -58,6 +60,8 @@ const ColorPalette: React.FunctionComponent = () => {
                 margin: 1,
                 cursor: 'pointer',
                 borderRadius: 4,
+                borderColor: 'white',
+                border: '1px solid',
                 backgroundColor: color,
               }}
             />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { UIEvent } from 'react';
 import '../styles/screens/Screen.css';
 
 import Image from '../comps/Image';
@@ -30,15 +30,49 @@ import Fade from '@mui/material/Fade';
 
 import { logos } from '../assets/home/logos/logos';
 import LootSecret from '../comps/LootSecret';
+import ProgressBar from '../comps/ProgressBar';
 
 const Home: React.FunctionComponent = () => {
-  const projectDisplay = [projects[2], projects[1], projects[4]];
+  const projectDisplay = [projects[1], projects[4], projects[5]];
 
   const navigate = useNavigate();
 
   const [fadeIn, setFadeIn] = React.useState(false);
 
+  const trackedElements = React.useRef<Array<HTMLElement | null>>([null, null]);
+
+  const [show, setShow] = React.useState<boolean[]>([false, false]);
+
+  const updateShow = (index: number): void => {
+    console.log(index);
+    setShow(show.map((item, i) => (index === i ? true : item)));
+  };
+
   React.useEffect(() => {
+    // add scroll listener
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      if (trackedElements !== null) {
+        if (trackedElements.current !== null) {
+          for (let i = 0; i < 3; i++) {
+            const trackedEl = trackedElements.current[i];
+            if (trackedEl !== null) {
+              if (trackedEl?.getBoundingClientRect() !== undefined) {
+                if (scrolled > trackedEl.getBoundingClientRect().y) {
+                  if (!show[i]) {
+                    const timeout = setInterval(() => {
+                      updateShow(i);
+                      clearInterval(timeout);
+                    }, 500);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    });
+
     const timeout = setInterval(() => {
       setFadeIn(true);
       clearInterval(timeout);
@@ -67,12 +101,20 @@ const Home: React.FunctionComponent = () => {
             boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
           }}
         />
-        <div style={{ display: 'flex', flexDirection: 'column', marginTop: '2vh' }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            marginTop: '2vh',
+          }}
+        >
           <Fade in={fadeIn}>
             <Typography variant='h4'> Welcome to my domain!</Typography>
           </Fade>
+          <div style={{ alignSelf: 'center' }}>
+            <TriforceDivider color={Colors.sylemsBlue} />
+          </div>
 
-          <TriforceDivider color={Colors.sylemsBlue} />
           <Fade in={fadeIn}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh' }}>
               <Typography>
@@ -146,14 +188,16 @@ const Home: React.FunctionComponent = () => {
 
           <div>
             <Typography style={{ margin: '2vh' }}>Below you can find my latest post: </Typography>
-            <div>
-              <ContentPreview
-                {...archives[archives.length - 1]}
-                target='archives'
-                archive
-                onClick={(path: string) => navigate(path)}
-              />
-            </div>
+            <Fade in={show[0]}>
+              <div ref={(el) => (trackedElements.current[0] = el)}>
+                <ContentPreview
+                  {...archives[archives.length - 1]}
+                  target='archives'
+                  archive
+                  onClick={(path: string) => navigate(path)}
+                />
+              </div>
+            </Fade>
           </div>
         </div>
         <Button
@@ -235,7 +279,21 @@ const Home: React.FunctionComponent = () => {
         <Typography>
           I am particularly interested in finding ways to apply my solutions to my every day life.
         </Typography>
-        <Typography>Below you can find my latest projects: </Typography>
+        <Typography> Current project I am working on: </Typography>
+        <Fade in={show[1]}>
+          <div ref={(el) => (trackedElements.current[1] = el)}>
+            <ContentPreview
+              title={projects[2].title}
+              target='portfolio'
+              subtitle={projects[2].subtitle}
+              image={projects[2].image}
+              color={projects[2].color}
+              onClick={(path: string) => navigate(path)}
+            />
+          </div>
+        </Fade>
+        <ProgressBar progress={70} color={projects[2].color} />
+        <Typography>Other recent projects: </Typography>
         <div
           style={{
             display: 'flex',
@@ -243,7 +301,7 @@ const Home: React.FunctionComponent = () => {
             gap: '3vw',
             maxWidth: '97vw',
             textAlign: 'center',
-            padding: 20,
+            paddingBottom: 20,
             borderRadius: 10,
             overflowX: 'auto',
           }}
