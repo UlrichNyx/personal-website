@@ -45,6 +45,11 @@ const Home: React.FunctionComponent = () => {
 
   const updateShow = (index: number): void => {
     console.log(index);
+    if (index === 1) {
+      const trackedEl = trackedElements.current[1];
+      console.log(trackedEl?.getBoundingClientRect().top);
+      console.log(trackedEl?.getBoundingClientRect().y);
+    }
     setShow(show.map((item, i) => (index === i ? true : item)));
   };
 
@@ -58,7 +63,8 @@ const Home: React.FunctionComponent = () => {
             const trackedEl = trackedElements.current[i];
             if (trackedEl !== null) {
               if (trackedEl?.getBoundingClientRect() !== undefined) {
-                if (scrolled > trackedEl.getBoundingClientRect().y) {
+                //  console.log();
+                if (trackedEl.getBoundingClientRect().top < 600) {
                   if (!show[i]) {
                     const timeout = setInterval(() => {
                       updateShow(i);
