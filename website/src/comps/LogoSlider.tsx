@@ -6,12 +6,15 @@ import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import Collapse from '@mui/material/Collapse';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import Grow from '@mui/material/Grow';
 export interface LogoSliderType {
   logos: string[];
+  show?: boolean;
 }
 
 const LogoSlider: React.FunctionComponent<LogoSliderType> = (props) => {
   const [show, setShow] = React.useState(false);
+  const showLogos = props.show ?? true;
 
   const copyFrameworks = (color: string): void => {
     navigator.clipboard
@@ -156,20 +159,21 @@ const LogoSlider: React.FunctionComponent<LogoSliderType> = (props) => {
         }}
       >
         {logos.map((logo, index) => (
-          <div
-            key={index}
-            style={{
-              padding: 30,
-              backgroundColor: 'white',
-              borderRadius: 4,
-              boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-            }}
-          >
-            <div style={{ height: '95%' }}>
-              <Image src={logo} style={{ width: '100%' }} />
+          <Grow key={index} in={showLogos} timeout={1000 + index * 100}>
+            <div
+              style={{
+                padding: 30,
+                backgroundColor: 'white',
+                borderRadius: 4,
+                boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+              }}
+            >
+              <div style={{ height: '95%' }}>
+                <Image src={logo} style={{ width: '100%' }} />
+              </div>
+              <Typography style={{ color: 'black' }}>{names[index]}</Typography>
             </div>
-            <Typography style={{ color: 'black' }}>{names[index]}</Typography>
-          </div>
+          </Grow>
         ))}
       </div>
     </div>

@@ -12,6 +12,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import DND from '../assets/tags/dnd.jpeg';
+import { Grow, Collapse } from '@mui/material';
 
 import { projects } from '../content/Projects';
 import { archives } from '../content/Archives';
@@ -39,37 +40,49 @@ const Home: React.FunctionComponent = () => {
 
   const [fadeIn, setFadeIn] = React.useState(false);
 
-  const trackedElements = React.useRef<Array<HTMLElement | null>>([null, null]);
+  const trackedElements = React.useRef<Array<HTMLElement | null>>([
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+  ]);
 
-  const [show, setShow] = React.useState<boolean[]>([false, false]);
+  const [show, setShow] = React.useState<boolean[]>([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
 
-  const updateShow = (index: number): void => {
-    console.log(index);
-    if (index === 1) {
-      const trackedEl = trackedElements.current[1];
-      console.log(trackedEl?.getBoundingClientRect().top);
-      console.log(trackedEl?.getBoundingClientRect().y);
-    }
-    setShow(show.map((item, i) => (index === i ? true : item)));
+  const updateShow = (values: boolean[]): void => {
+    setShow(values.map((item, i) => item));
   };
 
   React.useEffect(() => {
     // add scroll listener
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
+    const localShow = [false, false, false, false, false, false, false, false];
+    const handleScroll = (): void => {
       if (trackedElements !== null) {
         if (trackedElements.current !== null) {
-          for (let i = 0; i < 3; i++) {
+          for (let i = 0; i < localShow.length; i++) {
             const trackedEl = trackedElements.current[i];
             if (trackedEl !== null) {
               if (trackedEl?.getBoundingClientRect() !== undefined) {
-                //  console.log();
-                if (trackedEl.getBoundingClientRect().top < 600) {
-                  if (!show[i]) {
+                if (trackedEl.getBoundingClientRect().top < window.innerHeight) {
+                  if (!localShow[i]) {
+                    localShow[i] = true;
                     const timeout = setInterval(() => {
-                      updateShow(i);
+                      updateShow(localShow);
                       clearInterval(timeout);
-                    }, 500);
+                    }, 0);
                   }
                 }
               }
@@ -77,12 +90,16 @@ const Home: React.FunctionComponent = () => {
           }
         }
       }
-    });
-
+    };
+    window.addEventListener('scroll', handleScroll);
     const timeout = setInterval(() => {
       setFadeIn(true);
       clearInterval(timeout);
-    }, 500);
+    }, 200);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
@@ -95,7 +112,7 @@ const Home: React.FunctionComponent = () => {
       }}
     >
       <div
-        className='content-box content-box-bg-black background-gif-1 '
+        className='content-box content-box-bg-black background-gif-1'
         style={{ minHeight: '100vh' }}
       >
         <Image
@@ -235,14 +252,16 @@ const Home: React.FunctionComponent = () => {
         <Typography variant='h4'>Frameworks</Typography>
         <TriforceDivider color={Colors.onlineGreen} />
         <Typography>
-          This section displays the wide variety of tools and frameworks I have worked with in the
+          This section displays the wide variety of tools and frameworks I have worked within the
           past 8 years.
         </Typography>
         <Typography>
           You can find all projects which incorporate these tools in my{' '}
           <strong style={{ color: Colors.onlineGreen }}>Github</strong> repositories.
         </Typography>
-        <LogoSlider logos={logos} />
+        <div ref={(el) => (trackedElements.current[1] = el)}>
+          <LogoSlider logos={logos} show={show[1]} />
+        </div>
 
         <Button
           variant='contained'
@@ -286,8 +305,8 @@ const Home: React.FunctionComponent = () => {
           I am particularly interested in finding ways to apply my solutions to my every day life.
         </Typography>
         <Typography> Current project I am working on: </Typography>
-        <Fade in={show[1]}>
-          <div ref={(el) => (trackedElements.current[1] = el)}>
+        <Grow in={show[2]} timeout={500}>
+          <div ref={(el) => (trackedElements.current[2] = el)}>
             <ContentPreview
               title={projects[2].title}
               target='portfolio'
@@ -297,8 +316,10 @@ const Home: React.FunctionComponent = () => {
               onClick={(path: string) => navigate(path)}
             />
           </div>
-        </Fade>
-        <ProgressBar progress={70} color={projects[2].color} />
+        </Grow>
+        <div ref={(el) => (trackedElements.current[6] = el)}>
+          <ProgressBar progress={70} show={show[6]} color={projects[2].color} />
+        </div>
         <Typography>Other recent projects: </Typography>
         <div
           style={{
@@ -313,17 +334,18 @@ const Home: React.FunctionComponent = () => {
           }}
         >
           {projectDisplay.map((prj, index) => (
-            <div key={index}>
-              <ContentPreview
-                key={index}
-                title={prj.title}
-                target='portfolio'
-                subtitle={prj.subtitle}
-                image={prj.image}
-                color={prj.color}
-                onClick={(path: string) => navigate(path)}
-              />
-            </div>
+            <Grow in={show[2 + index]} key={index} timeout={1000 + index * 500}>
+              <div ref={(el) => (trackedElements.current[3 + index] = el)}>
+                <ContentPreview
+                  title={prj.title}
+                  target='portfolio'
+                  subtitle={prj.subtitle}
+                  image={prj.image}
+                  color={prj.color}
+                  onClick={(path: string) => navigate(path)}
+                />
+              </div>
+            </Grow>
           ))}
         </div>
         <Button
@@ -408,7 +430,12 @@ const Home: React.FunctionComponent = () => {
             Github
           </Button>
         </div>
-        <LootSecret />
+
+        <Fade in={show[7]} timeout={1000}>
+          <div ref={(el) => (trackedElements.current[7] = el)}>
+            <LootSecret />
+          </div>
+        </Fade>
       </div>
     </div>
   );

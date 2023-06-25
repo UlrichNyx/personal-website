@@ -79,7 +79,7 @@ const content = {
           {subjects['Year 1' as keyof typeof subjects].map((sub, index) => (
             <ListItemButton
               key={index}
-              style={{ backgroundColor: Colors.vsDarkGray }}
+              style={{ backgroundColor: Colors.vsAlmostBlack }}
               onClick={() => window.open(moduleURL + sub.code, '_blank')}
             >
               <ListItemText primary={sub.code + ' - ' + sub.module} />
@@ -91,7 +91,7 @@ const content = {
           {subjects['Year 2' as keyof typeof subjects].map((sub, index) => (
             <ListItemButton
               key={index}
-              style={{ backgroundColor: Colors.vsDarkGray }}
+              style={{ backgroundColor: Colors.vsAlmostBlack }}
               onClick={() => window.open(moduleURL + sub.code, '_blank')}
             >
               <ListItemText primary={sub.code + ' - ' + sub.module} />
@@ -104,7 +104,7 @@ const content = {
           {subjects['Year 3' as keyof typeof subjects].map((sub, index) => (
             <ListItemButton
               key={index}
-              style={{ backgroundColor: Colors.vsDarkGray }}
+              style={{ backgroundColor: Colors.vsAlmostBlack }}
               onClick={() => window.open(moduleURL + sub.code, '_blank')}
             >
               <ListItemText primary={sub.code + ' - ' + sub.module} />
@@ -116,7 +116,7 @@ const content = {
           {subjects['Year 4' as keyof typeof subjects].map((sub, index) => (
             <ListItemButton
               key={index}
-              style={{ backgroundColor: Colors.vsDarkGray }}
+              style={{ backgroundColor: Colors.vsAlmostBlack }}
               onClick={() => window.open(moduleURL + sub.code, '_blank')}
             >
               <ListItemText primary={sub.code + ' - ' + sub.module} />
