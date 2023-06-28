@@ -3,18 +3,24 @@ import Typography from '@mui/material/Typography';
 import Colors from '../../../../styles/Colors';
 import { archives } from '../../../../content/Archives';
 
-import { Divider } from '@mui/material';
+import { Divider, colors } from '@mui/material';
 import TriforceDivider from '../../../../comps/TriforceDivider';
 
 import Image from '../../../../comps/Image';
 import Spoiler from '../../../../comps/Spoiler';
 import PromAndZeus from '../../../../assets/homebrew/pnz.jpeg';
 import MotherSah from '../../../../assets/homebrew/mother-shahraz.jpeg';
-import IllidanPortrait from '../../../../assets/homebrew/illidan-p.jpeg';
+import LadyPortrait from '../../../../assets/homebrew/lady-portrait.jpeg';
+import LadySinisterSB from '../../../../assets/homebrew/lady-sinister.png';
+import Marcus from '../../../../assets/homebrew/marcus.jpeg';
+import Tibalt from '../../../../assets/homebrew/tibalt.png';
 import Illidan from '../../../../assets/homebrew/illidan.jpeg';
 import Enellava from '../../../../assets/homebrew/enellava.jpg';
 import Letter from '../../../../assets/homebrew/letter.jpeg';
 import SBLord from '../../../../assets/homebrew/lord-sinister.png';
+import MarcusSB from '../../../../assets/homebrew/marcus.png';
+import ServantSB from '../../../../assets/homebrew/servant.png';
+import Servant from '../../../../assets/homebrew/servant.jpeg';
 import './Style.css';
 import './Font.css';
 
@@ -23,17 +29,39 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
+import PrometheusSB from '../../../../assets/homebrew/prometheus.png';
+import FelVoidwalker from '../../../../assets/homebrew/voidwalker.jpeg';
+import Prometheus from '../../../../assets/homebrew/prometheuspic.png';
+
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+
+import Aurelia from '../../../../assets/homebrew/astralelf.jpeg';
+import Delilah from '../../../../assets/homebrew/delilah.jpeg';
+import Esmeralda from '../../../../assets/homebrew/drow.png';
+import Miranda from '../../../../assets/homebrew/miranda.jpeg';
+import Okami from '../../../../assets/homebrew/catgirl.png';
+import Nareen from '../../../../assets/homebrew/nareen.avif';
+import Alwyn from '../../../../assets/homebrew/alwyn.png';
+import Wolfgang from '../../../../assets/homebrew/centaur.webp';
+import Abelardo from '../../../../assets/homebrew/yuanti.webp';
+import Kaiden from '../../../../assets/homebrew/fairy.png';
+import Edward from '../../../../assets/homebrew/goliath.webp';
+import Seth from '../../../../assets/homebrew/changeling.webp';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import Map from '../../../../assets/homebrew/map.png';
 
 const chapters = [
   'Motivation',
   'Excerpt',
   'Introduction',
   'The Invitation Letter',
-  'Characters',
-  'Locations',
-  'Events',
-  'Music',
-  'Tools',
+  'Characters & Creatures',
+  'Locations & Items',
+  'Events & Timeline',
+  'Music & Ambience',
+  'Tools & Resources',
   'Conclusion',
 ];
 
@@ -93,6 +121,9 @@ const Homebrew: React.FunctionComponent = () => {
   const [playerName, setPlayerName] = React.useState('Aenemon');
   const [childName, setChildName] = React.useState('Miranda');
 
+  const [childSB, setChildSB] = React.useState(-1);
+  const [mapIndex, setMapIndex] = React.useState(0);
+
   const produceNumber = (num: number): string => {
     let suffix = 'th';
     if (num === 1) {
@@ -130,9 +161,11 @@ const Homebrew: React.FunctionComponent = () => {
         style={{
           color: cont.color,
           scrollMargin: 100,
-          marginBottom: '2vh',
+          marginTop: '5vh',
+
           fontWeight: 'bold',
           fontFamily: 'inherit',
+          maxWidth: '80%',
         }}
       >
         {index + 1}. {chapters[index]}
@@ -203,9 +236,10 @@ const Homebrew: React.FunctionComponent = () => {
             </li>
           ))}
         </ol>
-        <TriforceDivider color={Colors.dndRed} />
-        <ChapterHeader index={0} />
+        <VDivider />
 
+        <ChapterHeader index={0} />
+        <TriforceDivider color={Colors.dndRed} />
         <Typography style={{ maxWidth: '80%', textAlign: 'justify' }}>
           There have been multiple sources that have contributed to this idea of a homebrew. However
           the main three include:
@@ -307,8 +341,9 @@ const Homebrew: React.FunctionComponent = () => {
           time now. If you are in a similar situation, I highly encourage you to take that extra
           step as well as my experience tells me it makes up for one really great session!
         </Typography>
-        <TriforceDivider color={Colors.dndRed} />
+
         <ChapterHeader index={1} />
+        <TriforceDivider color={Colors.dndRed} />
         <div
           style={{
             maxWidth: '80%',
@@ -346,8 +381,9 @@ const Homebrew: React.FunctionComponent = () => {
             - Your dearest friend, Aenemon
           </Typography>
         </div>
-        <TriforceDivider color={Colors.dndRed} />
+
         <ChapterHeader index={2} />
+        <TriforceDivider color={Colors.dndRed} />
 
         <Typography style={{ maxWidth: '80%', textAlign: 'justify' }}>
           {' '}
@@ -390,7 +426,7 @@ const Homebrew: React.FunctionComponent = () => {
           are the things that shape that era.
         </Typography>
 
-        <Typography>
+        <Typography style={{ maxWidth: '80%' }}>
           The seaside city of Enellava has no criminal underbelly as it is in its entirety exactly
           that. <span style={{ fontWeight: 'bold' }}>A criminal underbelly.</span>
         </Typography>
@@ -417,7 +453,7 @@ const Homebrew: React.FunctionComponent = () => {
             NightCafe.
           </span>
         </Typography>
-        <Typography>
+        <Typography style={{ maxWidth: '80%' }}>
           {' '}
           For this exact reason, your players must fit the description of criminals. Have your
           players not necessarily roll a character sheet just yet but definitely answer some
@@ -429,7 +465,7 @@ const Homebrew: React.FunctionComponent = () => {
           <li>Gender</li>
           <li>Sexuality</li>
         </ol>
-        <Typography>
+        <Typography style={{ maxWidth: '80%' }}>
           You must also inform your players of the following traits for their characters:
         </Typography>
         <ol style={{ textAlign: 'left' }}>
@@ -441,9 +477,9 @@ const Homebrew: React.FunctionComponent = () => {
           </li>
         </ol>
         <Typography>Why are these important to know? Well...</Typography>
-        <TriforceDivider color={Colors.dndRed} />
-        <ChapterHeader index={3} />
 
+        <ChapterHeader index={3} />
+        <TriforceDivider color={Colors.dndRed} />
         <div
           style={{ display: 'flex', flexDirection: 'row', gap: '1vw', justifyContent: 'center' }}
         >
@@ -475,15 +511,21 @@ const Homebrew: React.FunctionComponent = () => {
           src={Letter}
           style={{ minWidth: '50vw', maxWidth: '90vw', height: '50vh', borderRadius: 4 }}
         />
-        <Typography style={{ fontFamily: 'Dungeon', fontSize: 24, textAlign: 'justify' }}>
+        <Typography
+          style={{ fontFamily: 'Dungeon', fontSize: 24, textAlign: 'justify', maxWidth: '80%' }}
+        >
           &#34;You are formally invited to Lord & Lady&apos;s special wedding, joining the lives of:
         </Typography>
-        <Typography style={{ fontFamily: 'Dungeon', fontSize: 24, textAlign: 'justify' }}>
+        <Typography
+          style={{ fontFamily: 'Dungeon', fontSize: 24, textAlign: 'justify', maxWidth: '80%' }}
+        >
           {playerName} & {childName}, {produceNumber(childrenData[childName].number)}{' '}
           {childrenData[childName].gender === 'female' ? 'daughter' : 'son'} of the Sinister hosted
           in the lavish palace of Enellava tomorrow at noon.&#34;
         </Typography>
-        <Typography style={{ fontFamily: 'Dungeon', fontSize: 24, textAlign: 'justify' }}>
+        <Typography
+          style={{ fontFamily: 'Dungeon', fontSize: 24, textAlign: 'justify', maxWidth: '80%' }}
+        >
           - Lord and Lady Sinister
         </Typography>
         <VDivider />
@@ -542,51 +584,711 @@ const Homebrew: React.FunctionComponent = () => {
             be lost <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}>*will*</span> be lost.
           </Typography>
         </div>
-        <TriforceDivider color={Colors.dndRed} />
+
         <ChapterHeader index={4} />
-        <div
-          className='stat-block-grid'
-          style={{
-            borderRadius: 4,
-            padding: 10,
-            gap: '1vh',
-            maxWidth: '90vw',
-            textAlign: 'justify',
-          }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <Image src={IllidanPortrait} style={{ borderRadius: 4 }} />
-          </div>
-          <div
-            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5vh' }}
-          >
-            <div style={{ borderRadius: 4, maxWidth: '100%', maxHeight: '35%', overflowY: 'auto' }}>
-              <Image src={SBLord} style={{}} />
+        <TriforceDivider color={Colors.dndRed} />
+        <div style={{ display: 'grid', gridTemplateColumns: 'auto', justifyContent: 'center' }}>
+          <div className='stat-block-grid'>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Image src={Tibalt} style={{ borderRadius: 4, maxWidth: '90%', height: '65vh' }} />
             </div>
-            <Typography>
-              Lord Sinister is one of those types of people you never wanna mess with. Stoic and yet
-              friendly, in his own frightening manner, Lord Sinister is an avid collector of art and
-              weapons alike. He is also very deeply interested in philosophy. One too many times he
-              will pose ethically challenging questions to characters in order to judge their grasp
-              or perhaps opinion regarding the matter. Lord Sinister shows some partial respect to
-              the players as they themselves are noteworthy criminals and will make light talk about
-              their achievements, or perhaps the contributions that they can make as new members of
-              the family. He is particularly harsh regarding his offspring, especially the ones that
-              do not fare off so well.
-            </Typography>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '5vh',
+              }}
+            >
+              <div
+                style={{ borderRadius: 4, maxWidth: '100%', maxHeight: '50%', overflowY: 'auto' }}
+              >
+                <Image src={SBLord} style={{}} />
+              </div>
+              <Typography className='character-text'>
+                Stoic and yet friendly, in his own frightening manner, Lord Sinister is an avid
+                collector of art and weapons alike. He is also very deeply interested in philosophy.
+                One too many times he will pose ethically challenging questions to characters in
+                order to judge their grasp or perhaps opinion regarding the matter. Lord Sinister
+                shows some partial respect to the players as they themselves are noteworthy
+                criminals and will make light talk about their achievements, or perhaps the
+                contributions that they can make as new members of the family. He is particularly
+                harsh regarding his offspring, especially the ones that do not fare off so well. He
+                is also very indifferent when it comes to the lives of his staff, he is very easily
+                irritated by their mistakes and will not hesitate to take their lives on a whim,
+                sometimes even finding it slightly amusing. Symbolically, Lord represents the cold
+                and harsh nature of Death. Not the kind of death which brings peace and rest to a
+                soul, but rather the violent one, which raises more questions than it gives answers.
+              </Typography>
+            </div>
+          </div>
+          <VDivider />
+
+          <div
+            className='stat-block-grid'
+            style={{
+              borderRadius: 4,
+              gap: '1vh',
+              maxWidth: '90vw',
+              textAlign: 'justify',
+            }}
+          >
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Image
+                src={LadyPortrait}
+                style={{ borderRadius: 4, maxWidth: '90%', height: '65vh', alignSelf: 'center' }}
+              />
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '5vh',
+                maxHeight: '100%',
+              }}
+            >
+              <div className='stat-block-image'>
+                <Image src={LadySinisterSB} style={{}} />
+              </div>
+              <Typography className='character-text'>
+                Lady Sinister is as equally twisted as her husband. She has an extraordinary
+                appreciation for all forms of life, not in a genuinely altruistic way, but rather
+                because she sees them as possible pieces of her collection. Any characters who
+                belong to exotic races are bound to get her attention. She is also very intrusive
+                when it comes to her communication with others. She will often pry into secrets or
+                gossip, trying to push the limit of whoever the subject concerns so as to make them
+                uncomfortable. She is much more hedonistic than the stoic Lord, as she believes that
+                his ruminations of philosophy are pointless and a very bad use of his free time. As
+                such she is very susceptible to any vice of any form. Lady Sinister is very
+                indifferent towards her children but favors the most exotic ones the most. In
+                regards to the staff of the palace, she finds them slightly irritating but will not
+                jump towards killing them as Lord would. Instead she sees them more like playthings,
+                with which she can do anything she feels like at the moment, be it torture, having
+                them walk naked in the palace or perhaps joining her in her hedonistic activities.
+                Symbolically, Lady represents the overwhelming nature of Life. The chaotic amount of
+                stimulants that exist in it, all of the powerful emotions, compressed tightly in her
+                essence, like experiencing everything, everywhere, all at once.
+              </Typography>
+            </div>
+          </div>
+          <VDivider />
+          <div
+            className='stat-block-grid'
+            style={{
+              borderRadius: 4,
+              gap: '1vh',
+              maxWidth: '90vw',
+              textAlign: 'justify',
+            }}
+          >
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Image src={Marcus} style={{ borderRadius: 4, maxWidth: '90%', height: '65vh' }} />
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '5vh',
+                maxHeight: '100%',
+              }}
+            >
+              <div
+                style={{ borderRadius: 4, maxWidth: '100%', maxHeight: '50%', overflowY: 'auto' }}
+              >
+                <Image src={MarcusSB} style={{}} />
+              </div>
+              <Typography className='character-text'>
+                Marcus is the chief of staff at the Enellava Palace. He has only recently been
+                recruited by Lord & Lady and he appears to be a very sociable and likeable person.
+                He will offer as much comfort and hospitality to the players while at the same time
+                remaining respectful towards the staff. Marcus is not in the palace by chance
+                however, he has an ulterior motive, which is to get behind the mysterious vanishing
+                of his parents, who used to work for Lord & Lady at the palace. If Marcus somehow
+                stumbles upon the truth, he will decide to help the players any way he can to take
+                down Lord & Lady. (There is more on this in the next section)
+              </Typography>
+            </div>
+          </div>
+          <VDivider />
+          <div
+            className='stat-block-grid'
+            style={{
+              borderRadius: 4,
+              gap: '1vh',
+              maxWidth: '90vw',
+              textAlign: 'justify',
+            }}
+          >
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Image src={Servant} style={{ borderRadius: 4, maxWidth: '90%', height: '65vh' }} />
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '5vh',
+                maxHeight: '100%',
+              }}
+            >
+              <div
+                style={{ borderRadius: 4, maxWidth: '100%', maxHeight: '50%', overflowY: 'auto' }}
+              >
+                <Image src={ServantSB} style={{}} />
+              </div>
+              <Typography className='character-text'>
+                All servants at the Enellava palace. All of them wear formal suits or dresses
+                similar to that of butlers. Staff are very restricted in the emotions they can
+                exhibit and will move almost mechanically through the palace as they go through
+                their chores. They can all be seen wearing the same golden ring, all of them except
+                for Marcus. The ring the servants are wearing is a mind-controlling charm which
+                renders them incapable of disobeying Lord & Lady. Forcibly taking off the ring from
+                a servant will immediately bring them out of their control.
+              </Typography>
+            </div>
+          </div>
+          <VDivider />
+          <div
+            className='stat-block-grid'
+            style={{
+              borderRadius: 4,
+              gap: '1vh',
+              maxWidth: '90vw',
+              textAlign: 'justify',
+            }}
+          >
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Image
+                src={Prometheus}
+                style={{ borderRadius: 4, maxWidth: '90%', height: '65vh' }}
+              />
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '5vh',
+                maxHeight: '100%',
+              }}
+            >
+              <div
+                style={{ borderRadius: 4, maxWidth: '100%', maxHeight: '50%', overflowY: 'auto' }}
+              >
+                <Image src={PrometheusSB} style={{}} />
+              </div>
+              <Typography className='character-text'>
+                Prometheus the Animated Fire, is a cute little fellow that can be found in Lord
+                Sinister&#39;s quarters. Prometheus is a pure antithesis to the setting and serves
+                the basic function of comic relief as he is a very over the top, happy-go-lucky
+                flame. Immediately upon interaction with the players he will engage into
+                conversation with them as he tries to befriend them. Any player suspicious of
+                Prometheus&#39; good intentions will be dissapointed to find nothing more but pure
+                naivete. He truly is a good boi. Prometheus can only be hurt in the ways that a fire
+                can be hurt, by putting him out. I cannot imagine why someone would want to do that,
+                but alas, this is DND so we must be prepared for everything. Prometheus has only 1
+                hit point and can die if he is snuffed out. If a player uses a fire spell or perhaps
+                lights a torch near him, he will consume the flame, exclaiming &#34;Yummy!&#34; as
+                he burps and rubs his belly. &#34;Thanks for the meal!&#34; Prometheus during his
+                conversation with players might mention key information regarding Lord Sinister,
+                like the fact that he likes reading philosophy in this room or that he has hidden
+                away a very powerful and dangerous for him weapon (whoops...).
+              </Typography>
+            </div>
+          </div>
+          <VDivider />
+          <div
+            className='stat-block-grid'
+            style={{
+              borderRadius: 4,
+              gap: '1vh',
+              maxWidth: '90vw',
+              textAlign: 'justify',
+            }}
+          >
+            {childSB !== -1 ? (
+              <div
+                style={{
+                  backgroundImage: `url(${itemData[childSB].img})`,
+                  backgroundSize: 'cover',
+                  backgroundColor: 'red',
+                  backgroundRepeat: 'no-repeat',
+                  height: '65vh',
+                  borderRadius: 4,
+                }}
+              >
+                <IconButton
+                  style={{ position: 'relative', left: '1%', color: Colors.dndRed }}
+                  onClick={() => setChildSB(-1)}
+                >
+                  <CloseIcon style={{ color: Colors.dndRed }} />
+                </IconButton>
+              </div>
+            ) : (
+              <ImageList variant='quilted' cols={3} rowHeight={164}>
+                {itemData.map((item, index) => (
+                  <ImageListItem key={item.img}>
+                    <img src={item.img} onClick={() => setChildSB(index)} />
+                  </ImageListItem>
+                ))}
+              </ImageList>
+            )}
+
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '5vh',
+                maxHeight: '100%',
+              }}
+            >
+              <div
+                style={{ borderRadius: 4, maxWidth: '100%', maxHeight: '50%', overflowY: 'auto' }}
+              >
+                <Image src={ServantSB} style={{}} />
+              </div>
+              <Typography className='character-text'>
+                {childSB !== -1
+                  ? itemData[childSB].description
+                  : 'Please pick an offspring of the Sinister!'}
+              </Typography>
+            </div>
+          </div>
+
+          <VDivider />
+          <div
+            className='stat-block-grid'
+            style={{
+              borderRadius: 4,
+              gap: '1vh',
+              maxWidth: '90vw',
+              textAlign: 'justify',
+            }}
+          >
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Image
+                src={FelVoidwalker}
+                style={{ borderRadius: 4, maxWidth: '90%', height: '65vh' }}
+              />
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '5vh',
+                maxHeight: '100%',
+              }}
+            >
+              <div
+                style={{ borderRadius: 4, maxWidth: '100%', maxHeight: '50%', overflowY: 'auto' }}
+              >
+                <Image src={ServantSB} style={{}} />
+              </div>
+              <Typography className='character-text'>
+                Prometheus&#39; not-so-friendly cousins. These Fel Voidwalkers are essentially fire
+                elementals taken form in the Material Plane. They will attack any creature who is a
+                threat to Lord or Lady. They cannot speak or communicate by any means, but they
+                understand Abyssal and are as loyal to Lord & Lady as the mind-controlled servants.
+              </Typography>
+            </div>
           </div>
         </div>
-        <Typography>Lady Sinister</Typography>
-        <Typography>Marcus</Typography>
-        <Typography>Prometheus the Animated Fire</Typography>
-        <Typography>The Help</Typography>
-        <Typography>Daughters</Typography>
-        <Typography>Sons</Typography>
-        <Typography>To be continued...</Typography>
+        <ChapterHeader index={5} />
+        <TriforceDivider color={Colors.dndRed} />
+        <div
+          style={{
+            maxWidth: '80vw',
+            textAlign: 'justify',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '2vh',
+          }}
+        >
+          <Typography>
+            This particular module is set into a universe of my own which for the time being I will
+            try to keep hidden. As such, please feel free to add any context you like to the world,
+            taking into consideration whatever your players give you as input as well. For
+            convenience, you could say that Enellava is in a far off island in the southern part of
+            the continent and that the players cannot leave due to a great, dangerous storm that
+            will last a month in the waters near the island. In general, due to the limitations of
+            this hidden setting, try to keep your players within the island and if it turns out that
+            you cannot, then improvise well!
+          </Typography>
+          <Typography>
+            Enellava of course, remains to be the common reference point everyone has of the world.
+            Enellava is in essence ruled by Lord and Lady as they are the leaders of the greatest
+            criminal syndicate in the city, known as the Sinister. Every citizen and corporation in
+            Enellava pays their taxes to them. Their military force consists mainly of thugs from
+            local gang groups, employed as mercenaries or through the multitude of loyal assasins
+            that the family has in their possesion. The currency is much like any other DND setting.
+            In order for the city to be functionable, there exist certain safe spaces, in which one
+            is not allowed to carry out criminal activity. Places essential to the proper function
+            of the city such as restaurants, schools,s hospitals and grocery markets are generally
+            places where one would be discouraged to commit a crime (though, depending on the
+            circumstances, not always necessarily punished for it). The honor code among criminals
+            dictates that anyone who does commit crimes in these safe spaces or targets people of
+            basic functional importance, such as cleaners, cooks, teachers or merchants, instantly
+            forfeits their own protection within these safe-spaces. Enellava is essentially split
+            into three sections. The palace, which exists on a separate island nearby. The corporate
+            section, which is basically the port of the island and finally the residential areas,
+            which are also the most crime-infested areas and make up the rest of the island.
+          </Typography>
+          <Typography>Below is a map of the palace, where the session will take place: </Typography>
+        </div>
+        <div
+          style={{
+            position: 'relative',
+            overflow: 'auto',
+            maxWidth: '90vw',
+          }}
+        >
+          <Image src={Map} style={{ width: '100%', borderRadius: 4 }} />
+          <Typography
+            style={{
+              backgroundColor: Colors.dndRed,
+              width: 32,
+              left: '48%',
+              position: 'absolute',
+              top: '86%',
+              cursor: 'pointer',
+            }}
+            onClick={() => setMapIndex(0)}
+          >
+            E1
+          </Typography>
+          <Typography
+            style={{
+              backgroundColor: Colors.dndRed,
+              width: 32,
+              left: '48%',
+              position: 'absolute',
+              top: '60%',
+              cursor: 'pointer',
+            }}
+            onClick={() => setMapIndex(1)}
+          >
+            E2
+          </Typography>
+          <Typography
+            style={{
+              backgroundColor: Colors.dndRed,
+              width: 32,
+              left: '35%',
+              position: 'absolute',
+              top: '58%',
+              cursor: 'pointer',
+            }}
+            onClick={() => setMapIndex(2)}
+          >
+            E3
+          </Typography>
+          <Typography
+            style={{
+              backgroundColor: Colors.dndRed,
+              width: 32,
+              left: '62%',
+              position: 'absolute',
+              top: '58%',
+              cursor: 'pointer',
+            }}
+            onClick={() => setMapIndex(3)}
+          >
+            E4
+          </Typography>
+          <Typography
+            style={{
+              backgroundColor: Colors.dndRed,
+              width: 32,
+              left: '35%',
+              position: 'absolute',
+              top: '67%',
+              cursor: 'pointer',
+            }}
+            onClick={() => setMapIndex(4)}
+          >
+            E5
+          </Typography>
+          <Typography
+            style={{
+              backgroundColor: Colors.dndRed,
+              width: 32,
+              left: '62%',
+              position: 'absolute',
+              top: '67%',
+              cursor: 'pointer',
+            }}
+            onClick={() => setMapIndex(5)}
+          >
+            E6
+          </Typography>
+          <Typography
+            style={{
+              backgroundColor: Colors.dndRed,
+              width: 32,
+              left: '87%',
+              position: 'absolute',
+              top: '27%',
+              cursor: 'pointer',
+            }}
+            onClick={() => setMapIndex(6)}
+          >
+            E7
+          </Typography>
+          <Typography
+            style={{
+              backgroundColor: Colors.onlineGreen,
+              width: 32,
+              left: '93%',
+              position: 'absolute',
+              top: '27%',
+              cursor: 'pointer',
+            }}
+            onClick={() => setMapIndex(10)}
+          >
+            I2
+          </Typography>
+          <Typography
+            style={{
+              backgroundColor: Colors.dndRed,
+              width: 32,
+              left: '10%',
+              position: 'absolute',
+              top: '27%',
+              cursor: 'pointer',
+            }}
+            onClick={() => setMapIndex(7)}
+          >
+            E8
+          </Typography>
+          <Typography
+            style={{
+              backgroundColor: Colors.dndRed,
+              width: 32,
+              left: '48%',
+              position: 'absolute',
+              top: '10%',
+              cursor: 'pointer',
+            }}
+            onClick={() => setMapIndex(8)}
+          >
+            E9
+          </Typography>
+          <Typography
+            style={{
+              backgroundColor: Colors.onlineGreen,
+              width: 32,
+              left: '16%',
+              position: 'absolute',
+              top: '22%',
+              cursor: 'pointer',
+            }}
+            onClick={() => setMapIndex(9)}
+          >
+            I1
+          </Typography>
+          <Typography
+            style={{
+              backgroundColor: Colors.blurple,
+              width: 32,
+              left: '3%',
+              position: 'absolute',
+              top: '27%',
+              cursor: 'pointer',
+            }}
+            onClick={() => setMapIndex(11)}
+          >
+            N1
+          </Typography>
+          <div
+            style={{
+              position: 'absolute',
+              top: '65%',
+              left: '72%',
+              width: '25%',
+              height: '30%',
+              padding: '1%',
+              borderRadius: 4,
+              backgroundColor: Colors.vsAlmostBlack,
+              overflow: 'auto',
+            }}
+          >
+            <Typography style={{ color: Colors.dndRed, fontWeight: 'bold' }}>
+              {mapData[mapIndex].title}
+            </Typography>
+            <Typography>{mapData[mapIndex].description}</Typography>
+          </div>
+          <div
+            style={{
+              position: 'absolute',
+              top: '80%',
+              left: '5%',
+              maxWidth: '20%',
+              maxHeight: '10%',
+              borderRadius: 4,
+              backgroundColor: Colors.vsAlmostBlack,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1vh',
+              padding: '1%',
+              overflowX: 'auto',
+              overflowY: 'auto',
+            }}
+          >
+            <div
+              style={{ display: 'flex', flexDirection: 'row', gap: '0.5vw', alignItems: 'center' }}
+            >
+              <div
+                style={{ width: 8, height: 8, backgroundColor: Colors.dndRed, borderRadius: 2 }}
+              />
+              <Typography style={{ color: Colors.dndRed }}>Room</Typography>
+            </div>
+
+            <div
+              style={{ display: 'flex', flexDirection: 'row', gap: '0.5vw', alignItems: 'center' }}
+            >
+              <div
+                style={{
+                  width: 8,
+                  height: 8,
+                  backgroundColor: Colors.onlineGreen,
+                  borderRadius: 2,
+                }}
+              />
+              <Typography style={{ color: Colors.onlineGreen }}>Item</Typography>
+            </div>
+            <div
+              style={{ display: 'flex', flexDirection: 'row', gap: '0.5vw', alignItems: 'center' }}
+            >
+              <div
+                style={{ width: 8, height: 8, backgroundColor: Colors.blurple, borderRadius: 2 }}
+              />
+              <Typography style={{ color: Colors.blurple }}>NPC</Typography>
+            </div>
+          </div>
+        </div>
+        <ChapterHeader index={6} />
+        <TriforceDivider color={Colors.dndRed} />
       </div>
     </div>
   );
 };
+
+const mapData = [
+  {
+    title: 'E1 - Welcoming Roundabout',
+    description: 'This is where all the players will arive at first.',
+  },
+  {
+    title: 'E2 - Palace Main Hall',
+    description: 'This is where all the players will arive at first.',
+  },
+  {
+    title: 'E3 - Guest Room 1',
+    description: 'This is where all the players will arive at first.',
+  },
+  {
+    title: 'E4 - Guest Room 2',
+    description: 'This is where all the players will arive at first.',
+  },
+  {
+    title: 'E5 - Guest Room 3',
+    description: 'This is where all the players will arive at first.',
+  },
+  {
+    title: 'E6 - Guest Room 4',
+    description: 'This is where all the players will arive at first.',
+  },
+  {
+    title: "E7 - Lady's Quarters",
+    description: 'This is where all the players will arive at first.',
+  },
+  {
+    title: "E8 - Lord's Quarters",
+    description: 'This is where all the players will arive at first.',
+  },
+  {
+    title: 'E9 - Throne Room',
+    description: 'This is where all the players will arive at first.',
+  },
+  {
+    title: 'I1 - Vindication & Revenge',
+    description: 'This is where all the players will arive at first.',
+  },
+  {
+    title: 'I2 - Scrying Orb',
+    description: 'This is where all the players will arive at first.',
+  },
+  {
+    title: 'N1 - Prometheus',
+    description: 'This is where all the players will arive at first.',
+  },
+];
+const itemData = [
+  {
+    img: Aurelia,
+    title: 'Aurelia',
+    description: 'Aurelia is the...',
+  },
+  {
+    img: Delilah,
+    title: 'Delilah',
+    description: 'Delilah is the...',
+  },
+  {
+    img: Esmeralda,
+    title: 'Esmeralda',
+    description: 'Esmeralda is the...',
+  },
+  {
+    img: Miranda,
+    title: 'Miranda',
+    description: 'Miranda is the...',
+  },
+  {
+    img: Okami,
+    title: 'Okami',
+    description: 'Okami is the...',
+  },
+  {
+    img: Nareen,
+    title: 'Nareen',
+    description: 'Nareen is the...',
+  },
+  {
+    img: Alwyn,
+    title: 'Alwyn',
+    description: 'Alwyn is the...',
+  },
+  {
+    img: Wolfgang,
+    title: 'Wolfgang',
+    description: 'Wolfgang is the...',
+  },
+  {
+    img: Abelardo,
+    title: 'Abelardo',
+    description: 'Abelardo is the...',
+  },
+  {
+    img: Kaiden,
+    title: 'Kaiden',
+    description: 'Kaiden is the...',
+  },
+  {
+    img: Edward,
+    title: 'Edward',
+    description: 'Edward is the...',
+  },
+  {
+    img: Seth,
+    title: 'Seth',
+    description: 'Seth is the...',
+  },
+];
 
 const content = {
   description: `Welcome to Wedding Night in the bowels of Hell! A D&D homebrew oneshot

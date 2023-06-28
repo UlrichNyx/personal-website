@@ -18,7 +18,7 @@ import { projects } from '../content/Projects';
 import { archives } from '../content/Archives';
 
 import Nyan from '../assets/home/nyan.gif';
-
+import Suicune from '../assets/home/suicune.gif';
 import Pong from '../comps/Pong';
 import { useNavigate } from 'react-router-dom';
 
@@ -166,6 +166,10 @@ const Home: React.FunctionComponent = () => {
                   Projects
                 </Button>
               </div>
+              <Image
+                src={Suicune}
+                style={{ width: 128, height: 64, marginTop: '5vh', alignSelf: 'center' }}
+              />
             </div>
           </Fade>
         </div>
