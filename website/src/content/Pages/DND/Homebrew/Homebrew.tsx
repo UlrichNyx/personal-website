@@ -1203,11 +1203,11 @@ const mapData = [
     description: 'This is where all the players will arive at first.',
   },
   {
-    title: "E7 - Lady's Quarters",
+    title: `E7 - Lady's Quarters`,
     description: 'This is where all the players will arive at first.',
   },
   {
-    title: "E8 - Lord's Quarters",
+    title: `E8 - Lord's Quarters`,
     description: 'This is where all the players will arive at first.',
   },
   {
