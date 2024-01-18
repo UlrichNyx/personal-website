@@ -24,6 +24,15 @@
 }
 
 
+.map-tag-text {
+    font-size: 12px;
+    position: absolute;
+    cursor: pointer;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 4px;
+}
+
 @media only screen and (max-width: 768px) {
     .character-text {
         max-height: fit-content;
@@ -31,6 +40,11 @@
         padding: 10px;
         max-width: 100%;
         text-align: justify;
+
+    }
+
+    .map-tag-text {
+        font-size: 6px;
     }
 
     .stat-block-grid {

@@ -2,3 +2,15 @@
     font-family: Dungeon;
     src: url('../../../../assets/homebrew/dungeon.TTF');
 }
+
+.map-tag-text {
+    font-size: 5;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+@media only screen and (max-width: 768px) {
+    .map-tag-text {
+        font-size: 6;
+    }
+}

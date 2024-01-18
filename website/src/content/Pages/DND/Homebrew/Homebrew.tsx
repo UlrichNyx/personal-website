@@ -51,6 +51,7 @@ import Seth from '../../../../assets/homebrew/changeling.webp';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Map from '../../../../assets/homebrew/map.png';
+import Timeline from './Timeline';
 
 const chapters = [
   'Motivation',
@@ -121,8 +122,46 @@ const Homebrew: React.FunctionComponent = () => {
   const [playerName, setPlayerName] = React.useState('Aenemon');
   const [childName, setChildName] = React.useState('Miranda');
 
+  const [selectedTime, setSelectedTime] = React.useState(0);
+
   const [childSB, setChildSB] = React.useState(-1);
   const [mapIndex, setMapIndex] = React.useState(0);
+
+  const timelineItems = [
+    {
+      name: 'Arrival at the Palace',
+      image: PromAndZeus,
+      description: `This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
+      This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
+      This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
+      This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
+      This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
+      This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
+      This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description`,
+    },
+    { name: 'Sightseeing', image: PromAndZeus, description: 'This is a small description' },
+    {
+      name: 'Courting the matches',
+      image: PromAndZeus,
+      description: 'This is a small description',
+    },
+    {
+      name: 'Dinner with the In-Laws',
+      image: PromAndZeus,
+      description: 'This is a small description',
+    },
+    {
+      name: 'All is Quiet in Enellava',
+      image: PromAndZeus,
+      description: 'This is a small description',
+    },
+    {
+      name: 'The Marriage ceremony',
+      image: PromAndZeus,
+      description: 'This is a small description',
+    },
+    { name: 'The Final Showdown', image: PromAndZeus, description: 'This is a small description' },
+  ];
 
   const produceNumber = (num: number): string => {
     let suffix = 'th';
@@ -927,15 +966,16 @@ const Homebrew: React.FunctionComponent = () => {
             that the family has in their possesion. The currency is much like any other DND setting.
             In order for the city to be functionable, there exist certain safe spaces, in which one
             is not allowed to carry out criminal activity. Places essential to the proper function
-            of the city such as restaurants, schools,s hospitals and grocery markets are generally
+            of the city such as restaurants, schools, hospitals and grocery markets are generally
             places where one would be discouraged to commit a crime (though, depending on the
             circumstances, not always necessarily punished for it). The honor code among criminals
             dictates that anyone who does commit crimes in these safe spaces or targets people of
-            basic functional importance, such as cleaners, cooks, teachers or merchants, instantly
-            forfeits their own protection within these safe-spaces. Enellava is essentially split
-            into three sections. The palace, which exists on a separate island nearby. The corporate
-            section, which is basically the port of the island and finally the residential areas,
-            which are also the most crime-infested areas and make up the rest of the island.
+            basic functional importance, such as cleaners, cooks, doctors, teachers or merchants,
+            instantly forfeits their own protection within these safe-spaces. Enellava is
+            essentially split into three sections. The palace, which exists on a separate island
+            nearby. The corporate section, which is basically the port of the island and finally the
+            residential areas, which are also the most crime-infested areas and make up the rest of
+            the island.
           </Typography>
           <Typography>Below is a map of the palace, where the session will take place: </Typography>
         </div>
@@ -947,176 +987,152 @@ const Homebrew: React.FunctionComponent = () => {
           }}
         >
           <Image src={Map} style={{ width: '100%', borderRadius: 4 }} />
-          <Typography
+          <div
+            className='map-tag-text'
             style={{
               backgroundColor: Colors.dndRed,
-              width: 32,
-              left: '48%',
-              position: 'absolute',
+              left: window.matchMedia('(max-width: 768px)').matches ? '47.5%' : '49%',
               top: '86%',
-              cursor: 'pointer',
             }}
             onClick={() => setMapIndex(0)}
           >
             E1
-          </Typography>
-          <Typography
+          </div>
+          <div
+            className='map-tag-text'
             style={{
               backgroundColor: Colors.dndRed,
-              width: 32,
-              left: '48%',
-              position: 'absolute',
+              left: window.matchMedia('(max-width: 768px)').matches ? '47.5%' : '49%',
               top: '60%',
-              cursor: 'pointer',
             }}
             onClick={() => setMapIndex(1)}
           >
             E2
-          </Typography>
-          <Typography
+          </div>
+          <div
+            className='map-tag-text'
             style={{
               backgroundColor: Colors.dndRed,
-              width: 32,
-              left: '35%',
-              position: 'absolute',
-              top: '58%',
-              cursor: 'pointer',
+              left: '36%',
+              top: '59%',
             }}
             onClick={() => setMapIndex(2)}
           >
             E3
-          </Typography>
-          <Typography
+          </div>
+          <div
+            className='map-tag-text'
             style={{
               backgroundColor: Colors.dndRed,
-              width: 32,
               left: '62%',
-              position: 'absolute',
-              top: '58%',
-              cursor: 'pointer',
+              top: '59%',
             }}
             onClick={() => setMapIndex(3)}
           >
             E4
-          </Typography>
-          <Typography
+          </div>
+          <div
+            className='map-tag-text'
             style={{
               backgroundColor: Colors.dndRed,
-              width: 32,
-              left: '35%',
-              position: 'absolute',
-              top: '67%',
-              cursor: 'pointer',
+              left: '36%',
+              top: '68%',
             }}
             onClick={() => setMapIndex(4)}
           >
             E5
-          </Typography>
-          <Typography
+          </div>
+          <div
+            className='map-tag-text'
             style={{
               backgroundColor: Colors.dndRed,
-              width: 32,
               left: '62%',
-              position: 'absolute',
-              top: '67%',
-              cursor: 'pointer',
+              top: '68%',
             }}
             onClick={() => setMapIndex(5)}
           >
             E6
-          </Typography>
-          <Typography
+          </div>
+          <div
+            className='map-tag-text'
             style={{
               backgroundColor: Colors.dndRed,
-              width: 32,
               left: '87%',
-              position: 'absolute',
               top: '27%',
-              cursor: 'pointer',
             }}
             onClick={() => setMapIndex(6)}
           >
             E7
-          </Typography>
-          <Typography
+          </div>
+          <div
+            className='map-tag-text'
             style={{
               backgroundColor: Colors.onlineGreen,
-              width: 32,
               left: '93%',
-              position: 'absolute',
               top: '27%',
-              cursor: 'pointer',
             }}
             onClick={() => setMapIndex(10)}
           >
             I2
-          </Typography>
-          <Typography
+          </div>
+          <div
+            className='map-tag-text'
             style={{
               backgroundColor: Colors.dndRed,
-              width: 32,
               left: '10%',
-              position: 'absolute',
               top: '27%',
-              cursor: 'pointer',
             }}
             onClick={() => setMapIndex(7)}
           >
             E8
-          </Typography>
-          <Typography
+          </div>
+          <div
+            className='map-tag-text'
             style={{
               backgroundColor: Colors.dndRed,
-              width: 32,
-              left: '48%',
-              position: 'absolute',
+              left: window.matchMedia('(max-width: 768px)').matches ? '47.5%' : '49%',
               top: '10%',
-              cursor: 'pointer',
             }}
             onClick={() => setMapIndex(8)}
           >
             E9
-          </Typography>
-          <Typography
+          </div>
+          <div
+            className='map-tag-text'
             style={{
               backgroundColor: Colors.onlineGreen,
-              width: 32,
               left: '16%',
-              position: 'absolute',
               top: '22%',
-              cursor: 'pointer',
             }}
             onClick={() => setMapIndex(9)}
           >
             I1
-          </Typography>
-          <Typography
+          </div>
+          <div
+            className='map-tag-text'
             style={{
               backgroundColor: Colors.blurple,
-              width: 32,
               left: '3%',
-              position: 'absolute',
               top: '27%',
-              cursor: 'pointer',
             }}
             onClick={() => setMapIndex(11)}
           >
             N1
-          </Typography>
+          </div>
           <div
             style={{
               position: 'absolute',
-              top: '65%',
+              top: '45%',
               left: '72%',
               width: '25%',
-              height: '30%',
+              height: '50%',
               padding: '1%',
               borderRadius: 4,
               backgroundColor: Colors.vsAlmostBlack,
               overflow: 'auto',
             }}
           >
-            <Typography style={{ color: Colors.dndRed, fontWeight: 'bold' }}>
+            <Typography style={{ color: mapData[mapIndex].color, fontWeight: 'bold' }}>
               {mapData[mapIndex].title}
             </Typography>
             <Typography>{mapData[mapIndex].description}</Typography>
@@ -1124,16 +1140,14 @@ const Homebrew: React.FunctionComponent = () => {
           <div
             style={{
               position: 'absolute',
-              top: '80%',
+              top: '60%',
               left: '5%',
-              maxWidth: '20%',
-              maxHeight: '10%',
               borderRadius: 4,
               backgroundColor: Colors.vsAlmostBlack,
               display: 'flex',
               flexDirection: 'column',
               gap: '1vh',
-              padding: '1%',
+              padding: '2%',
               overflowX: 'auto',
               overflowY: 'auto',
             }}
@@ -1172,57 +1186,320 @@ const Homebrew: React.FunctionComponent = () => {
         </div>
         <ChapterHeader index={6} />
         <TriforceDivider color={Colors.dndRed} />
+        <div
+          style={{
+            maxWidth: '80vw',
+            textAlign: 'justify',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '2vw',
+          }}
+        >
+          <Typography>
+            Perhaps the most interesting part of this campaign is the set of events that unfold
+            throughout the narrative and give the story entiirely different themes. Below you can
+            find a timeline of those events, involving the moment the players arrive at the palace
+            up until the very final boss fight.
+          </Typography>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '5vw',
+            width: '80%',
+            justifyContent: 'center',
+            marginTop: '5vh',
+            marginLeft: '5vw',
+            marginRight: '5vw',
+          }}
+        >
+          <Timeline
+            style={{
+              width: '40vw',
+              marginTop: '5vw',
+              minWidth: '40vw',
+              backgroundColor: 'blue',
+            }}
+            items={timelineItems}
+            onItemClick={(item: number) => setSelectedTime(item)}
+          />
+          <div style={{ height: '85vh', width: 1, backgroundColor: Colors.dndRed }} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1vh' }}>
+            <Typography
+              variant='h3'
+              style={{
+                textAlign: 'center',
+                width: '40vw',
+                minWidth: '40vw',
+                textOverflow: 'ellipsis',
+                overflow: 'hidden',
+              }}
+            >
+              {timelineItems[selectedTime].name}
+            </Typography>
+            <img
+              src={timelineItems[selectedTime].image}
+              style={{ width: '100%', height: '40vh' }}
+            />
+            <Typography
+              style={{
+                textAlign: 'justify',
+                maxWidth: '40vw',
+                maxHeight: '28vh',
+                width: '100%',
+                overflowY: 'auto',
+              }}
+            >
+              {timelineItems[selectedTime].description}
+            </Typography>
+          </div>
+        </div>
+        <ChapterHeader index={7} />
+        <TriforceDivider color={Colors.dndRed} />
+        <div
+          style={{
+            maxWidth: '80vw',
+            textAlign: 'justify',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '2vw',
+          }}
+        >
+          <Typography>
+            In my humble opinion, there are very few things more important to DND than ambience. If
+            you set the right tone using the right tools, your players will be immersed (as long as
+            they are not completely absorbed in cracking jokes/yelling at one another). With that
+            being said, do not overdo it. Remember what is most important is for everyone to have
+            fun, if you take too long (or too short) to set the mood your players will end up either
+            not caring or phase out halfway through your descriptions.
+          </Typography>
+
+          <Typography>
+            {' '}
+            The best way to set the tone for the adventure is through music. Music is wonderful in
+            that it expresses that which we have so much trouble forming into words.{' '}
+          </Typography>
+          <Typography>
+            Below I have included a playlist of songs/ambiences to be used in the background while
+            your players venture on. Each video corresponds to one of the chapters you saw in the
+            previous section.
+          </Typography>
+        </div>
+        <iframe
+          width='560'
+          height='315'
+          style={{ maxWidth: '95%', height: '40vh' }}
+          src='https://www.youtube.com/embed/videoseries?si=5pInlPxRK5k29Y9f&amp;list=PLabb5EYwab-HJf5XPxc_AY8g4mgiqKDH_'
+          title='YouTube video player'
+          frameBorder='0'
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+          allowFullScreen
+        ></iframe>
+
+        <ChapterHeader index={8} />
+        <TriforceDivider color={Colors.dndRed} />
+        <div
+          style={{
+            maxWidth: '80vw',
+            textAlign: 'justify',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '2vw',
+          }}
+        >
+          <Typography>
+            During the creation process of this module as well as the consequent preparation I did
+            for the session there are a few tools I used which I found particularly helpful and
+            would like to include here:
+          </Typography>
+          <ul>
+            <li>
+              <Typography
+                style={{
+                  cursor: 'pointer',
+                  color: Colors.dndRed,
+                  fontWeight: 'bold',
+                  textDecoration: 'underline',
+                }}
+                onClick={() => window.open('https://rolladvantage.com/tokenstamp/')}
+              >
+                RollAdvantage - Tokens
+              </Typography>
+            </li>
+            <li>
+              <Typography
+                style={{
+                  cursor: 'pointer',
+                  color: Colors.dndRed,
+                  fontWeight: 'bold',
+                  textDecoration: 'underline',
+                }}
+                onClick={() => window.open('https://www.dungeonscrawl.com/')}
+              >
+                DungeonScrawl - Map
+              </Typography>
+            </li>
+            <li>
+              <Typography
+                style={{
+                  cursor: 'pointer',
+                  color: Colors.dndRed,
+                  fontWeight: 'bold',
+                  textDecoration: 'underline',
+                }}
+                onClick={() => window.open('https://tetra-cube.com/dnd/dnd-statblock.html')}
+              >
+                TetraCube - Stats
+              </Typography>
+            </li>
+            <li>
+              <Typography
+                style={{
+                  cursor: 'pointer',
+                  color: Colors.dndRed,
+                  fontWeight: 'bold',
+                  textDecoration: 'underline',
+                }}
+                onClick={() => window.open('https://roll20.net/')}
+              >
+                Roll20 - Engine
+              </Typography>
+            </li>
+          </ul>
+          <Typography>
+            Feel free to use any tools at your disposal of course, but these tools in particular are
+            not only free but also of great quality so I am sure they will be of use to many!
+          </Typography>
+        </div>
+        <ChapterHeader index={9} />
+        <TriforceDivider color={Colors.dndRed} />
+        <div
+          style={{
+            maxWidth: '80vw',
+            textAlign: 'justify',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '2vw',
+          }}
+        >
+          <Typography>
+            I really want to drive home the message that this module is something that you will most
+            likely come to enjoy with your friends (not with strangers) and even then that would
+            depend on the friends themselves! Some people are particularly touchy when it comes to
+            matters of love so I would recommend that you take great care when choosing to play this
+            module or not with your group.
+          </Typography>
+          <Typography>
+            Remember, DND at its heart is mostly about having fun! (and hating on the rule lawyers)
+          </Typography>
+          <Typography>
+            Hope this has given you a well enough foundation of the module in the case you try to
+            run it yourselves, or at least that it has inspired you to perhaps write a module of
+            your own!
+          </Typography>
+          <Typography>Until next time.</Typography>
+          <Typography>Your friend,</Typography>
+          <Typography>- Aenemon</Typography>
+        </div>
+        <TriforceDivider upward color={Colors.dndRed} />
       </div>
     </div>
   );
 };
 
+/*
+          <Timeline items={timelineItems} />
+          <div style={{ height: '85vh', width: 1, backgroundColor: Colors.dndRed }} />
+          <div>
+            <Typography variant='h3' style={{ textAlign: 'center' }}>
+              {timelineItems[selectedTime].name}
+            </Typography>
+*/
+
 const mapData = [
   {
+    color: Colors.dndRed,
     title: 'E1 - Welcoming Roundabout',
-    description: 'This is where all the players will arive at first.',
+    description: `This is where all the players will arive at first. 
+    This is essentially a stone-built roundabout 
+    with a majestic circular fountain in the middle.
+    Some engine powered (1920s like) vehicles populate the sidewalks here.
+    Players can choose to enter this area any way they like, however,
+    it is typical to arrive by vehicles. If the players do arrive by vehicles,
+    a servant is ready to take their vehicle and park it to the side of the roundabout.
+    
+    As soon as the players arrive here, Marcus and the staff 
+    are standing at the door ready to welcome them in, fully aware of who they are and why
+    they are here. Marcus upon greeting the players here will make small introductions, offer snacks
+    and refreshments and prompt the players to walk inside the palace so that they can get started.
+    The palace looks extremely ornate from outside, huge stained glass walls stand tall
+    and look surprisingly sturdy despite their material. They carry many vibrant colors, 
+    indigo, dark blue, crimson red all of them mixed in an interesting cacophony. The design on the glass
+    is very geometric and in certain cases seems to depict important events in history.
+    
+    Since the context of the setting has remained hidden, I will leave it up to you to come up with the 
+    the corresponding history behind these artworks, the important part here is to convey to your players
+    the nature of this building and its owners. Lord Sinister and his adoration for history are particularly
+    in play here.
+
+    Through the windows reflectivity, there seems to be a pulsing source of light coming from within the building.
+    Two massive oak doors, intricatively carved with plentiful flowers stand between the players and the interior
+    which open with a reverberating creak upon Marcus and his advance.
+    `,
   },
   {
+    color: Colors.dndRed,
     title: 'E2 - Palace Main Hall',
     description: 'This is where all the players will arive at first.',
   },
   {
+    color: Colors.dndRed,
     title: 'E3 - Guest Room 1',
     description: 'This is where all the players will arive at first.',
   },
   {
+    color: Colors.dndRed,
     title: 'E4 - Guest Room 2',
     description: 'This is where all the players will arive at first.',
   },
   {
+    color: Colors.dndRed,
     title: 'E5 - Guest Room 3',
     description: 'This is where all the players will arive at first.',
   },
   {
+    color: Colors.dndRed,
     title: 'E6 - Guest Room 4',
     description: 'This is where all the players will arive at first.',
   },
   {
+    color: Colors.dndRed,
     title: 'E7 - Ladys Quarters',
     description: 'This is where all the players will arive at first.',
   },
   {
+    color: Colors.dndRed,
     title: 'E8 - Lords Quarters',
     description: 'This is where all the players will arive at first.',
   },
   {
+    color: Colors.dndRed,
     title: 'E9 - Throne Room',
     description: 'This is where all the players will arive at first.',
   },
   {
+    color: Colors.onlineGreen,
     title: 'I1 - Vindication & Revenge',
     description: 'This is where all the players will arive at first.',
   },
   {
+    color: Colors.onlineGreen,
     title: 'I2 - Scrying Orb',
     description: 'This is where all the players will arive at first.',
   },
   {
+    color: Colors.sylemsBlue,
     title: 'N1 - Prometheus',
     description: 'This is where all the players will arive at first.',
   },
