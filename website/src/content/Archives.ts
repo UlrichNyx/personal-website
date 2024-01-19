@@ -3,7 +3,7 @@ import Colors from '../styles/Colors';
 import { archiveTags } from './Tags';
 import website from '../assets/pwebsite/bedroom.gif';
 import kanagawa from '../assets/recollections/kanagawa.jpeg';
-import wedding from '../assets/homebrew/thumbnail.jpeg';
+import wedding from '../assets/homebrew/thumbnail.png';
 import { ProjectProps } from './Projects';
 
 export const archives: ProjectProps[] = [

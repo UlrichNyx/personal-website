@@ -12,15 +12,15 @@ import PromAndZeus from '../../../../assets/homebrew/pnz.jpeg';
 import MotherSah from '../../../../assets/homebrew/mother-shahraz.jpeg';
 import LadyPortrait from '../../../../assets/homebrew/lady-portrait.jpeg';
 import LadySinisterSB from '../../../../assets/homebrew/lady-sinister.png';
-import Marcus from '../../../../assets/homebrew/marcus.jpeg';
+import Marcus from '../../../../assets/homebrew/marcus-portrait.png';
 import Tibalt from '../../../../assets/homebrew/tibalt.png';
 import Illidan from '../../../../assets/homebrew/illidan.jpeg';
-import Enellava from '../../../../assets/homebrew/enellava.jpg';
+import Enellava from '../../../../assets/homebrew/street1.png';
 import Letter from '../../../../assets/homebrew/letter.jpeg';
 import SBLord from '../../../../assets/homebrew/lord-sinister.png';
 import MarcusSB from '../../../../assets/homebrew/marcus.png';
 import ServantSB from '../../../../assets/homebrew/servant.png';
-import Servant from '../../../../assets/homebrew/servant.jpeg';
+import Servant from '../../../../assets/homebrew/servant-portrait.png';
 import './Style.css';
 import './Font.css';
 
@@ -486,10 +486,9 @@ const Homebrew: React.FunctionComponent = () => {
               fontWeight: 'bold',
               textDecoration: 'underline  ',
             }}
-            onClick={() => window.open('https://nightcafe.studio/')}
+            onClick={() => window.open('https://openai.com/dall-e-2')}
           >
-            {' '}
-            NightCafe.
+            DALL·E.
           </span>
         </Typography>
         <Typography style={{ maxWidth: '80%' }}>
@@ -684,7 +683,6 @@ const Homebrew: React.FunctionComponent = () => {
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: '5vh',
-                maxHeight: '100%',
               }}
             >
               <div className='stat-block-image'>
