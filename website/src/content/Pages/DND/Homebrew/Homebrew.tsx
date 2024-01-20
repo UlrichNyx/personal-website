@@ -664,12 +664,7 @@ const Homebrew: React.FunctionComponent = () => {
 
           <div
             className='stat-block-grid'
-            style={{
-              borderRadius: 4,
-              gap: '1vh',
-              maxWidth: '90vw',
-              textAlign: 'justify',
-            }}
+
           >
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <Image
@@ -712,12 +707,6 @@ const Homebrew: React.FunctionComponent = () => {
           <VDivider />
           <div
             className='stat-block-grid'
-            style={{
-              borderRadius: 4,
-              gap: '1vh',
-              maxWidth: '90vw',
-              textAlign: 'justify',
-            }}
           >
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <Image src={Marcus} style={{ borderRadius: 4, maxWidth: '90%', height: '65vh' }} />
@@ -751,12 +740,6 @@ const Homebrew: React.FunctionComponent = () => {
           <VDivider />
           <div
             className='stat-block-grid'
-            style={{
-              borderRadius: 4,
-              gap: '1vh',
-              maxWidth: '90vw',
-              textAlign: 'justify',
-            }}
           >
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <Image src={Servant} style={{ borderRadius: 4, maxWidth: '90%', height: '65vh' }} />
@@ -789,12 +772,6 @@ const Homebrew: React.FunctionComponent = () => {
           <VDivider />
           <div
             className='stat-block-grid'
-            style={{
-              borderRadius: 4,
-              gap: '1vh',
-              maxWidth: '90vw',
-              textAlign: 'justify',
-            }}
           >
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <Image
@@ -838,12 +815,6 @@ const Homebrew: React.FunctionComponent = () => {
           <VDivider />
           <div
             className='stat-block-grid'
-            style={{
-              borderRadius: 4,
-              gap: '1vh',
-              maxWidth: '90vw',
-              textAlign: 'justify',
-            }}
           >
             {childSB !== -1 ? (
               <div
@@ -898,12 +869,6 @@ const Homebrew: React.FunctionComponent = () => {
           <VDivider />
           <div
             className='stat-block-grid'
-            style={{
-              borderRadius: 4,
-              gap: '1vh',
-              maxWidth: '90vw',
-              textAlign: 'justify',
-            }}
           >
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <Image

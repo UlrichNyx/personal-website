@@ -1,3 +1,25 @@
 * {
     scroll-behavior: smooth;
 }
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+}
+
+/* Track of the scrollbar */
+::-webkit-scrollbar-track {
+    background: transparent
+}
+
+/* Handle of the scrollbar */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    border-radius: 2px;
+}
