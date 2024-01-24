@@ -36,12 +36,12 @@ import Prometheus from '../../../../assets/homebrew/prometheuspic.png';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
-import Aurelia from '../../../../assets/homebrew/astralelf.jpeg';
-import Delilah from '../../../../assets/homebrew/delilah.jpeg';
+import Aurelia from '../../../../assets/homebrew/astralelf.png';
+import Delilah from '../../../../assets/homebrew/delilah.png';
 import Esmeralda from '../../../../assets/homebrew/drow.png';
 import Miranda from '../../../../assets/homebrew/miranda.jpeg';
 import Okami from '../../../../assets/homebrew/catgirl.png';
-import Nareen from '../../../../assets/homebrew/nareen.avif';
+import Nareen from '../../../../assets/homebrew/purple_tiefling.png';
 import Alwyn from '../../../../assets/homebrew/alwyn.png';
 import Wolfgang from '../../../../assets/homebrew/centaur.webp';
 import Abelardo from '../../../../assets/homebrew/yuanti.webp';
