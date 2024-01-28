@@ -118,6 +118,7 @@ const Recollections: React.FunctionComponent = () => {
     const p = extractPoems();
     p.then((res) => {
       setPoems(res);
+      console.log(res);
     }).catch((err) => console.error(err));
   }, []);
 
