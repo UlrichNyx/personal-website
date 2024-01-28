@@ -20,7 +20,7 @@ const extractPoems = async (): Promise<PoemProps[]> => {
         const lines = p[i].split('\n'); // For windows \r\n for UNIX: \n
         
         const verses = p[i].substring(p[i].indexOf('\n'), p[i].length - 1);
-        poems.push({ title: lines[1], verses });
+        poems.push({ title: lines[0], verses });
       }
 
       return poems;
