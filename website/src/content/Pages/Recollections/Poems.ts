@@ -12,7 +12,7 @@ const extractPoems = async (): Promise<PoemProps[]> => {
     .then(async (r) => await r.text())
     .then((text) => {
       const p = text.split('-----------------\n'); // Include \n for UNIX
-      // console.log(p);
+      // console.log(navigator.userAgent.includes('Windows'));
       const poems = [];
       for (let i = 0; i < p.length - 1; i++) {
         
