@@ -30,7 +30,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import PrometheusSB from '../../../../assets/homebrew/prometheus.png';
-import FelVoidwalker from '../../../../assets/homebrew/voidwalker.jpeg';
+import FelVoidwalker from '../../../../assets/homebrew/voidwalker.png';
 import Prometheus from '../../../../assets/homebrew/prometheuspic.png';
 
 import ImageList from '@mui/material/ImageList';
