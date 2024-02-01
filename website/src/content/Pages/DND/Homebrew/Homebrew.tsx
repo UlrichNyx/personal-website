@@ -52,6 +52,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Map from '../../../../assets/homebrew/map.png';
 import Timeline from './Timeline';
+import dragonDivider from '../../../../assets/homebrew/dragon.png';
 
 const chapters = [
   'Motivation',
@@ -74,6 +75,8 @@ interface childrenType {
 interface childrenNameType {
   [name: string]: childrenType;
 }
+
+
 
 const childrenData: childrenNameType = {
   Aurelia: { number: 1, gender: 'female', sexuality: 'heterosexual' },
@@ -109,6 +112,12 @@ const VDivider: React.FunctionComponent = () => {
       />
       <div style={{ height: 10, width: 1, backgroundColor: color }} />
     </div>
+  );
+};
+
+const DragonDivider: React.FunctionComponent = () => {
+  return (
+<img src={dragonDivider} style={{maxWidth:'100vw'}}/>
   );
 };
 
@@ -566,7 +575,7 @@ const Homebrew: React.FunctionComponent = () => {
         >
           - Lord and Lady Sinister
         </Typography>
-        <VDivider />
+        <DragonDivider />
         <div
           style={{
             maxWidth: '80%',
@@ -660,7 +669,6 @@ const Homebrew: React.FunctionComponent = () => {
               </Typography>
             </div>
           </div>
-          <VDivider />
 
           <div
             className='stat-block-grid'
@@ -704,7 +712,6 @@ const Homebrew: React.FunctionComponent = () => {
               </Typography>
             </div>
           </div>
-          <VDivider />
           <div
             className='stat-block-grid'
           >
@@ -737,7 +744,6 @@ const Homebrew: React.FunctionComponent = () => {
               </Typography>
             </div>
           </div>
-          <VDivider />
           <div
             className='stat-block-grid'
           >
@@ -769,7 +775,6 @@ const Homebrew: React.FunctionComponent = () => {
               </Typography>
             </div>
           </div>
-          <VDivider />
           <div
             className='stat-block-grid'
           >
@@ -812,7 +817,6 @@ const Homebrew: React.FunctionComponent = () => {
               </Typography>
             </div>
           </div>
-          <VDivider />
           <div
             className='stat-block-grid'
           >
@@ -865,8 +869,6 @@ const Homebrew: React.FunctionComponent = () => {
               </Typography>
             </div>
           </div>
-
-          <VDivider />
           <div
             className='stat-block-grid'
           >
