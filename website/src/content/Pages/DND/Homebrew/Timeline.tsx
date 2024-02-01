@@ -10,6 +10,7 @@ interface TimelineType {
 
 interface TimelineItemType {
   name: string;
+  icon?: string;
 }
 
 const Timeline: React.FunctionComponent<TimelineType> = (props) => {
@@ -21,7 +22,8 @@ const Timeline: React.FunctionComponent<TimelineType> = (props) => {
           key={index}
           style={{ display: 'flex', flexDirection: 'row', gap: '2vw', alignItems: 'center' }}
         >
-          <div
+          <img
+          src={i.icon ?? ''}
             style={{
               borderRadius: 64,
               width: 64,

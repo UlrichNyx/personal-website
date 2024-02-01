@@ -54,6 +54,8 @@ import Map from '../../../../assets/homebrew/map.png';
 import Timeline from './Timeline';
 import dragonDivider from '../../../../assets/homebrew/dragon.png';
 
+import PalaceIcon from '../../../../assets/homebrew/palace.png';
+
 const chapters = [
   'Motivation',
   'Excerpt',
@@ -140,6 +142,7 @@ const Homebrew: React.FunctionComponent = () => {
     {
       name: 'Arrival at the Palace',
       image: PromAndZeus,
+      icon: PalaceIcon,
       description: `This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
       This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
       This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
@@ -634,10 +637,10 @@ const Homebrew: React.FunctionComponent = () => {
 
         <ChapterHeader index={4} />
         <TriforceDivider color={Colors.dndRed} />
-        <div style={{ display: 'grid', gridTemplateColumns: 'auto', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems:'center', }}>
           <div className='stat-block-grid'>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Image src={Tibalt} style={{ borderRadius: 4, maxWidth: '90%', height: '65vh' }} />
+              <Image src={Tibalt} style={{ borderRadius: 4, maxWidth: '90%', height: '65vh', border:'1px solid ' + Colors.dndRed  }} />
             </div>
             <div
               style={{
@@ -677,7 +680,7 @@ const Homebrew: React.FunctionComponent = () => {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <Image
                 src={LadyPortrait}
-                style={{ borderRadius: 4, maxWidth: '90%', height: '65vh', alignSelf: 'center' }}
+                style={{ borderRadius: 4, maxWidth: '90%', height: '65vh', alignSelf: 'center', border:'1px solid ' + Colors.dndRed  }}
               />
             </div>
             <div
@@ -712,11 +715,12 @@ const Homebrew: React.FunctionComponent = () => {
               </Typography>
             </div>
           </div>
+          <DragonDivider/>
           <div
             className='stat-block-grid'
           >
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Image src={Marcus} style={{ borderRadius: 4, maxWidth: '90%', height: '65vh' }} />
+              <Image src={Marcus} style={{ borderRadius: 4, maxWidth: '90%', height: '65vh', border:'1px solid ' + Colors.dndRed  }} />
             </div>
             <div
               style={{
@@ -748,7 +752,7 @@ const Homebrew: React.FunctionComponent = () => {
             className='stat-block-grid'
           >
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Image src={Servant} style={{ borderRadius: 4, maxWidth: '90%', height: '65vh' }} />
+              <Image src={Servant} style={{ borderRadius: 4, maxWidth: '90%', height: '65vh', border:'1px solid ' + Colors.dndRed  }} />
             </div>
             <div
               style={{
@@ -775,13 +779,14 @@ const Homebrew: React.FunctionComponent = () => {
               </Typography>
             </div>
           </div>
+          <DragonDivider/>
           <div
             className='stat-block-grid'
           >
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
               <Image
                 src={Prometheus}
-                style={{ borderRadius: 4, maxWidth: '90%', height: '65vh' }}
+                style={{ borderRadius: 4, maxWidth: '90%', height: '65vh', border:'1px solid ' + Colors.dndRed  }}
               />
             </div>
             <div
@@ -820,62 +825,10 @@ const Homebrew: React.FunctionComponent = () => {
           <div
             className='stat-block-grid'
           >
-            {childSB !== -1 ? (
-              <div
-                style={{
-                  backgroundImage: `url(${itemData[childSB].img})`,
-                  backgroundSize: 'cover',
-                  backgroundColor: 'red',
-                  backgroundRepeat: 'no-repeat',
-                  height: '65vh',
-                  borderRadius: 4,
-                }}
-              >
-                <IconButton
-                  style={{ position: 'relative', left: '1%', color: Colors.dndRed }}
-                  onClick={() => setChildSB(-1)}
-                >
-                  <CloseIcon style={{ color: Colors.dndRed }} />
-                </IconButton>
-              </div>
-            ) : (
-              <ImageList variant='quilted' cols={3} rowHeight={164}>
-                {itemData.map((item, index) => (
-                  <ImageListItem key={item.img}>
-                    <img src={item.img} onClick={() => setChildSB(index)} />
-                  </ImageListItem>
-                ))}
-              </ImageList>
-            )}
-
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '5vh',
-                maxHeight: '100%',
-              }}
-            >
-              <div
-                style={{ borderRadius: 4, maxWidth: '100%', maxHeight: '50%', overflowY: 'auto' }}
-              >
-                <Image src={ServantSB} style={{}} />
-              </div>
-              <Typography className='character-text'>
-                {childSB !== -1
-                  ? itemData[childSB].description
-                  : 'Please pick an offspring of the Sinister!'}
-              </Typography>
-            </div>
-          </div>
-          <div
-            className='stat-block-grid'
-          >
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <Image
                 src={FelVoidwalker}
-                style={{ borderRadius: 4, maxWidth: '90%', height: '65vh' }}
+                style={{ borderRadius: 4, maxWidth: '90%', height: '65vh', border:'1px solid ' + Colors.dndRed  }}
               />
             </div>
             <div
@@ -900,6 +853,63 @@ const Homebrew: React.FunctionComponent = () => {
               </Typography>
             </div>
           </div>
+          <DragonDivider/>
+          <div
+            className='stat-block-grid'
+          >
+            {childSB !== -1 ? (
+              <div
+                style={{
+                  backgroundImage: `url(${itemData[childSB].img})`,
+                  backgroundSize: 'cover',
+                  backgroundColor: 'red',
+                  backgroundRepeat: 'no-repeat',
+                  height: '65vh',
+                  borderRadius: 4,
+                  border:'1px solid ' + Colors.dndRed ,
+                  marginLeft:'40px'
+                }}
+              >
+                <IconButton
+                  style={{ position: 'relative', left: '1%', color: Colors.dndRed }}
+                  onClick={() => setChildSB(-1)}
+                >
+                  <CloseIcon style={{ color: Colors.dndRed }} />
+                </IconButton>
+              </div>
+            ) : (
+            <ImageList style={{ borderRadius: 4, marginLeft:'40px', height: '65vh', alignSelf:'center'}} variant='quilted' cols={3} rowHeight={164} >
+                {itemData.map((item, index) => (
+                  <ImageListItem key={item.img}>
+                    <img src={item.img} onClick={() => setChildSB(index)} />
+                  </ImageListItem>
+                ))}
+              </ImageList>
+            )}
+
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '5vh',
+                maxHeight: '100%',
+
+              }}
+            >
+              <div
+                style={{ borderRadius: 4, maxWidth: '100%', maxHeight: '50%', overflowY: 'auto' }}
+              >
+                <Image src={ServantSB} style={{}} />
+              </div>
+              <Typography className='character-text'>
+                {childSB !== -1
+                  ? itemData[childSB].description
+                  : 'Please pick an offspring of the Sinister!'}
+              </Typography>
+            </div>
+          </div>
+
         </div>
         <ChapterHeader index={5} />
         <TriforceDivider color={Colors.dndRed} />
