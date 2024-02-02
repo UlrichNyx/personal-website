@@ -46,8 +46,8 @@ import Alwyn from '../../../../assets/homebrew/alwyn.png';
 import Wolfgang from '../../../../assets/homebrew/centaur.png';
 import Abelardo from '../../../../assets/homebrew/yuanti.png';
 import Kaiden from '../../../../assets/homebrew/fairy.png';
-import Edward from '../../../../assets/homebrew/goliath.webp';
-import Seth from '../../../../assets/homebrew/changeling.webp';
+import Edward from '../../../../assets/homebrew/goliath.png';
+import Seth from '../../../../assets/homebrew/changeling.png';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Map from '../../../../assets/homebrew/map.png';
@@ -862,7 +862,7 @@ const Homebrew: React.FunctionComponent = () => {
                 style={{
                   backgroundImage: `url(${itemData[childSB].img})`,
                   backgroundSize: 'cover',
-                  backgroundColor: 'red',
+                  backgroundPosition:'center',
                   backgroundRepeat: 'no-repeat',
                   height: '65vh',
                   borderRadius: 4,
@@ -1483,7 +1483,11 @@ const itemData = [
   {
     img: Aurelia,
     title: 'Aurelia',
-    description: 'Aurelia is the...',
+    description: `Aurelia is the eldest of the Sinister children. 
+    An Astral Elf with a keen appreciation for exploring the Wildspace.
+    Aurelia will very likely grow to like anyone who seems like they 
+    have travelled a long way to get to the palace. 
+    She is not particularly fond of her birthplace (Enellava) and it's inhabitants.`,
   },
   {
     img: Delilah,
