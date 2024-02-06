@@ -1484,20 +1484,28 @@ const itemData = [
     img: Aurelia,
     title: 'Aurelia',
     description: `Aurelia is the eldest of the Sinister children. 
-    An Astral Elf with a keen appreciation for exploring the Wildspace.
+    An Astral Elf with a keen appreciation for astronomy and a insiatiable thirst for exploring the Astral Sea.
     Aurelia will very likely grow to like anyone who seems like they 
     have travelled a long way to get to the palace. 
-    She is not particularly fond of her birthplace (Enellava) and it's inhabitants.`,
+    She is not particularly fond of her birthplace (Enellava) and it's inhabitants. Characters with the Outlander background have an advantage in any Charisma related rolls against her.
+    Aurelia is mostly fond of Lord and Lady, however she takes great offense in the presence of her other siblings as well as the palace staff.`,
   },
   {
     img: Delilah,
     title: 'Delilah',
-    description: 'Delilah is the...',
+    description: `Delilah is the seventh-born of the Sinister children. A rough around the edges Half Orc who has inherited her non biological
+       father's appreciation for weapons.
+       Delilah will be drawn to any visitors who may happen to carry with them unusual or well-crafted weapons.
+       Delilah is an avid blacksmith who has on multiple occasions tried to earn the approval of her father through her work but more often than not has received his absent-minded dismissal.
+       Delilah is a bit indifferent when it comes to her mom and her bussiness, however, she does seem to be fond of her (younger) siblings.
+       `,
   },
   {
     img: Esmeralda,
     title: 'Esmeralda',
-    description: 'Esmeralda is the...',
+    description: `Esmeralda is the second-born of the Sinister Children. A stunningly beautiful Dark Elf whose striking intelligence is apparent from a simple look.
+    Esmeralda pays very little mind for her family (save for her elder sister Aurelia, with who she is very close). She has inherited her Father's obsession with art,
+    although she often finds his interpretations of it to be crude, lifeless and those of a simpleton's. Any character with an artistic flair, whether it is in music, writing, painting or any other form of art, will instantly earn her affection.`,
   },
   {
     img: Miranda,
@@ -1525,7 +1533,7 @@ const itemData = [
     description: 'Wolfgang is the...',
   },
   {
-    img: Abelardo,
+     img: Abelardo,
     title: 'Abelardo',
     description: 'Abelardo is the...',
   },
