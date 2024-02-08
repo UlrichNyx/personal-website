@@ -1510,12 +1510,16 @@ const itemData = [
   {
     img: Miranda,
     title: 'Miranda',
-    description: 'Miranda is the...',
+    description: `Miranda is the eighth-born of the Sinister children. 
+    A graceful Aasimar who always had a fascination for her place of birth, The Seven Heavens of Mount-Celestia.
+    Miranda was stripped away from her homeland from a young (but still conscious) age and has been nurturing a deep hatred for Lord and Lady ever since.
+    Miranda will find any adventurer who is an Aasimar (or in one way or another has a connection to the Upper Planes) extremely intriguing. She is, however, not much of a fighter
+    and will refuse to revolt against her parents out of fear.`,
   },
   {
     img: Okami,
     title: 'Okami',
-    description: 'Okami is the...',
+    description: 'Okami is the third-born of the Sinister Children. She is a powerful half-tabaxi who, similarly to Miranda was stripped away from her forest at a young age.',
   },
   {
     img: Nareen,
