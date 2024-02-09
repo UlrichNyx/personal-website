@@ -1519,12 +1519,16 @@ const itemData = [
   {
     img: Okami,
     title: 'Okami',
-    description: 'Okami is the third-born of the Sinister Children. She is a powerful half-tabaxi who, similarly to Miranda was stripped away from her forest at a young age.',
+    description: `Okami is the third-born of the Sinister Children. She is a powerful half-tabaxi who, similarly to Miranda was stripped away from her forest at a young age. She is not particularly fond of the city she has found herself in. 
+    She finds it too noisy and too smelly in fact. Regardless of her dislike for Enellava, Okami is a very playful character and will jump at any opportunity for games/challenges. 
+    If Okami is matched to a player character who has a particularly high score on Athletics/Acrobatics, she will challenge them to a test of skill. Winning this test of skill is the only way to get to her heart.
+    In all other cases, Okami will do her best to ignore the character.`,
   },
   {
     img: Nareen,
     title: 'Nareen',
-    description: 'Nareen is the...',
+    description: `Nareen is the ninth-born of the Sinister Children. 
+    A highly intelligent tiefling with an appetite for strategy games. Nareen is destined to become her father's right hand man. `,
   },
   {
     img: Alwyn,
