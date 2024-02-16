@@ -28,6 +28,7 @@ const Timeline: React.FunctionComponent<TimelineType> = (props) => {
               borderRadius: 64,
               width: 64,
               height: 64,
+              padding:5,
               border: '1px solid ' + Colors.dndRed,
               borderColor: Colors.dndRed,
               cursor: 'pointer',

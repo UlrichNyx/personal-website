@@ -54,7 +54,7 @@ import Map from '../../../../assets/homebrew/map.png';
 import Timeline from './Timeline';
 import dragonDivider from '../../../../assets/homebrew/dragon.png';
 
-import PalaceIcon from '../../../../assets/homebrew/palace.png';
+import PalaceIcon from '../../../../assets/homebrew/federal-palace-of-switzerland.png';
 
 const chapters = [
   'Motivation',
@@ -1346,6 +1346,12 @@ const Homebrew: React.FunctionComponent = () => {
             Feel free to use any tools at your disposal of course, but these tools in particular are
             not only free but also of great quality so I am sure they will be of use to many!
           </Typography>
+
+          <Typography>Attributions for the icons used in section 7:
+
+          
+          </Typography>
+          <a href="https://www.flaticon.com/free-icons/switzerland" style={{color: Colors.dndRed}} title="switzerland icons">Switzerland icons created by Eucalyp - Flaticon</a>
         </div>
         <ChapterHeader index={9} />
         <TriforceDivider color={Colors.dndRed} />
@@ -1379,6 +1385,7 @@ const Homebrew: React.FunctionComponent = () => {
         </div>
         <TriforceDivider upward color={Colors.dndRed} />
       </div>
+      
     </div>
   );
 };
@@ -1528,7 +1535,11 @@ const itemData = [
     img: Nareen,
     title: 'Nareen',
     description: `Nareen is the ninth-born of the Sinister Children. 
-    A highly intelligent tiefling with an appetite for strategy games. Nareen is destined to become her father's right hand man. `,
+    A highly intelligent tiefling with an appetite for strategy games. 
+    Nareen is destined to become her father's right hand man... or well... woman. 
+    She is deeply intrigued by the political games her father is involved in and wishes to play a big part to them as well.
+    Nareen holds a deep love for her father although she understands that he can come off as cruel or inhuman to some.
+    She is not particularly fond of her mother and she is quite indifferent when it comes to her siblings. `,
   },
   {
     img: Alwyn,
