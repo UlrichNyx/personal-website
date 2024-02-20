@@ -55,6 +55,12 @@ import Timeline from './Timeline';
 import dragonDivider from '../../../../assets/homebrew/dragon.png';
 
 import PalaceIcon from '../../../../assets/homebrew/federal-palace-of-switzerland.png';
+import SightseeingIcon from '../../../../assets/homebrew/transport.png';
+import HeartIcon from '../../../../assets/homebrew/heart.png';
+import DinnerIcon from '../../../../assets/homebrew/eat.png';
+import SleepIcon from '../../../../assets/homebrew/night.png';
+import BossIcon from '../../../../assets/homebrew/final-boss.png';
+import MarriageIcon from '../../../../assets/homebrew/rings.png';
 
 const chapters = [
   'Motivation',
@@ -151,28 +157,32 @@ const Homebrew: React.FunctionComponent = () => {
       This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
       This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description`,
     },
-    { name: 'Sightseeing', image: PromAndZeus, description: 'This is a small description' },
+    { name: 'Sightseeing', icon:SightseeingIcon, image: PromAndZeus, description: 'This is a small description' },
     {
       name: 'Courting the matches',
       image: PromAndZeus,
+      icon: HeartIcon,
       description: 'This is a small description',
     },
     {
       name: 'Dinner with the In-Laws',
       image: PromAndZeus,
+      icon: DinnerIcon,
       description: 'This is a small description',
     },
     {
       name: 'All is Quiet in Enellava',
       image: PromAndZeus,
+      icon: SleepIcon,
       description: 'This is a small description',
     },
     {
       name: 'The Marriage ceremony',
       image: PromAndZeus,
+      icon: MarriageIcon,
       description: 'This is a small description',
     },
-    { name: 'The Final Showdown', image: PromAndZeus, description: 'This is a small description' },
+    { name: 'The Final Showdown', image: PromAndZeus, icon: BossIcon, description: 'This is a small description' },
   ];
 
   const produceNumber = (num: number): string => {
@@ -905,7 +915,10 @@ const Homebrew: React.FunctionComponent = () => {
               <Typography className='character-text'>
                 {childSB !== -1
                   ? itemData[childSB].description
-                  : 'Please pick an offspring of the Sinister!'}
+                  : `The Offspring of the Sinister each have their own unique personalities and attributes. 
+                  What I provide here is a few examples of character profiles you could use. 
+                  Do note that for simplicty they use the exact same stat block as that of a servant but you can also change that if you wish.\n 
+                  Pick one of the profiles displayed here to read more about them!`}
               </Typography>
             </div>
           </div>
@@ -1352,6 +1365,12 @@ const Homebrew: React.FunctionComponent = () => {
           
           </Typography>
           <a href="https://www.flaticon.com/free-icons/switzerland" style={{color: Colors.dndRed}} title="switzerland icons">Switzerland icons created by Eucalyp - Flaticon</a>
+          <a href="https://www.flaticon.com/free-icons/sightseeing" style={{color: Colors.dndRed}} title="sightseeing icons">Sightseeing icons created by piksart - Flaticon</a>
+          <a href="https://www.flaticon.com/free-icons/heart" style={{color: Colors.dndRed}} title="heart icons">Heart icons created by Vlad Szirka - Flaticon</a>
+          <a href="https://www.flaticon.com/free-icons/eat" style={{color: Colors.dndRed}} title="eat icons">Eat icons created by Freepik - Flaticon</a>
+          <a href="https://www.flaticon.com/free-icons/sleep" style={{color: Colors.dndRed}} title="sleep icons">Sleep icons created by Freepik - Flaticon</a>
+          <a href="https://www.flaticon.com/free-icons/marriage" style={{color: Colors.dndRed}} title="marriage icons">Marriage icons created by Freepik - Flaticon</a>
+          <a href="https://www.flaticon.com/free-icons/enemy" style={{color: Colors.dndRed}} title="enemy icons">Enemy icons created by Freepik - Flaticon</a>
         </div>
         <ChapterHeader index={9} />
         <TriforceDivider color={Colors.dndRed} />
@@ -1544,13 +1563,17 @@ const itemData = [
   {
     img: Alwyn,
     title: 'Alwyn',
-    description: 'Alwyn is the...',
+    description: `Alwyn is the fourth born son of the sinister although neither his name or its connotation fit him well. 
+    Alwyn is a gnome so unbelievably pure and innocent that he actively makes it hard to believe he is somehow related to his parents. 
+    (Aside from the race difference of course!) Alwyn is a curious little gnome with an affinity and genuine hunger for magic. 
+      He spends most of his time in the backrooms of the palace, rummaging on as many books as he can find. 
+      Alwyn will take an interest in any player with an equal understanding or prowess in Arcana. Alwyn is generally fond of everyone and everything.`,
   },
   {
     img: Wolfgang,
     title: 'Wolfgang',
-    description: 'Wolfgang is the...',
-  },
+    description: 'Wolfgang is the tenth-born son of the Sinister. A valiant centaur who screams of "Paladin" from a mile away.',
+  },  
   {
      img: Abelardo,
     title: 'Abelardo',
