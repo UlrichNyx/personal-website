@@ -1270,9 +1270,17 @@ const Homebrew: React.FunctionComponent = () => {
           </Typography>
           <Typography>
             Below I have included a playlist of songs/ambiences to be used in the background while
-            your players venture on. Each video corresponds to one of the chapters you saw in the
-            previous section.
+            your players venture on.
           </Typography>
+          <ul>
+            <li>Track 1 should be played from Chapters 1 & 2.</li>
+            <li>Track 2 should be played on Chapter 3.</li>
+            <li>Track 3 should be played on Chapter 4.</li>
+            <li>Track 4 should be played on Chapter 5.</li>
+            <li>Track 5 should be played on Chapter 6.</li>
+            <li>Track 6 should be played on Chapter 7.</li>
+            <li>From Track 5 you can play Straus II (1:39:03) at the end</li>
+          </ul>
         </div>
         <iframe
           width='560'
@@ -1423,7 +1431,7 @@ const mapData = [
     color: Colors.dndRed,
     title: 'E1 - Welcoming Roundabout',
     description: `This is where all the players will arive at first. 
-    This is essentially a stone-built roundabout 
+    A stone-built roundabout 
     with a majestic circular fountain in the middle.
     Some engine powered (1920s like) vehicles populate the sidewalks here.
     Players can choose to enter this area any way they like, however,
@@ -1563,7 +1571,7 @@ const itemData = [
   {
     img: Alwyn,
     title: 'Alwyn',
-    description: `Alwyn is the fourth born son of the sinister although neither his name or its connotation fit him well. 
+    description: `Alwyn is the fourth born son of the Sinister although neither his name or its connotation fit him well. 
     Alwyn is a gnome so unbelievably pure and innocent that he actively makes it hard to believe he is somehow related to his parents. 
     (Aside from the race difference of course!) Alwyn is a curious little gnome with an affinity and genuine hunger for magic. 
       He spends most of his time in the backrooms of the palace, rummaging on as many books as he can find. 
@@ -1572,27 +1580,42 @@ const itemData = [
   {
     img: Wolfgang,
     title: 'Wolfgang',
-    description: 'Wolfgang is the tenth-born son of the Sinister. A valiant centaur who screams of "Paladin" from a mile away.',
+    description: `Wolfgang is the tenth-born son of the Sinister. A valiant centaur who screams of "Paladin" from a mile away. 
+    Wolfgang is known to stand out from his family in his own unique way that differs from Alwyn. 
+    Instead of an absolute and blissful ignorance, Wolfgang understands the evil that his family is rooted in,
+    however he keeps up the pretense that they somehow serve the role of the Guardians of Enellava, which in some twisted way, they do.
+    For that reason, he is quite proud of his family, parents and siblings alike. Wolfgang has a particular interest in the religious figures of the world.
+    Any character who is a Cleric, Paladin or Druid or who has a >=4 Religion modifier draws his attention. `,
   },  
   {
      img: Abelardo,
     title: 'Abelardo',
-    description: 'Abelardo is the...',
+    description: `Abelardo is the fifth born son of the Sinister. A mischievous Yuan-Ti with a thirst for combat and glory. 
+    Abelardo often finds himself sparring in his free time and has very little patience for idle chat or social pleasantries.
+    Abelardo does not bode well with his family. He often sees himself as above all of them, especially his siblings. Much like his father, 
+    he sees the servants of the palace as something below human and takes any chance he can get to belittle them or make fun of them. Abelardo will share an interest
+    in any player character who either shares or feigns sharing his views.`,
   },
   {
     img: Kaiden,
     title: 'Kaiden',
-    description: 'Kaiden is the...',
+    description: `Kaiden is the eleventh-born son of the Sinister. An elegant fairy bard who has a deep apetite for legends and myths, especially those that involve romance.
+    Kaiden has very little interest for the members of his family and will do anything in his power to avoid interacting with them.
+    Kaiden will find interest in any player who has a good story to tell, or perhaps someone with a well executed Performance who would try to woo him.`,
   },
   {
     img: Edward,
     title: 'Edward',
-    description: 'Edward is the...',
+    description: `Edward is the sixth born son of the Sinister. A gentle goliath who views the concept of battle from a more philosophical and perhaps mature way than his elder brother Abelardo.
+    Edward sees bloodshed as a necessary means to an end and although he does not take pride in it, he spends most of his time training for it as well. In that regard, he does look up to his father and is very
+    protective of the rest of his family. Edward will take an interest in any player-character who shows a strong initiative to protect that which they fear to lose. (as defined earlier!)`,
   },
   {
     img: Seth,
     title: 'Seth',
-    description: 'Seth is the...',
+    description: `Seth is the twelvth-born child of the Sinister. A mysterious changeling who seems to enjoy the endless quarells of the weird family they have found themselves in.
+    Seth is as fond of their family as they are fond of any other stranger on the road. Seth has a particular interest in disguises and wishes to be a well renowned actor some day.
+    Any player with an expertise in disguises or a high enough charisma instantly gains their attention.`,
   },
 ];
 
