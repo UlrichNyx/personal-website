@@ -62,6 +62,8 @@ import SleepIcon from '../../../../assets/homebrew/night.png';
 import BossIcon from '../../../../assets/homebrew/final-boss.png';
 import MarriageIcon from '../../../../assets/homebrew/rings.png';
 
+import ArrivingImage from '../../../../assets/homebrew/arriving.png';
+
 const chapters = [
   'Motivation',
   'Excerpt',
@@ -84,6 +86,13 @@ interface childrenNameType {
   [name: string]: childrenType;
 }
 
+const attributions = [            <a key="1" href="https://www.flaticon.com/free-icons/switzerland" style={{color: Colors.dndRed}} title="switzerland icons">Switzerland icons created by Eucalyp - Flaticon</a>,
+<a key="2" href="https://www.flaticon.com/free-icons/sightseeing" style={{color: Colors.dndRed}} title="sightseeing icons">Sightseeing icons created by piksart - Flaticon</a>,
+<a key="3" href="https://www.flaticon.com/free-icons/heart" style={{color: Colors.dndRed}} title="heart icons">Heart icons created by Vlad Szirka - Flaticon</a>,
+<a key="4" href="https://www.flaticon.com/free-icons/eat" style={{color: Colors.dndRed}} title="eat icons">Eat icons created by Freepik - Flaticon</a>,
+<a key="5" href="https://www.flaticon.com/free-icons/sleep" style={{color: Colors.dndRed}} title="sleep icons">Sleep icons created by Freepik - Flaticon</a>,
+<a key="6" href="https://www.flaticon.com/free-icons/marriage" style={{color: Colors.dndRed}} title="marriage icons">Marriage icons created by Freepik - Flaticon</a>,
+<a key="7" href="https://www.flaticon.com/free-icons/enemy" style={{color: Colors.dndRed}} title="enemy icons">Enemy icons created by Freepik - Flaticon</a>];
 
 
 const childrenData: childrenNameType = {
@@ -147,7 +156,7 @@ const Homebrew: React.FunctionComponent = () => {
   const timelineItems = [
     {
       name: 'Arrival at the Palace',
-      image: PromAndZeus,
+      image: ArrivingImage,
       icon: PalaceIcon,
       description: `This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
       This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
@@ -1213,7 +1222,7 @@ const Homebrew: React.FunctionComponent = () => {
             onItemClick={(item: number) => setSelectedTime(item)}
           />
           <div style={{ height: '85vh', width: 1, backgroundColor: Colors.dndRed }} />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1vh' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '3vh' }}>
             <Typography
               variant='h3'
               style={{
@@ -1222,13 +1231,14 @@ const Homebrew: React.FunctionComponent = () => {
                 minWidth: '40vw',
                 textOverflow: 'ellipsis',
                 overflow: 'hidden',
+                color:Colors.dndRed
               }}
             >
               {timelineItems[selectedTime].name}
             </Typography>
             <img
               src={timelineItems[selectedTime].image}
-              style={{ width: '100%', height: '40vh' }}
+              style={{ width: '100%', height: '40vh', borderRadius:'2px' }}
             />
             <Typography
               style={{
@@ -1279,7 +1289,7 @@ const Homebrew: React.FunctionComponent = () => {
             <li>Track 4 should be played on Chapter 5.</li>
             <li>Track 5 should be played on Chapter 6.</li>
             <li>Track 6 should be played on Chapter 7.</li>
-            <li>From Track 5 you can play Straus II (1:39:03) at the end</li>
+            <li>Track 5 should be played again at the end.</li>
           </ul>
         </div>
         <iframe
@@ -1372,13 +1382,10 @@ const Homebrew: React.FunctionComponent = () => {
 
           
           </Typography>
-          <a href="https://www.flaticon.com/free-icons/switzerland" style={{color: Colors.dndRed}} title="switzerland icons">Switzerland icons created by Eucalyp - Flaticon</a>
-          <a href="https://www.flaticon.com/free-icons/sightseeing" style={{color: Colors.dndRed}} title="sightseeing icons">Sightseeing icons created by piksart - Flaticon</a>
-          <a href="https://www.flaticon.com/free-icons/heart" style={{color: Colors.dndRed}} title="heart icons">Heart icons created by Vlad Szirka - Flaticon</a>
-          <a href="https://www.flaticon.com/free-icons/eat" style={{color: Colors.dndRed}} title="eat icons">Eat icons created by Freepik - Flaticon</a>
-          <a href="https://www.flaticon.com/free-icons/sleep" style={{color: Colors.dndRed}} title="sleep icons">Sleep icons created by Freepik - Flaticon</a>
-          <a href="https://www.flaticon.com/free-icons/marriage" style={{color: Colors.dndRed}} title="marriage icons">Marriage icons created by Freepik - Flaticon</a>
-          <a href="https://www.flaticon.com/free-icons/enemy" style={{color: Colors.dndRed}} title="enemy icons">Enemy icons created by Freepik - Flaticon</a>
+          <ul>
+              {attributions.map((elem, index) => <li key={index}>{elem}</li>)}
+          </ul>
+
         </div>
         <ChapterHeader index={9} />
         <TriforceDivider color={Colors.dndRed} />
