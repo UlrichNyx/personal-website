@@ -63,6 +63,9 @@ import BossIcon from '../../../../assets/homebrew/final-boss.png';
 import MarriageIcon from '../../../../assets/homebrew/rings.png';
 
 import ArrivingImage from '../../../../assets/homebrew/arriving.png';
+import SightseeingImage from '../../../../assets/homebrew/sightseeing.png';
+import CourtingImage from '../../../../assets/homebrew/courting.png';
+import DinnerImage from '../../../../assets/homebrew/dinner.png';
 
 const chapters = [
   'Motivation',
@@ -158,24 +161,18 @@ const Homebrew: React.FunctionComponent = () => {
       name: 'Arrival at the Palace',
       image: ArrivingImage,
       icon: PalaceIcon,
-      description: `This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
-      This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
-      This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
-      This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
-      This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
-      This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description
-      This is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small descriptionThis is a small description`,
+      description: 'Lord and Lady have invited the most influential criminals for all over the world for this special event. There is ver',
     },
-    { name: 'Sightseeing', icon:SightseeingIcon, image: PromAndZeus, description: 'This is a small description' },
+    { name: 'Exploring the Palace', icon:SightseeingIcon, image: SightseeingImage, description: 'This is a small description' },
     {
       name: 'Courting the matches',
-      image: PromAndZeus,
+      image: CourtingImage,
       icon: HeartIcon,
       description: 'This is a small description',
     },
     {
       name: 'Dinner with the In-Laws',
-      image: PromAndZeus,
+      image: DinnerImage,
       icon: DinnerIcon,
       description: 'This is a small description',
     },
@@ -1230,7 +1227,6 @@ const Homebrew: React.FunctionComponent = () => {
                 width: '40vw',
                 minWidth: '40vw',
                 textOverflow: 'ellipsis',
-                overflow: 'hidden',
                 color:Colors.dndRed
               }}
             >
