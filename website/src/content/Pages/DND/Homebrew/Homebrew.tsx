@@ -979,7 +979,7 @@ const Homebrew: React.FunctionComponent = () => {
             nearby and is a much more lavish location, closer
             to the image of New York in the 1920s. A ton of modern skyscrapers have been built here and buildings are decorated with gold, silver and intricate glass designs.
             The Trade District, which is basically the port of the city and coincidentally where most of the legitimate business of Enellava takes place. And finally the
-            Underbelly, which is the most crime-infested area depicted below.
+            Underbelly, which is the most crime-infested area.
           </Typography>
           <Image src={Underbelly} style={{ width: '50vw', borderRadius: 4, alignSelf:'center' }} />
           <Typography>Below is a map of the palace, where the session will take place: </Typography>
@@ -1130,7 +1130,7 @@ const Homebrew: React.FunctionComponent = () => {
               top: '45%',
               left: '72%',
               width: '25%',
-              height: '50%',
+              maxHeight: '50%',
               padding: '1%',
               borderRadius: 4,
               backgroundColor: Colors.vsAlmostBlack,
@@ -1394,6 +1394,21 @@ const Homebrew: React.FunctionComponent = () => {
               </Typography>
             
             </li>
+            <li>
+              <Typography
+                style={{
+                  cursor: 'pointer',
+                  color: Colors.dndRed,
+                  fontWeight: 'bold',
+                  textDecoration: 'underline',
+                }}
+                onClick={() => window.open('https://www.reddit.com/r/DnDHomebrew/comments/qnbbf4/expanded_carnivorous_plants_by_sonixverselabs/')}
+              >
+               Carnivorous Plants Homebrew - Reddit
+              </Typography>
+            
+            </li>
+
           </ul>
           <Typography>
             Feel free to use any tools at your disposal of course, but these tools in particular are
@@ -1489,57 +1504,90 @@ const mapData = [
   {
     color: Colors.dndRed,
     title: 'E2 - Palace Main Hall',
-    description: 'The pulse of light visible from outside of the palace can actually be seen here',
+    description: `The source of the pulse of light visible from outside of the palace is actually visible from here. 
+    A large bonfire which is surprisingly cold and shimmers in all colors, contained in an ornate and magnificent marble brazier. 
+    In this main hall, the characters are greeted by other guests that have come here simply wishing to attend the wedding. 
+    The individuals I will leave to your imagination, however they should all be notorious criminals, dressed in the most lavish of ways. 
+    The main hall itself is quite impressive, marble floors and pillars which hold a 55 meter ceiling. 
+    The walls themselves are made of the same impressive and intricatively carved glass with depictions of historical moments in the city's history or revered religious figures.
+    The main hall here splits into 4 different wooden doorways which lead to the private quarters of the 4 Sinister children which are to be wed. 
+    The Main Hall also leads to a set of stairs which subsequently leads to the inner part of the palace where Lord and Lady (as well as the ceremonial throne room) reside.`,
   },
   {
     color: Colors.dndRed,
     title: 'E3 - Guest Room 1',
-    description: 'This is where all the players will arive at first.',
+    description: `Like every other guest room, the room itself follows the general motif of the rest of the palace (glass walls, marble floor, wooden furniture) however, the specific details of its decorations depend on the Sinister offspring which they host (which is up to your discretion).
+    Try to decorate the rooms in such a way that they complement the character's personality or perhaps tries to tell a story. Aurelia's room for instance would very likely be filled with maps and constellations from the Astral Sea etc.
+    Within this room, there exists a secret entrance to one of the underground tunnels of the palace which lead to the Throne Room. A player can find the entrance by rolling a DC 15 Investigation check.`,
   },
   {
     color: Colors.dndRed,
     title: 'E4 - Guest Room 2',
-    description: 'This is where all the players will arive at first.',
+    description: `Like every other guest room, the room itself follows the general motif of the rest of the palace (glass walls, marble floor, wooden furniture) however, the specific details of its decorations depend on the Sinister offspring which they host (which is up to your discretion).
+    Try to decorate the rooms in such a way that they complement the character's personality or perhaps tries to tell a story. Aurelia's room for instance would very likely be filled with maps and constellations from the Astral Sea etc.Within this room, there exists a secret entrance to one of the underground tunnels of the palace which lead to the Throne Room. A player can find the entrance by rolling a DC 15 Investigation check.`,
   },
   {
     color: Colors.dndRed,
     title: 'E5 - Guest Room 3',
-    description: 'This is where all the players will arive at first.',
+    description: `Like every other guest room, the room itself follows the general motif of the rest of the palace (glass walls, marble floor, wooden furniture) however, the specific details of its decorations depend on the Sinister offspring which they host (which is up to your discretion).
+    Try to decorate the rooms in such a way that they complement the character's personality or perhaps tries to tell a story. Aurelia's room for instance would very likely be filled with maps and constellations from the Astral Sea etc.`,
   },
   {
     color: Colors.dndRed,
     title: 'E6 - Guest Room 4',
-    description: 'This is where all the players will arive at first.',
+    description: `Like every other guest room, the room itself follows the general motif of the rest of the palace (glass walls, marble floor, wooden furniture) however, the specific details of its decorations depend on the Sinister offspring which they host (which is up to your discretion).
+    Try to decorate the rooms in such a way that they complement the character's personality or perhaps tries to tell a story. Aurelia's room for instance would very likely be filled with maps and constellations from the Astral Sea etc.`,
   },
   {
     color: Colors.dndRed,
-    title: 'E7 - Ladys Quarters',
-    description: 'This is where all the players will arive at first.',
+    title: `E7 - Lady's Quarters
+    `,
+    description: `Lady Sinister's Quarters are quite the big contrast from the rest of the palace as the interior itself is actually a conservatory of exotic plants and animals. 
+    Anything from tigers, to displacer beasts to penguins can be found in here. In terms of the plants themselves there exists a Mantrap and a Death Frond as described in the Carnivorous plants homebrew linked in Section 9.
+    The room is also full with Lady's lovers of all genders who are either frolicking amongst themselves or in a perpetual daze from what seems to be a miasma which hangs around in this room and causes people to feel content and sleepy.
+    In the far end of the room, there is a large Queen sized (hehe) canopy bed in which Lady can be found resting in the "All is Quiet in Enellava" Chapter but is otherwise unoccupied. 
+    On the bed itself, there rests a large crystall ball which acts as a scrying orb for within the palace. Lady can occasionally be found snooping around on her guests through it but will not let anyone touch it themselves. 
+    The lush life present within this room, combined with the glass walls of the palace as well as a little creek which flows within here gives the players the impression that they are not really within a room at all but rather in some sort of hill or field in the wilderness.
+    `,
   },
   {
     color: Colors.dndRed,
-    title: 'E8 - Lords Quarters',
-    description: 'This is where all the players will arive at first.',
+    title: `E8 - Lord's Quarters
+    `,
+    description: `Lord's Quarters are a stark contrast to that of Lady's. The glass here is an opaque black which makes the lighting here very dim. 
+    In fact most of the light in this room comes from the friendly animated fire you can find in the fireplace here, called Prometheus. 
+    The room holds a single King sized (xd) bed, along with a study desk, an old and dusty (but quite stacked) library as well as a handful of ominous paintings which decorate the walls. 
+    Rummaging through the books and paintings, players can gather that Lord has an avid interest in history, philosophy and art as well as an obsession with Death in all its forms. 
+    There is a dark and ominous aura about this room which however settles in after spending a few minutes in here, leaving in its place a strange peacefulness.`,
   },
   {
     color: Colors.dndRed,
     title: 'E9 - Throne Room',
-    description: 'This is where all the players will arive at first.',
+    description: `The Throne Room is a large and spacious hall which has been redecorated for the purposes of a wedding. 
+    The Massive glass walls here are intricatively woven into more depictions here and the glass has been tempered in all sorts of colors and shapes.
+    Massive banners hang from the ceiling, depicting the symbol of reign of Lord and Lady (a pair of theatrical masks with ominous smiles and horns). In the far end of the throne room stand the thrones of Lord and Lady, whereas in the middle there exists a large stage like marble platform.
+    In the circumference of the room, round tables have been laid out for the guests to eat. In scarce spots around the room, small trees sprout from within the confines of patches of soil in the ground.`,
   },
   {
     color: Colors.onlineGreen,
     title: 'I1 - Vindication & Revenge',
-    description: 'This is where all the players will arive at first.',
+    description: `Lord Sinister's prized historical weapons. A pair of revolver guns with a powerful kick to them. 
+    A player can use their action to attack with both weapons by rolling a +2 and a -2 roll with disadvantage regardless of their proficiencies. 
+    Both bullets deal 4d6 + 1d4 damage and Vindication deals Radiant damage while Revenge deals necrotic damage. 
+    The guns were known to have been wielded by an infamous tiefling slayer of old and for Lord's own peculiar reasons, he finds a particular interest in both the gun and the individual.`,
   },
   {
-    color: Colors.onlineGreen,
+    color: Colors.onlineGreen, 
     title: 'I2 - Scrying Orb',
-    description: 'This is where all the players will arive at first.',
+    description: `Lady Sinister's precious Scrying Orb. This shimmering purple crystal ball enables her to view any room or corridor within the palace barring the underground tunnels. 
+    A player with a significant knowledge in Arcana can use the orb themselves with a DC 12 Arcana check by imagining the room which they want to view while touching the orb.`,
   },
   {
     color: Colors.sylemsBlue,
     title: 'N1 - Prometheus',
-    description: 'This is where all the players will arive at first.',
+    description: `Prometheus the friendly flame can be found resting in the fireplace here. Prometheus will take an interest in anyone who walks through the door and will try to strike up conversation with them.
+    He is very fond of his master although he seems to lack the understanding of the depth of his criminal nature and only naively sees him as his father figure. In fact, Prometheus seems to somewhat exist in an 
+    entirely different world from others in regards towards his self-awareness. He is a cheerful little flame that will try to befriend everyone (even if they tell him that they don't want to be his friend)! :))`,
   },
 ];
 const itemData = [
