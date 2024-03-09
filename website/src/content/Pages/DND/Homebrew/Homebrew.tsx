@@ -66,6 +66,10 @@ import ArrivingImage from '../../../../assets/homebrew/arriving.png';
 import SightseeingImage from '../../../../assets/homebrew/sightseeing.png';
 import CourtingImage from '../../../../assets/homebrew/courting.png';
 import DinnerImage from '../../../../assets/homebrew/dinner.png';
+import SleepingImage from '../../../../assets/homebrew/sleeping.png';
+import WeddingImage from '../../../../assets/homebrew/wedding.png';
+import FinalBossImage from '../../../../assets/homebrew/final_boss_wallpaper.png';
+import Underbelly from '../../../../assets/homebrew/underbelly.png';
 
 const chapters = [
   'Motivation',
@@ -178,17 +182,17 @@ const Homebrew: React.FunctionComponent = () => {
     },
     {
       name: 'All is Quiet in Enellava',
-      image: PromAndZeus,
+      image: SleepingImage,
       icon: SleepIcon,
       description: 'This is a small description',
     },
     {
       name: 'The Marriage ceremony',
-      image: PromAndZeus,
+      image: WeddingImage,
       icon: MarriageIcon,
       description: 'This is a small description',
     },
-    { name: 'The Final Showdown', image: PromAndZeus, icon: BossIcon, description: 'This is a small description' },
+    { name: 'The Final Showdown', image: FinalBossImage, icon: BossIcon, description: 'This is a small description' },
   ];
 
   const produceNumber = (num: number): string => {
@@ -965,12 +969,19 @@ const Homebrew: React.FunctionComponent = () => {
             circumstances, not always necessarily punished for it). The honor code among criminals
             dictates that anyone who does commit crimes in these safe spaces or targets people of
             basic functional importance, such as cleaners, cooks, doctors, teachers or merchants,
-            instantly forfeits their own protection within these safe-spaces. Enellava is
-            essentially split into three sections. The palace, which exists on a separate island
-            nearby. The corporate section, which is basically the port of the island and finally the
-            residential areas, which are also the most crime-infested areas and make up the rest of
-            the island.
+            instantly forfeits their own protection within these safe-spaces. 
+            
+
           </Typography>
+          <Typography>
+          Enellava is
+            essentially split into three districts. The palace, which exists on a separate island
+            nearby and is a much more lavish location, closer
+            to the image of New York in the 1920s. A ton of modern skyscrapers have been built here and buildings are decorated with gold, silver and intricate glass designs.
+            The Trade District, which is basically the port of the city and coincidentally where most of the legitimate business of Enellava takes place. And finally the
+            Underbelly, which is the most crime-infested area depicted below.
+          </Typography>
+          <Image src={Underbelly} style={{ width: '50vw', borderRadius: 4, alignSelf:'center' }} />
           <Typography>Below is a map of the palace, where the session will take place: </Typography>
         </div>
         <div
@@ -1193,7 +1204,8 @@ const Homebrew: React.FunctionComponent = () => {
             Perhaps the most interesting part of this campaign is the set of events that unfold
             throughout the narrative and give the story entiirely different themes. Below you can
             find a timeline of those events, involving the moment the players arrive at the palace
-            up until the very final boss fight.
+            up until the very final boss fight. The images displayed here were also generated using ChatGPT&#39;s Dall-e,
+            integration as you can tell from the &#34;errors&#34; present in some of them. Initially I wanted to fix these images but then I found some of the apparitions to be quite fitting.
           </Typography>
         </div>
         <div
@@ -1367,6 +1379,20 @@ const Homebrew: React.FunctionComponent = () => {
               >
                 Roll20 - Engine
               </Typography>
+              </li>
+              <li>
+              <Typography
+                style={{
+                  cursor: 'pointer',
+                  color: Colors.dndRed,
+                  fontWeight: 'bold',
+                  textDecoration: 'underline',
+                }}
+                onClick={() => window.open('https://tabletopaudio.com/')}
+              >
+                TabletopAudio - Soundpad
+              </Typography>
+            
             </li>
           </ul>
           <Typography>
@@ -1463,7 +1489,7 @@ const mapData = [
   {
     color: Colors.dndRed,
     title: 'E2 - Palace Main Hall',
-    description: 'This is where all the players will arive at first.',
+    description: 'The pulse of light visible from outside of the palace can actually be seen here',
   },
   {
     color: Colors.dndRed,
