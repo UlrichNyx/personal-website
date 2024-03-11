@@ -70,6 +70,9 @@ import SleepingImage from '../../../../assets/homebrew/sleeping.png';
 import WeddingImage from '../../../../assets/homebrew/wedding.png';
 import FinalBossImage from '../../../../assets/homebrew/final_boss_wallpaper.png';
 import Underbelly from '../../../../assets/homebrew/underbelly.png';
+import Button from '@mui/material/Button';
+
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 const chapters = [
   'Motivation',
@@ -165,6 +168,7 @@ const Homebrew: React.FunctionComponent = () => {
       name: 'Arrival at the Palace',
       image: ArrivingImage,
       icon: PalaceIcon,
+      video: 'PEI2zet48Uc',
       description: `Lord and Lady have invited the most influential criminals for all over the world for this special event. 
       All guests arrive to the main gate using their vehicle of choice. Upon arrival, a tiefling servant offers to take their vehicle and park it off somewhere else. 
       Marcus, the Head of Staff greets all important visitors (especially the suitors) at the gate. A youthful and respectful man with a refined grace offers them refreshments.
@@ -172,6 +176,7 @@ const Homebrew: React.FunctionComponent = () => {
       Marcus explains that the guests are expected to stay here until the morning of the next day when the ceremony will take place and that for now there is lots to do and see while they're here.`,
     },
     { name: 'Exploring the Palace', icon:SightseeingIcon, image: SightseeingImage, 
+    video: 'KldpbexGcUg',
     description: `Marcus guides all of the guests inwards towards the palace. Marcus informs the players that Lord and Lady are currently busy in the throne room (E9)
      and that they will have time to see them later. As for now he offers a sightseeing tour for the players that starts at E2, proceeds to E8 and then finally to E7.
      Throughout the tour, Marcus will answer all questions the players make (as long as they are respectful and not confidential) and will give a brief overview of the different
@@ -181,6 +186,7 @@ const Homebrew: React.FunctionComponent = () => {
       name: 'Courting the matches',
       image: CourtingImage,
       icon: HeartIcon,
+      video: 'ulplqXTp4R0',
       description: `After the tour is complete, Marcus will lead all of the players back to the Main Hall and will let them know that their matches are waiting for them in their respective rooms (E3, E4, E5, E6).
       Players now have a choice and can choose to either mingle with the crowd in the main hall or if they wish, to meet their match. Players who choose to mingle with the crowd will get to socialize with criminals
       from all over the world and hear of their exploits (and perhaps share their own exploits as well!). Players who choose to meet their significant other will at first get to experience a one on one conversation with
@@ -192,6 +198,7 @@ const Homebrew: React.FunctionComponent = () => {
       name: 'Dinner with the In-Laws',
       image: DinnerImage,
       icon: DinnerIcon,
+      video: 'fXA8zHLdYF0',
       description: `After a few hours of exposition, the characters are all summoned to the main hall by servants and Marcus takes them to the throne room to finally meet their in-laws.
       In the throne room, there are other guests seated at tables ready for a dinner procession. Lord and Lady finally meet the players and try to keep a sense of superiority to them. 
       Lord will very often patronize the players and pretend like they are children who know nothing about the world. Lady will try to pry into their personal matters, gossip regarding them as well as
@@ -213,6 +220,7 @@ const Homebrew: React.FunctionComponent = () => {
       name: 'All is Quiet in Enellava',
       image: SleepingImage,
       icon: SleepIcon,
+      video: '_RsnVOK6Fdg',
       description: `Once the desert is finished, players are prompted to return to the room with their significant other and rest for the night. 
       Players might very well choose to ignore this and either continue to mingle until the next morning (with the very few guests who are still awake) or perhaps to escape from the watchful eye of their match and explore around.
       Regardless of what they choose, the offspring will at least TRY to fall asleep so that they can rest so this gives players with no spells a chance to act sneakily even if the circumstances don't allow it.
@@ -236,17 +244,38 @@ const Homebrew: React.FunctionComponent = () => {
       If a player chooses to wake Lord up, they will find a very agitated and bloodthirsty Lord who is very eager to throw insults and threats at them.
 
       Prometheus, the friendly fire might try to easen Lord's bad mood but at this point the players must also try to soothe him either through charisma, an item, a lullaby etc.
-
-      
+      Regardless of the nature of the roll, the DC is 15. Players who fail to soothe Lord at this point gain an indefinite debuff which gives them disadvantage for attack rolls against Lord until Lord is defeated.
+      Describe this to the players as a feeling of Lord always peering deep into your soul. Like a shadow with a foul taste.  
       `,
     },
     {
       name: 'The Marriage ceremony',
       image: WeddingImage,
       icon: MarriageIcon,
-      description: 'This is a small description',
+      video: 'lHlxpGnAGbU',
+      description: `On the morning of the next day, the players are summoned to the throne room after all of the other guests as well as Lord and Lady have gathered in advance.
+      Joyous music plays as the couples enter the room one by one and the guests all cheer and applaud. Upon everyone reaching the altar, Lord and Lady make a short speech talking about their rule over Enellava
+      and how it has been cemented through the years by marriages just like this one. A priest enters with charming rings for the players and identical (but fake) rings for the Offspring.
+      
+      Depending on whether or not the players had previously engaged into conversation with Marcus in the "All is Quiet in Enellava" section, they might spend a few moments incapacitated as they are frozen in place before Marcus 
+      sets off an explosion which covers the entirety of the room (which kills most of the guests) and slighly damages Lord and Lady.
+      
+      If the players DID talk to Marcus prior to this, then the explosion will happen before they can put on their ring (unless the players persuade Marcus of a better plan).
+      
+      At this point, battle errupts as Lord and Lady have dropped their facade of being amicable.
+      
+      Let the showdown begin!`,
     },
-    { name: 'The Final Showdown', image: FinalBossImage, icon: BossIcon, description: 'This is a small description' },
+    { name: 'The Final Showdown', 
+    video: 'qQn6YSYx8-Q',
+    image: FinalBossImage, icon: BossIcon, description: `In this final battle, Lord and Lady fight in unison as they are one another's life force.
+    Marcus does not join the fight and you can find him cowering behind some furniture at the sotuhnern edge of the room while the battle unfolds.
+    
+    If players are successful at bringing down Lord and Lady they manage to bring absolution to Marcus and save themselves from their demonic grasp, overthrowing the government of Enellava in the process.
+    If players fail, Marcus dies a very gruesome death after Lord and Lady discover that he was behind the explosion and the players are subdued to being staff indefinitely.
+    
+    How about you go with the aftermath of Lord and Lady's death is up to you. Perhaps the players rule over the city now, or they escape in hot pursuit while Lord and Lady's patrons hunt them down.
+    ` },
   ];
 
   const produceNumber = (num: number): string => {
@@ -307,6 +336,7 @@ const Homebrew: React.FunctionComponent = () => {
           flexDirection: 'column',
           gap: '1vh',
           alignItems: 'center',
+          overflowX:'hidden'
         }}
       >
         <Image
@@ -314,8 +344,7 @@ const Homebrew: React.FunctionComponent = () => {
           style={{
             width: 940,
             height: 540,
-            maxWidth: '98vw',
-            maxHeight: '50vh',
+            overflow:'hidden',
             borderRadius: 4,
           }}
         />
@@ -714,7 +743,7 @@ const Homebrew: React.FunctionComponent = () => {
         <div style={{ display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems:'center', }}>
           <div className='stat-block-grid'>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Image src={Tibalt} style={{ borderRadius: 4, maxWidth: '90%', height: '65vh', border:'1px solid ' + Colors.dndRed  }} />
+              <Image src={Tibalt} style={{ borderRadius: 4, maxWidth: '98%', maxHeight:'98%', border:'1px solid ' + Colors.dndRed  }} />
             </div>
             <div
               style={{
@@ -754,7 +783,7 @@ const Homebrew: React.FunctionComponent = () => {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <Image
                 src={LadyPortrait}
-                style={{ borderRadius: 4, maxWidth: '90%', height: '65vh', alignSelf: 'center', border:'1px solid ' + Colors.dndRed  }}
+                style={{ borderRadius: 4, maxWidth: '98%', maxHeight:'98%', alignSelf: 'center', border:'1px solid ' + Colors.dndRed  }}
               />
             </div>
             <div
@@ -794,7 +823,7 @@ const Homebrew: React.FunctionComponent = () => {
             className='stat-block-grid'
           >
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Image src={Marcus} style={{ borderRadius: 4, maxWidth: '90%', height: '65vh', border:'1px solid ' + Colors.dndRed  }} />
+              <Image src={Marcus} style={{ borderRadius: 4, maxWidth: '98%', maxHeight:'98%', border:'1px solid ' + Colors.dndRed  }} />
             </div>
             <div
               style={{
@@ -828,7 +857,7 @@ const Homebrew: React.FunctionComponent = () => {
             className='stat-block-grid'
           >
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Image src={Servant} style={{ borderRadius: 4, maxWidth: '90%', height: '65vh', border:'1px solid ' + Colors.dndRed  }} />
+              <Image src={Servant} style={{ borderRadius: 4, maxWidth: '98%', maxHeight:'98%', border:'1px solid ' + Colors.dndRed  }} />
             </div>
             <div
               style={{
@@ -863,7 +892,7 @@ const Homebrew: React.FunctionComponent = () => {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
               <Image
                 src={Prometheus}
-                style={{ borderRadius: 4, maxWidth: '90%', height: '65vh', border:'1px solid ' + Colors.dndRed  }}
+                style={{ borderRadius: 4, maxWidth: '98%', maxHeight:'98%', border:'1px solid ' + Colors.dndRed  }}
               />
             </div>
             <div
@@ -905,7 +934,7 @@ const Homebrew: React.FunctionComponent = () => {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <Image
                 src={FelVoidwalker}
-                style={{ borderRadius: 4, maxWidth: '90%', height: '65vh', border:'1px solid ' + Colors.dndRed  }}
+                style={{ borderRadius: 4, maxWidth: '98%', maxHeight:'98%', border:'1px solid ' + Colors.dndRed  }}
               />
             </div>
             <div
@@ -1038,7 +1067,11 @@ const Homebrew: React.FunctionComponent = () => {
             The Trade District, which is basically the port of the city and coincidentally where most of the legitimate business of Enellava takes place. And finally the
             Underbelly, which is the most crime-infested area.
           </Typography>
-          <Image src={Underbelly} style={{ width: '50vw', borderRadius: 4, alignSelf:'center' }} />
+          <Image src={Underbelly}           style={{
+            maxWidth: '98vw',
+            maxHeight: '70vh',
+            borderRadius: 4,
+          }} />
           <Typography>Below is a map of the palace, where the session will take place: </Typography>
         </div>
         <div
@@ -1266,35 +1299,23 @@ const Homebrew: React.FunctionComponent = () => {
           </Typography>
         </div>
         <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: '5vw',
-            width: '80%',
-            justifyContent: 'center',
-            marginTop: '5vh',
-            marginLeft: '5vw',
-            marginRight: '5vw',
-          }}
+          className='timeline-container'
         >
           <Timeline
             style={{
               width: '40vw',
               marginTop: '5vw',
               minWidth: '40vw',
-              backgroundColor: 'blue',
             }}
             items={timelineItems}
             onItemClick={(item: number) => setSelectedTime(item)}
           />
-          <div style={{ height: '85vh', width: 1, backgroundColor: Colors.dndRed }} />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '3vh' }}>
+          <div style={{backgroundColor: Colors.dndRed }} className='timeline-divider' />
+          <div className='timeline-description-container'>
             <Typography
               variant='h3'
               style={{
                 textAlign: 'center',
-                width: '40vw',
-                minWidth: '40vw',
                 textOverflow: 'ellipsis',
                 color:Colors.dndRed
               }}
@@ -1305,10 +1326,23 @@ const Homebrew: React.FunctionComponent = () => {
               src={timelineItems[selectedTime].image}
               style={{ width: '100%', height: '40vh', borderRadius:'2px' }}
             />
+                    <Button
+          variant='contained'
+          style={{
+            color: Colors.white,
+            backgroundColor: Colors.dndRed,
+            textTransform: 'none',
+            alignSelf:'center'
+          }}
+          startIcon={<PlayArrowIcon />}
+          onClick={() => window.open(`https://www.youtube.com/watch?v=${timelineItems[selectedTime].video}&list=PLabb5EYwab-HJf5XPxc_AY8g4mgiqKDH_&index=${selectedTime + 1}`, '_blank')}
+        >
+          {' '}
+          Play Music
+        </Button>
             <Typography
               style={{
                 textAlign: 'justify',
-                maxWidth: '40vw',
                 maxHeight: '28vh',
                 width: '100%',
                 overflowY: 'auto',
@@ -1343,19 +1377,6 @@ const Homebrew: React.FunctionComponent = () => {
             The best way to set the tone for the adventure is through music. Music is wonderful in
             that it expresses that which we have so much trouble forming into words.{' '}
           </Typography>
-          <Typography>
-            Below I have included a playlist of songs/ambiences to be used in the background while
-            your players venture on.
-          </Typography>
-          <ul>
-            <li>Track 1 should be played from Chapters 1 & 2.</li>
-            <li>Track 2 should be played on Chapter 3.</li>
-            <li>Track 3 should be played on Chapter 4.</li>
-            <li>Track 4 should be played on Chapter 5.</li>
-            <li>Track 5 should be played on Chapter 6.</li>
-            <li>Track 6 should be played on Chapter 7.</li>
-            <li>Track 5 should be played again at the end.</li>
-          </ul>
         </div>
         <iframe
           width='560'
