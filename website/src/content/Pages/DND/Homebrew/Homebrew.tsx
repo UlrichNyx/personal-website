@@ -165,26 +165,80 @@ const Homebrew: React.FunctionComponent = () => {
       name: 'Arrival at the Palace',
       image: ArrivingImage,
       icon: PalaceIcon,
-      description: 'Lord and Lady have invited the most influential criminals for all over the world for this special event. There is ver',
+      description: `Lord and Lady have invited the most influential criminals for all over the world for this special event. 
+      All guests arrive to the main gate using their vehicle of choice. Upon arrival, a tiefling servant offers to take their vehicle and park it off somewhere else. 
+      Marcus, the Head of Staff greets all important visitors (especially the suitors) at the gate. A youthful and respectful man with a refined grace offers them refreshments.
+      Players may or may not notice the staff all wearing the same golden ring depicting a dragon. 
+      Marcus explains that the guests are expected to stay here until the morning of the next day when the ceremony will take place and that for now there is lots to do and see while they're here.`,
     },
-    { name: 'Exploring the Palace', icon:SightseeingIcon, image: SightseeingImage, description: 'This is a small description' },
+    { name: 'Exploring the Palace', icon:SightseeingIcon, image: SightseeingImage, 
+    description: `Marcus guides all of the guests inwards towards the palace. Marcus informs the players that Lord and Lady are currently busy in the throne room (E9)
+     and that they will have time to see them later. As for now he offers a sightseeing tour for the players that starts at E2, proceeds to E8 and then finally to E7.
+     Throughout the tour, Marcus will answer all questions the players make (as long as they are respectful and not confidential) and will give a brief overview of the different
+     depictions and historical art that the palace hosts in its glass walls, paintings, pottery etc. Marcus will also delve into the personalities of Lord and Lady in respect to their rooms.
+     Marcus may also talk about his personal relationship with Lord and Lady if he feels safe to do so.` },
     {
       name: 'Courting the matches',
       image: CourtingImage,
       icon: HeartIcon,
-      description: 'This is a small description',
+      description: `After the tour is complete, Marcus will lead all of the players back to the Main Hall and will let them know that their matches are waiting for them in their respective rooms (E3, E4, E5, E6).
+      Players now have a choice and can choose to either mingle with the crowd in the main hall or if they wish, to meet their match. Players who choose to mingle with the crowd will get to socialize with criminals
+      from all over the world and hear of their exploits (and perhaps share their own exploits as well!). Players who choose to meet their significant other will at first get to experience a one on one conversation with
+      their assigned Sinister offspring in which they might either bond or completely end up hating each other. Players who get along with their match might choose to dance with their match at the Main Hall or perhaps 
+      engage in an activity they both share a common interest to. For example, Esmeralda might challenge a player to a drawing competition, Okami a physical contest and so on. There is no real disadvantage to choosing to not
+      meet your match other than their possible disliking of that fact as well as the lack of information a player might get in regards to their in-laws (which will prove useful in order to gain their liking!)`,
     },
     {
       name: 'Dinner with the In-Laws',
       image: DinnerImage,
       icon: DinnerIcon,
-      description: 'This is a small description',
+      description: `After a few hours of exposition, the characters are all summoned to the main hall by servants and Marcus takes them to the throne room to finally meet their in-laws.
+      In the throne room, there are other guests seated at tables ready for a dinner procession. Lord and Lady finally meet the players and try to keep a sense of superiority to them. 
+      Lord will very often patronize the players and pretend like they are children who know nothing about the world. Lady will try to pry into their personal matters, gossip regarding them as well as
+      make talk of their vulnerability (what the players are afraid of losing). Players who did a lot of mingling in the previous section might find that the gossip they shared with others has already found its way to Lady.
+      The players are seated in the same dinner table as that of Lord and Lady (although the seating is done in such a way that shows Lord and Lady are clearly at a position of power here). The players themselves are seated side by side,
+      on their opposite side, they are seated with their Sinister match. Lord at this point makes a toast to the couples and the players are now expected to sit through a 3-course meal, an appetizer, a main dish and a desert.
+      During the actual dining, their table manners as well as conversational skills will be put to the test. Lord will be particularly condescending to anyone lacking respect while Lady might try to embarass or seduce player characters.
+      
+      At any point during the course, you might choose to roll a d10, upon rolling a 7 or higher, a servant who is carrying dishes or refilling drinks will slip up in one way or another (drop the dish, spill a drink on a guest etc.)
+      This is a chance to exhibit Lord's wrathful side and to show Marcus' evident discomfort as well as the inhumane way the staff are treated. The punishment is up to you but make sure to make it evident that Lord is by no means a good guy.
+      As for the choice of the meals themselves that is another aspect I leave up to you! Make sure it's fancy and perhaps revolting if you wish.
+      
+      Some conversation topics that Lord might touch upon would be philosophy, art, history, racism.
+      Lady's conversational topics revolve either around exotic animals, plants or personal gossip related to the players.
+      Conversational topics from the offspring depends highly on the individual.
+      `,
     },
     {
       name: 'All is Quiet in Enellava',
       image: SleepingImage,
       icon: SleepIcon,
-      description: 'This is a small description',
+      description: `Once the desert is finished, players are prompted to return to the room with their significant other and rest for the night. 
+      Players might very well choose to ignore this and either continue to mingle until the next morning (with the very few guests who are still awake) or perhaps to escape from the watchful eye of their match and explore around.
+      Regardless of what they choose, the offspring will at least TRY to fall asleep so that they can rest so this gives players with no spells a chance to act sneakily even if the circumstances don't allow it.
+      In this section of the story, NPCs behave very differently depending on if they come upon the players.
+
+      If Marcus sees players moving around he will at first try to prompt them back to their room, however, depending on the level of safety he feels towards the player, he might choose to share his personal story in hushed tones.
+      If the player expresses a desire to help Marcus, he will reveal to the player that he actually has a plan to crash the wedding with explosives which he has set all over the room.
+      Marcus explains that the rings which servants wear will also be offered to them in the wedding ceremony and he explains the magic behind the rings, warning them to not accept them at any cost.
+      Marcus also reveals to the players that he plans to set off the explosives at that specific moment in which they are offered their rings.
+
+      Note that if this conversation does not take place, Marcus will stall during the ceremony, allowing for a unique interaction in which players are temporarily subdued under the ring's influence.
+
+      If a player chooses to visit Lady's quarters they might run into her looking into her scrying orb or perhaps courting one of her guinea pigs. Depending on her liking of the player,
+      Lady might admonish their sneaky behavior but might also be attracted to it, prompting the player to flirt with her. Lady of course has no boundaries other than that she will try to subndue anyone who means harm towards Lord or her Offspring.
+      A player who comes into contact with Lady inside of her room is affected by her miasma, essentially causing them to enter a drugged state in which they barely have consciousness. 
+
+      In this case, Lady disposes of players by letting the servants carry them back to their room.
+      The effect of the miasma can be resisted after rolling a DC15 Constitution saving throw, in which case the player sustains consciousness and memory.
+
+      If a player chooses to visit Lord's quarters, they will find him soundly sleeping in his bed in an almost pharaoh-like position. 
+      If a player chooses to wake Lord up, they will find a very agitated and bloodthirsty Lord who is very eager to throw insults and threats at them.
+
+      Prometheus, the friendly fire might try to easen Lord's bad mood but at this point the players must also try to soothe him either through charisma, an item, a lullaby etc.
+
+      
+      `,
     },
     {
       name: 'The Marriage ceremony',
@@ -214,7 +268,7 @@ const Homebrew: React.FunctionComponent = () => {
       if (titlesRef.current !== null) {
         if (titlesRef.current[i] !== null) {
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          titlesRef.current[i]!.scrollIntoView(true);
+          titlesRef.current[i]!.scrollIntoView(true); 
         }
       }
     }
@@ -764,7 +818,9 @@ const Homebrew: React.FunctionComponent = () => {
                 however, he has an ulterior motive, which is to get behind the mysterious vanishing
                 of his parents, who used to work for Lord & Lady at the palace. If Marcus somehow
                 stumbles upon the truth, he will decide to help the players any way he can to take
-                down Lord & Lady. (There is more on this in the next section)
+                down Lord & Lady. The truth as to how they were killed is very non-surprising. Lady and especially Lord are extremely harsh towards the staff,
+                Lord in particular sees them as below human and is not reluctant when it comes to hurting them or even killing them. In the heat of his rage,
+                Lord might reveal to his guests that he has killed staff on multiple occasions and in fact was the one who gruesomely killed Marcus&#39; parents after they had stained one of his paintings.
               </Typography>
             </div>
           </div>
@@ -793,9 +849,10 @@ const Homebrew: React.FunctionComponent = () => {
                 similar to that of butlers. Staff are very restricted in the emotions they can
                 exhibit and will move almost mechanically through the palace as they go through
                 their chores. They can all be seen wearing the same golden ring, all of them except
-                for Marcus. The ring the servants are wearing is a mind-controlling charm which
+                for Marcus, who upon a very close inspection (DC16 Perception) appears to be wearing a fake replica in order to deceive his masters of his obedience. The ring the servants are wearing is a mind-controlling charm which
                 renders them incapable of disobeying Lord & Lady. Forcibly taking off the ring from
-                a servant will immediately bring them out of their control.
+                a servant will immediately bring them out of their control. 
+                Any creature that wears the ring must make a DC15 Wisdom throw or else fall under their commands indefinitely.
               </Typography>
             </div>
           </div>
@@ -1574,7 +1631,10 @@ const mapData = [
     description: `Lord Sinister's prized historical weapons. A pair of revolver guns with a powerful kick to them. 
     A player can use their action to attack with both weapons by rolling a +2 and a -2 roll with disadvantage regardless of their proficiencies. 
     Both bullets deal 4d6 + 1d4 damage and Vindication deals Radiant damage while Revenge deals necrotic damage. 
-    The guns were known to have been wielded by an infamous tiefling slayer of old and for Lord's own peculiar reasons, he finds a particular interest in both the gun and the individual.`,
+    The guns were known to have been wielded by an infamous tiefling slayer of old and for Lord's own peculiar reasons, he finds a particular interest in both the gun and the individual. 
+    The container which holds these weapons is more or less invincible and can only be unlocked by inserting a combination of numbers into the lock. The combination is different on every session and it relies 
+    on the concatenation of the "index" of the Sinister offspring combinations you have chosen (aka, their order of birth). For example if you choose Aurelia, Delilah, Esmeralda and Miranda as the one's being wed, the password will be:
+    1 + 7 + 2 + 8 => 12728, because Aurelia is the eldest (1st), Esmeralda is the seventh-born and so on.`,
   },
   {
     color: Colors.onlineGreen, 
