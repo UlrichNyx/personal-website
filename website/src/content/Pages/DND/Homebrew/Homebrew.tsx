@@ -73,6 +73,7 @@ import Underbelly from '../../../../assets/homebrew/underbelly.png';
 import Button from '@mui/material/Button';
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 
 const chapters = [
   'Motivation',
@@ -162,6 +163,8 @@ const Homebrew: React.FunctionComponent = () => {
 
   const [childSB, setChildSB] = React.useState(-1);
   const [mapIndex, setMapIndex] = React.useState(0);
+
+  const [enlarged, setEnlarged] = React.useState(false);
 
   const timelineItems = [
     {
@@ -742,7 +745,7 @@ const Homebrew: React.FunctionComponent = () => {
         <TriforceDivider color={Colors.dndRed} />
         <div style={{ display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems:'center', }}>
           <div className='stat-block-grid'>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div style={{ alignItems: 'center', width:'100%', height:'100%'}}>
               <Image src={Tibalt} style={{ borderRadius: 4, maxWidth: '98%', maxHeight:'98%', border:'1px solid ' + Colors.dndRed  }} />
             </div>
             <div
@@ -973,7 +976,7 @@ const Homebrew: React.FunctionComponent = () => {
                   height: '65vh',
                   borderRadius: 4,
                   border:'1px solid ' + Colors.dndRed ,
-                  marginLeft:'40px'
+                  marginLeft:'0px'
                 }}
               >
                 <IconButton
@@ -984,7 +987,7 @@ const Homebrew: React.FunctionComponent = () => {
                 </IconButton>
               </div>
             ) : (
-            <ImageList style={{ borderRadius: 4, marginLeft:'40px', height: '65vh', alignSelf:'center'}} variant='quilted' cols={3} rowHeight={164} >
+            <ImageList style={{ borderRadius: 4, marginLeft:'5px', height: '65vh', alignSelf:'center'}} variant='quilted' cols={3} rowHeight={164} >
                 {itemData.map((item, index) => (
                   <ImageListItem key={item.img}>
                     <img src={item.img} onClick={() => setChildSB(index)} />
@@ -1067,7 +1070,8 @@ const Homebrew: React.FunctionComponent = () => {
             The Trade District, which is basically the port of the city and coincidentally where most of the legitimate business of Enellava takes place. And finally the
             Underbelly, which is the most crime-infested area.
           </Typography>
-          <Image src={Underbelly}           style={{
+          <Image src={Underbelly}           
+          style={{
             maxWidth: '98vw',
             maxHeight: '70vh',
             borderRadius: 4,
@@ -1216,17 +1220,20 @@ const Homebrew: React.FunctionComponent = () => {
           </div>
           <div
             style={{
-              position: 'absolute',
-              top: '45%',
-              left: '72%',
-              width: '25%',
-              maxHeight: '50%',
-              padding: '1%',
-              borderRadius: 4,
+              top:enlarged ? '0%' : '50%',
+              left:enlarged ? '0%' : '71%',
+              width: enlarged ? '100%' : '27%',
+              height:enlarged ? '100%' : '30%',
               backgroundColor: Colors.vsAlmostBlack,
-              overflow: 'auto',
             }}
+            className='map-description-container'
           >
+                <IconButton
+                  className='map-enlarge-button'
+                  onClick={() => setEnlarged(!enlarged)}
+                >
+                  <OpenInFullIcon style={{ color: Colors.dndRed }} />
+                </IconButton>
             <Typography style={{ color: mapData[mapIndex].color, fontWeight: 'bold' }}>
               {mapData[mapIndex].title}
             </Typography>
@@ -1324,7 +1331,7 @@ const Homebrew: React.FunctionComponent = () => {
             </Typography>
             <img
               src={timelineItems[selectedTime].image}
-              style={{ width: '100%', height: '40vh', borderRadius:'2px' }}
+              style={{ width: '100%',  borderRadius:'2px' }}
             />
                     <Button
           variant='contained'

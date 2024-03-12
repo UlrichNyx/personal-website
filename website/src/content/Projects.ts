@@ -7,6 +7,7 @@ import HarvardX from '../assets/harvardx/harvardx.jpeg';
 import ACT from '../assets/act/act.jpeg';
 import FLL from '../assets/fll/fll.png';
 import Sylems from '../assets/sylems/sylems-logo.png';
+import AmIChallengerYet from '../assets/emblem-challenger.png';
 import { tags } from './Tags';
 import { TagType } from '../comps/Tag';
 
@@ -80,6 +81,15 @@ export const projects: ProjectProps[] = [
     color: Colors.blurple,
     backgroundColor: Colors.white,
     tags: [tags[2]],
+  },
+  {
+    title: 'Am I Challenger Yet',
+    subtitle: 'Riot API Integration',
+    date: '2024',
+    image: AmIChallengerYet,
+    color: Colors.idleYellow,
+    tags: [tags[1], tags[2]],
+    backgroundColor: Colors.vsBlack,
   },
 
   {
