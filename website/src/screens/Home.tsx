@@ -34,7 +34,7 @@ import LootSecret from '../comps/LootSecret';
 import ProgressBar from '../comps/ProgressBar';
 
 const Home: React.FunctionComponent = () => {
-  const projectDisplay = [projects[0], projects[1], projects[2]];
+  const projectDisplay = [projects[1], projects[2], projects[3]];
 
   const navigate = useNavigate();
 
