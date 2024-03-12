@@ -23,6 +23,25 @@ export interface ProjectProps {
 
 export const projects: ProjectProps[] = [
   {
+  title: 'Am I Challenger Yet',
+  subtitle: 'Riot API Integration',
+  date: '2024',
+  image: AmIChallengerYet,
+  color: Colors.idleYellow,
+  tags: [tags[1], tags[2]],
+  backgroundColor: Colors.vsBlack,
+},
+  {
+    title: 'Learning Arcade',
+    subtitle: 'Gamified learning',
+    date: '2022-2023',
+    image: Space,
+    backgroundColor: Colors.vsAlmostBlack,
+    color: Colors.onlineGreen,
+    tags: [tags[0], tags[1]],
+  },
+
+  {
     title: 'University of Southampton',
     subtitle: 'MEng in Computer Science',
     date: '2018-2022',
@@ -39,15 +58,7 @@ export const projects: ProjectProps[] = [
     color: Colors.boostPink,
     tags: [tags[1]],
   },
-  {
-    title: 'Learning Arcade',
-    subtitle: 'Gamified learning',
-    date: '2022-2023',
-    image: Space,
-    backgroundColor: Colors.vsAlmostBlack,
-    color: Colors.onlineGreen,
-    tags: [tags[0], tags[1]],
-  },
+
   {
     title: 'IB Diploma',
     subtitle: 'Secondary Education',
@@ -82,15 +93,7 @@ export const projects: ProjectProps[] = [
     backgroundColor: Colors.white,
     tags: [tags[2]],
   },
-  {
-    title: 'Am I Challenger Yet',
-    subtitle: 'Riot API Integration',
-    date: '2024',
-    image: AmIChallengerYet,
-    color: Colors.idleYellow,
-    tags: [tags[1], tags[2]],
-    backgroundColor: Colors.vsBlack,
-  },
+
 
   {
     title: 'Sylems',
