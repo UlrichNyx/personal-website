@@ -34,7 +34,7 @@ import LootSecret from '../comps/LootSecret';
 import ProgressBar from '../comps/ProgressBar';
 
 const Home: React.FunctionComponent = () => {
-  const projectDisplay = [projects[1], projects[4], projects[5]];
+  const projectDisplay = [projects[0], projects[1], projects[2]];
 
   const navigate = useNavigate();
 
@@ -312,17 +312,17 @@ const Home: React.FunctionComponent = () => {
         <Grow in={show[2]} timeout={500}>
           <div ref={(el) => (trackedElements.current[2] = el)}>
             <ContentPreview
-              title={projects[2].title}
+              title={projects[0].title}
               target='portfolio'
-              subtitle={projects[2].subtitle}
-              image={projects[2].image}
-              color={projects[2].color}
+              subtitle={projects[0].subtitle}
+              image={projects[0].image}
+              color={projects[0].color}
               onClick={(path: string) => navigate(path)}
             />
           </div>
         </Grow>
         <div ref={(el) => (trackedElements.current[6] = el)}>
-          <ProgressBar progress={70} show={show[6]} color={projects[2].color} />
+          <ProgressBar progress={100} show={show[6]} color={projects[0].color} />
         </div>
         <Typography>Other recent projects: </Typography>
         <div
@@ -330,7 +330,8 @@ const Home: React.FunctionComponent = () => {
             display: 'flex',
             flexDirection: 'row',
             gap: '3vw',
-            maxWidth: '97vw',
+            maxWidth:'98vw',
+            padding:10,
             textAlign: 'center',
             paddingBottom: 20,
             borderRadius: 10,

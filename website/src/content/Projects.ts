@@ -40,6 +40,15 @@ export const projects: ProjectProps[] = [
     color: Colors.onlineGreen,
     tags: [tags[0], tags[1]],
   },
+  
+  {
+    title: 'Reset',
+    subtitle: 'Fitness & Wellbeing',
+    date: '2021-2023',
+    image: Reset,
+    color: Colors.boostPink,
+    tags: [tags[1]],
+  },
 
   {
     title: 'University of Southampton',
@@ -50,14 +59,6 @@ export const projects: ProjectProps[] = [
     tags: [tags[0], tags[1], tags[2]],
   },
 
-  {
-    title: 'Reset',
-    subtitle: 'Fitness & Wellbeing',
-    date: '2021-2023',
-    image: Reset,
-    color: Colors.boostPink,
-    tags: [tags[1]],
-  },
 
   {
     title: 'IB Diploma',
