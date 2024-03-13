@@ -264,7 +264,7 @@ const Home: React.FunctionComponent = () => {
           <strong style={{ color: Colors.onlineGreen }}>Github</strong> repositories.
         </Typography>
         <div ref={(el) => (trackedElements.current[1] = el)}>
-          <LogoSlider logos={logos} show={show[1]} />
+          <LogoSlider show={show[1]} />
         </div>
 
         <Button

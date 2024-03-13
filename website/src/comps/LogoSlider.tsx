@@ -7,14 +7,66 @@ import Alert from '@mui/material/Alert';
 import Collapse from '@mui/material/Collapse';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Grow from '@mui/material/Grow';
+import {images} from '../assets/home/logos/logos';
 export interface LogoSliderType {
-  logos: string[];
+  logos?: string[];
   show?: boolean;
 }
+const names = [
+  'React.js',
+  'Node.js',
+  'MongoDB',
+  'Docker',
+  'TypeScript',
+  'NodeMailer',
+  'Express.js',
+  'Stripe',
+  'JavaScript',
+  'HTML',
+  'CSS',
+  'C#',
+  'Unity',
+  'Love2D',
+  'Java',
+  'Python',
+  'Arduino',
+  'Raspberry Pi',
+  'C',
+  'C++',
+  'Haskell',
+  'SFML',
+  'Github',
+  'RabbitMQ',
+  'AWS',
+  'SQL',
+  'GNU Octave',
+  'Matlab',
+  'Assembly',
+  'Scikit Learn',
+  'Anaconda',
+  'TensorFlow',
+  'GWT',
+  'Jupyter',
+  'Overleaf',
+  'Lua',
+  'Vercel',
+  'Heroku',
+  'ESLint',
+  'Prettier',
+  'Material UI',
+  'R',
+  'Figma',
+  'ChakraUI',
+  'Google Analytics',
+  'Ko-fi',
+  'Riot Games API'
+];
 
 const LogoSlider: React.FunctionComponent<LogoSliderType> = (props) => {
   const [show, setShow] = React.useState(false);
   const showLogos = props.show ?? true;
+
+ 
 
   const copyFrameworks = (color: string): void => {
     navigator.clipboard
@@ -28,7 +80,9 @@ const LogoSlider: React.FunctionComponent<LogoSliderType> = (props) => {
       })
       .catch((err) => console.error(err));
   };
-  const { logos } = props;
+  const logos = props.logos ?? names;
+
+  console.log(logos);
 
   interface FKeyType {
     [name: string]: FPropsType;
@@ -37,6 +91,7 @@ const LogoSlider: React.FunctionComponent<LogoSliderType> = (props) => {
   interface FPropsType {
     category: 'Framework' | 'Language' | 'Tool';
   }
+  
 
   const frameworks = {
     'React.js': { category: 'Framework' },
@@ -84,57 +139,13 @@ const LogoSlider: React.FunctionComponent<LogoSliderType> = (props) => {
     Figma: { category: 'Tool' },
   };
 
-  const names = [
-    'React.js',
-    'Node.js',
-    'MongoDB',
-    'Docker',
-    'TypeScript',
-    'NodeMailer',
-    'Express.js',
-    'Stripe',
-    'JavaScript',
-    'HTML',
-    'CSS',
-    'C#',
-    'Unity',
-    'Love2D',
-    'Java',
-    'Python',
-    'Arduino',
-    'Raspberry Pi',
-    'C',
-    'C++',
-    'Haskell',
-    'SFML',
-    'Github',
-    'RabbitMQ',
-    'AWS',
-    'SQL',
-    'GNU Octave',
-    'Matlab',
-    'Assembly',
-    'Scikit Learn',
-    'Anaconda',
-    'TensorFlow',
-    'GWT',
-    'Jupyter',
-    'Overleaf',
-    'Lua',
-    'Vercel',
-    'Heroku',
-    'ESLint',
-    'Prettier',
-    'Material UI',
-    'R',
-    'Figma',
-  ];
+
   return (
     <div>
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
         <div style={{ height: '5vh', margin: '5vh' }}>
           <Button
-            onClick={() => copyFrameworks(names.toString())}
+            onClick={() => copyFrameworks(logos.toString())}
             startIcon={<ContentCopyIcon />}
             variant='outlined'
           >
@@ -169,9 +180,9 @@ const LogoSlider: React.FunctionComponent<LogoSliderType> = (props) => {
               }}
             >
               <div style={{ height: '95%' }}>
-                <Image src={logo} style={{ width: '100%' }} />
+                <Image src={images[names.indexOf(logo)]} style={{ width: '100%' }} />
               </div>
-              <Typography style={{ color: 'black' }}>{names[index]}</Typography>
+              <Typography style={{ color: 'black' }}>{names[names.indexOf(logo)]}</Typography>
             </div>
           </Grow>
         ))}

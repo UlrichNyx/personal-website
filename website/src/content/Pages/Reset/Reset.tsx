@@ -79,7 +79,7 @@ const content = {
           emails, completing payments through Stripe and so much more.
         </Typography>
       </div>
-      <LogoSlider logos={logos} />
+      <LogoSlider logos={['React.js', 'Node.js', 'MongoDB', 'Docker', 'TypeScript', 'NodeMailer']} />
       <TriforceDivider upward color={Colors.blurple} />
     </div>
   ),

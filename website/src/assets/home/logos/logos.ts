@@ -45,6 +45,10 @@ import PrettierLogo from './prettier.png';
 import MaterialLogo from './material.png';
 import RLogo from './r.png';
 import FigmaLogo from './figma.png';
+import ChakraUILogo from './chakra.png';
+import GoogleAnalyticsLogo from './googleanalytics.png';
+import KofiLogo from './kofi.png';
+import RiotGamesLogo from './riotgames.png';
 
 export const logos = [
   ReactLogo,
@@ -90,4 +94,10 @@ export const logos = [
   MaterialLogo,
   RLogo,
   FigmaLogo,
+  ChakraUILogo,
+  GoogleAnalyticsLogo,
+  KofiLogo,
+  RiotGamesLogo
 ];
+
+export const images = logos;
