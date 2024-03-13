@@ -330,12 +330,12 @@ const Home: React.FunctionComponent = () => {
             display: 'flex',
             flexDirection: 'row',
             gap: '3vw',
-            maxWidth:'98vw',
             padding:10,
+            maxWidth:'98vw',
             textAlign: 'center',
             paddingBottom: 20,
             borderRadius: 10,
-            overflowX: 'auto',
+            overflowX: 'auto'
           }}
         >
           {projectDisplay.map((prj, index) => (

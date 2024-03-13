@@ -8,6 +8,7 @@ import ACT from '../assets/act/act.jpeg';
 import FLL from '../assets/fll/fll.png';
 import Sylems from '../assets/sylems/sylems-logo.png';
 import AmIChallengerYet from '../assets/emblem-challenger.png';
+import Kaedim from '../assets/kaedim/kaedim.jpg';
 import { tags } from './Tags';
 import { TagType } from '../comps/Tag';
 
@@ -31,6 +32,14 @@ export const projects: ProjectProps[] = [
   tags: [tags[1], tags[2]],
   backgroundColor: Colors.vsBlack,
 },
+{
+  title: 'Kaedim',
+  subtitle: '3D Model Generation',
+  date: '2023',
+  image: Kaedim,
+  color: Colors.brillianceCoral,
+  tags: [tags[1]],
+},
   {
     title: 'Learning Arcade',
     subtitle: 'Gamified learning',
@@ -49,6 +58,7 @@ export const projects: ProjectProps[] = [
     color: Colors.boostPink,
     tags: [tags[1]],
   },
+
 
   {
     title: 'University of Southampton',

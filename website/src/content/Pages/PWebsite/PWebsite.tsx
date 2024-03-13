@@ -37,9 +37,7 @@ const content = {
             alignSelf: 'center',
           }}
         >
-          <Typography variant='h4' style={{ color: Colors.hyperlinkBlue }}>
-            1. Setting up the stack
-          </Typography>
+
           <TriforceDivider color={Colors.hyperlinkBlue} />
           <Typography>
             This application was created using{' '}

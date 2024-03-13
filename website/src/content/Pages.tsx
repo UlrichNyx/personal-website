@@ -8,6 +8,7 @@ import FLL from './Pages/FLL/FLL';
 import PWebsite from './Pages/PWebsite/PWebsite';
 import Sylems from './Pages/Sylems/Sylems';
 import UC from './Pages/UC/UC';
+import Kaedim from './Pages/Kaedim/Kaedim';
 import Recollections from './Pages/Recollections/Recollections';
 
 export const pages = {
@@ -21,5 +22,6 @@ export const pages = {
   'Am I Challenger Yet': UC,
   Sylems,
   'Personal Website': PWebsite,
+  Kaedim: Kaedim
   // 'Recollections of a Drowned Mind': Recollections,
 };
