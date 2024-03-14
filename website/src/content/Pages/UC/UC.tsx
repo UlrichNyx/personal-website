@@ -35,7 +35,7 @@ const content = {
                   {...archives[0]}
                   target='archives'
                   archive
-                  onClick={() => window.open('https://fkont.com/')}
+                  onClick={() => window.open('https://www.fkont.com/archives/Personal-Website')}
                 />
       <LogoSlider logos={['ChakraUI', 'Google Analytics', 'Riot Games API', 'Ko-fi']}/>
       
