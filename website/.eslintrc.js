@@ -25,6 +25,8 @@ module.exports = {
     'no-duplicate-imports': 'error',
     semi: ['error', 'always'],
     'no-template-curly-in-string': 'off',
+    'typescript-eslint/strict-boolean-expressions': 'off',
+    'typescript-eslint/explicit-function-return-type': 'off',
   },
   settings: {
     'import/resolver': {
