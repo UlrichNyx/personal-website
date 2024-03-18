@@ -7,6 +7,8 @@ import LogoSlider from '../../../comps/LogoSlider';
 import { logos } from '../../../assets/home/logos/logos';
 import ContentPreview from '../../../comps/ContentPreview';
 import { archives } from '../../../content/Archives';
+import Screenshot from '../../../assets/amichallenger.png';
+import Nyan from '../../../assets/home/nyan.gif';
 
 const content = {
   description:
@@ -22,7 +24,8 @@ const content = {
         flexDirection:'column',
         gap:'3vh',
         justifyContent: 'center',
-        alignItems:'center'
+        alignItems:'center',
+        maxWidth:'98vw'
       }}
     >
       <Typography variant='h4' style={{ color: Colors.idleYellow, paddingTop:'5vh' }}>
@@ -93,7 +96,7 @@ const content = {
             >
               <Typography>Ko-fi</Typography>
             </div>
-            <Typography style={{textDecoration:'none', color:'white', marginLeft:5}}>{' '}- Which would allow me to earn donations to keep the service running. </Typography>
+            <Typography style={{textDecoration:'none', color:'white', marginLeft:5}}>{' '}- Which allowed me to keep the service running. </Typography>
       
         </div>
         <div style={{marginTop:'5vh'}}/>
@@ -118,9 +121,55 @@ const content = {
         <Typography variant='h4' style={{ color: Colors.idleYellow, paddingTop:'5vh' }}>
           The Calculations
       </Typography>
-      <Typography>...</Typography>
+      <Typography>In terms of the backend, there are 2 primary data that are being fetched corresponding to 4 API calls from the RIOT API.
+      </Typography>
+      <Typography>The first API call is a <span style={{color: Colors.onlineGreen, fontWeight:'bold'}}>GET</span> request is for getting the corresponding LP Target for each server (the respective cutoff for Challenger)</Typography>
+      <Code>{'https://${server}.api.riotgames.com/lol/league-exp/v4/entries/RANKED_SOLO_5x5/CHALLENGER/I?page=1&api_key=${api_key}'}</Code>
+      <Typography>Here you can see the variables that we need to specify in order for the Riot API to correctly fetch our data.</Typography>
+      <Typography>The server variable refers to the chosen server that the player is in, EUNE, EUW, NA etc.</Typography>
+      <Typography>The api_key variable refers to the unique API key which is distributed by Riot for individual projects which you can get from the developer portal.</Typography>
+      <Typography>The LP Target is extracted essentially by getting the lowest player in Challenger of that server and displaying their current LP.</Typography>
+      
+      <Typography>As for the comparison of the player with that LP Target, it is broken down into multiple steps:</Typography>
+      <Typography>First we must fetch the puuid corresponding to the summoner name provided by the user:</Typography>
+      <Code>{'https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${gameName}/${tagLine}?api_key=${api_key}'}</Code>
+      <Typography>Here, gameName corresponds to their summoner name while tagLine refers to their unique tag next to their name. For example, my own complete summoner name is: Suicunê #EUNE</Typography>
+      <Typography>Note that the #EUNE has nothing to do with the servers, it is a tagLine that is chosen by the player at the moment of creation of their name.</Typography>
+      <Typography>Another thing to note here is that this API call as well as the rest of them use the european servers of RIOT by default. This is a deliberate choice because my server is currently hosted at a european EC2 instance.</Typography>
+      <Code>{'https://${server}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${puuid}?api_key=${api_key}'}</Code>
+      <Typography>After we fetch the puuid of the associated Riot account, we will now need to fetch the corresponding League of Legends account.</Typography>
+      <Code>{'https://${server}.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}?api_key=${api_key}'}</Code>
+      <Typography>Finally, now that we have the summoner name, we can fetch the player&#39;s ranked data, including their current LP, tier and division.</Typography>
+
+      <Typography>From here on out, the calculation is fairly simple. I have translated each division to the equivalent of 400 LP (as it takes 100 LP to move up by one division).</Typography>
+      <Typography>In other words, in order for a player to reach Master tier starting from the lowest tier (Iron IV), they would need to accumulate is: </Typography>
+        <Typography style={{fontWeight:'bold'}}> 4 (the number of divisions per tier) * 100 (the lp needed to climb up a division) * 7 (the total number of tiers) = 2800 LP.</Typography>
+      <Typography>Therefore, the TOTAL LP that a player would need to reach challenger is 2800 LP + The LP Target. </Typography>
+      <Typography>The percentage displayed on the screen is simply the percentage difference of the summoner&#39;s current LP against the LP Target.</Typography>
+      <img src={Screenshot} style={{maxWidth:'90vw', borderRadius:4}}/>
+      <Typography>That is really all there is to the application! Nice and simple and effective.</Typography>
+      <Typography>Here I would like to mention how easy it was to integrate Google Analytics into the website (it is literally a simple copy paste of an HTML element)!</Typography>
+      <Typography>Google never ceases to impress I guess :))</Typography>
+      <Typography variant='h4' style={{ color: Colors.idleYellow, paddingTop:'5vh' }}>
+           Final Words
+      </Typography>
+      <Typography>There of course is a lot that can be improved on the web-app as well as the DevOps side.</Typography> 
+      <Typography>After deploying the service on an EC2 instance I realised that this could very easily have fit in a serverless way using <span style={{cursor:'pointer', fontWeight:'bold', color: Colors.idleYellow, textDecoration:'underline'}} onClick={() => window.open('https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/begin')}>AWS Lambda</span> so that is something to look forward to!</Typography>
+      <Typography>There are also a bunch of other improvements I can think of. Namely:</Typography>
+      <Typography>The user could log in using their Riot account and have their results cached automatically.</Typography>
+      <Typography>The search bar could display numerous results to aid in inputting your summoner name faster.</Typography>
+      <Typography>More assets could be fetched from Riot such as summoner icon, a level display etc.</Typography>
+      <Typography>More statistics could be displayed like forecasts of how many games would be needed at the current win rate etc.</Typography>
+      <Typography>The website could also very easily be transferred to react native in order to create mobile apps.</Typography>
+      <Typography>There are a few more things I wanna say.</Typography>
+      <Typography>Firstly, I want to commend Riot&#39;s developer support for being diligent and responsive while they were getting my product authorized.</Typography>
+      <Typography>Secondly, I wanna mention the inspiration that I drew from other services that use RIOT API. Services such as <span style={{cursor:'pointer', fontWeight:'bold', color: Colors.idleYellow, textDecoration:'underline'}} onClick={() => window.open('https://www.op.gg/')}>op.gg</span>, <span style={{cursor:'pointer', fontWeight:'bold', color: Colors.idleYellow, textDecoration:'underline'}} onClick={() => window.open('https://u.gg/')}>u.gg</span>, <span style={{cursor:'pointer', fontWeight:'bold', color: Colors.idleYellow, textDecoration:'underline'}} onClick={() => window.open('https://porofessor.gg/')}>Porofessor</span> and more!</Typography>
+      <Typography>Here is where I am currently standing as a League player (brought to you by op.gg) </Typography>
+      <iframe style={{borderRadius:4, borderColor:Colors.idleYellow, alignSelf:'center'}} src="https://www.op.gg/summoners/eune/Suicun%C3%AA-EUNE" width="90%" height="585" scrolling="no"></iframe>
+      <Typography>Do check on this page for more updates in the future. Especially for something very special which I will add here below.</Typography>
+      <img src={Nyan} style={{borderRadius:4}}/>
+      <Typography>What could it possibly be? :3</Typography>
         <div style={{marginTop:'5vh'}}/>
-        <Typography>Hey! This post is still under construction. In order to check out the product please click below :3  </Typography>
       <Button
           variant='contained'
           style={{

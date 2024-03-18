@@ -322,7 +322,7 @@ const Home: React.FunctionComponent = () => {
           </div>
         </Grow>
         <div ref={(el) => (trackedElements.current[6] = el)}>
-          <ProgressBar progress={100} show={show[6]} color={projects[0].color} />
+          <ProgressBar progress={10} show={show[6]} color={projects[0].color} />
         </div>
         <Typography>Other recent projects: </Typography>
         <div

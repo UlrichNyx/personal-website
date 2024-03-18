@@ -20,7 +20,7 @@ export const pages = {
   ACT,
   FLL,
   'Am I Challenger Yet': UC,
-  Sylems,
+  'Vereselyum': Sylems,
   'Personal Website': PWebsite,
   Kaedim: Kaedim
   // 'Recollections of a Drowned Mind': Recollections,

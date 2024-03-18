@@ -1,36 +1,34 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
   extends: [
     'plugin:react/recommended',
     'standard-with-typescript',
     'eslint:recommended',
-	  'plugin:@typescript-eslint/recommended',
-	  'prettier' 
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
   ],
-  overrides: [
-  ],
+  overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project:['tsconfig.json']
+    project: ['tsconfig.json'],
   },
-  plugins: [
-    'react', 'react-hooks', '@typescript-eslint', 'prettier'
-  ],
+  plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
   rules: {
     'react/react-in-jsx-scope': 'off',
-        'camelcase': 'error',
-        'spaced-comment': 'error',
-        'quotes': ['error', 'single'],
-        'no-duplicate-imports': 'error',
-        'semi': ['error', 'always'],
+    camelcase: 'error',
+    'spaced-comment': 'error',
+    quotes: ['error', 'single'],
+    'no-duplicate-imports': 'error',
+    semi: ['error', 'always'],
+    'no-template-curly-in-string': 'off',
   },
   settings: {
     'import/resolver': {
-      'typescript': {}
-    }
-  }
-}
+      typescript: {},
+    },
+  },
+};
