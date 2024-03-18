@@ -20,7 +20,7 @@ const ThreeDModel: React.FC<ThreeDModelDisplayProps> = ({ modelPath,
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(width, height);
+    renderer.setSize(width < 700 ? window.innerWidth * 0.9 : width, height);
     mountRef.current.appendChild(renderer.domElement);
 
     const loader = new GLTFLoader();
@@ -38,7 +38,7 @@ const ThreeDModel: React.FC<ThreeDModelDisplayProps> = ({ modelPath,
 
     camera.position.y = 200;
     camera.position.x = 300;
-    camera.position.z = 300;
+    camera.position.z = 400;
     camera.fov = 60;
     camera.updateProjectionMatrix();
     scene.position.set(0, -100, 0); 
@@ -62,7 +62,7 @@ const ThreeDModel: React.FC<ThreeDModelDisplayProps> = ({ modelPath,
     };
   }, [modelPath]);
 
-  return <div ref={mountRef} style={{borderRadius:'20px'}} />;
+  return <div ref={mountRef} style={{borderRadius:'20px', alignSelf:'center'}} />;
 };
 
 export default ThreeDModel;
