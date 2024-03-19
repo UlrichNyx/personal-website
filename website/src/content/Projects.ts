@@ -12,6 +12,7 @@ import AmIChallengerYet from '../assets/emblem-challenger.png';
 import Kaedim from '../assets/kaedim/kaedim.jpg';
 import { tags } from './Tags';
 import { TagType } from '../comps/Tag';
+import Crystal from '../assets/crystalai/logo.jpeg';
 
 export interface ProjectProps {
   title: string;
@@ -24,6 +25,15 @@ export interface ProjectProps {
 }
 
 export const projects: ProjectProps[] = [
+  {
+    title: 'CrystalAI',
+    subtitle: 'AI beats Pokémon!',
+    date: '2024',
+    image: Crystal,
+    color: Colors.braveryPurple,
+    tags: [tags[0], tags[1], tags[2]],
+    backgroundColor: Colors.vsAlmostBlack,
+  },
   {
     title: 'Vereselyum',
     subtitle: 'Unity Game Dev',

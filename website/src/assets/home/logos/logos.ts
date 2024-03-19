@@ -50,6 +50,18 @@ import GoogleAnalyticsLogo from './googleanalytics.png';
 import KofiLogo from './kofi.png';
 import RiotGamesLogo from './riotgames.png';
 
+import BlenderLogo from './blender.png';
+import DiscordLogo from './discord.jpg';
+import TailwindLogo from './tailwind.png';
+import ThreeJSLogo from './three.png';
+import OpenAILogo from './openai.png';
+import MySQLLogo from './mysql.png';
+import KaedimLogo from '../../kaedim/kaedim.jpg';
+import CypressLogo from './cypress.jpeg';
+import JestLogo from './jest.png';
+import CloudFlareLogo from './cloudflare.png';
+import ElectronJSLogo from './electron.png';
+
 export const logos = [
   ReactLogo,
   NodeLogo,
@@ -97,7 +109,18 @@ export const logos = [
   ChakraUILogo,
   GoogleAnalyticsLogo,
   KofiLogo,
-  RiotGamesLogo
+  RiotGamesLogo,
+  BlenderLogo,
+  DiscordLogo,
+  TailwindLogo,
+  ThreeJSLogo,
+  OpenAILogo,
+  MySQLLogo,
+  KaedimLogo,
+  CypressLogo,
+  JestLogo,
+  CloudFlareLogo,
+  ElectronJSLogo
 ];
 
 export const images = logos;

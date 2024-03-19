@@ -7,9 +7,12 @@ import LogoSlider from '../../../comps/LogoSlider';
 import { logos } from '../../../assets/home/logos/logos';
 import ThreeDModel from '../../../comps/3DModel';
 import SuicuneModel from '../../../assets/suicune.glb';
+import TextLink from '../../../comps/TextLink';
 
 const content = {
-  description:'',
+  description:`In the latter half of 2023 I was employed as a full-stack developer at a groundbreaking startup based in London which focuses on full 3D model AI generation. 
+  During this time, I had the opportunity to collaborate with excellent software and machine learning engineers and have learned a lot in the process. In this section I would like to bniefly showcase Kaedim's product,
+  as well as to go through some of the skills or new frameworks I picked up while working there.`,
   html: (
     <div
       style={{
@@ -17,11 +20,35 @@ const content = {
         flexDirection:'column',
         gap:'2vh',
         justifyContent: 'center',
+        maxWidth:'90vw'
       }}
     >
+            <Typography variant='h4' style={{ color: Colors.brillianceCoral, paddingTop:'5vh' }}>
+           The New Stack
+      </Typography>
+      <Typography>These are the new frameworks that I learnt while working at Kaedim.</Typography>
+      <LogoSlider logos={['Blender',
+  'Discord',
+  'Tailwind CSS',
+  'ThreeJS',
+  'OpenAI',
+  'MySQL',
+  'Kaedim API',
+  'Cypress',
+  'Jest', 'CloudFlare', 'ElectronJS']}/>
+
+  <Typography> My work revolved around many fields so I will not go into too much detail however I will make a few clarifications.</Typography>
+    <Typography> Regarding <TextLink color={Colors.onlineGreen} url="https://openai.com/blog/openai-api">OpenAI</TextLink>, I am referring to both ChatGPT and Dall-E integrations.</Typography>
+      <Typography>In terms of <TextLink color={Colors.brillianceCoral} url="https://www.kaedim3d.com/integrate">Kaedim API</TextLink> , I was often responsible for helping customers integrate the Kaedim pipeline into their solutions.</Typography>
+      <Typography>Finally in terms of Discord, I am referring to the <TextLink color={Colors.braveryPurple} url="https://discord.js.org/">Discord.js</TextLink> framework in particular.</Typography>
       <Typography>Below is a display of a 3D model of Suicune (from models-resource.com) using ThreeJS! </Typography>
         <ThreeDModel modelPath={SuicuneModel}/>
-      <Typography>Hey! This post is still under construction. In order to check out Kaedim please click below :3  </Typography>
+        <Typography variant='h4' style={{ color: Colors.brillianceCoral, paddingTop:'5vh' }}>
+           What is Kaedim?
+      </Typography>
+      <Typography>Here is the most recent demo!</Typography>
+      <iframe style={{alignSelf:'center', width:'90vw', minHeight:'100vh'}} src="https://www.youtube.com/embed/eOc_aFxux4w?si=ewNKms8d5zfSQt5i" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen={true}></iframe>
+      <Typography>Hey! This post is still not 100% done. I am planning on updating it a bit once I have rigged the 3D model displayed above so stay tuned! :))  </Typography>
       <Button
           variant='contained'
           style={{

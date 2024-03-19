@@ -9,6 +9,7 @@ import PWebsite from './Pages/PWebsite/PWebsite';
 import Sylems from './Pages/Sylems/Sylems';
 import UC from './Pages/UC/UC';
 import Kaedim from './Pages/Kaedim/Kaedim';
+import CrystalAI from './Pages/CrystalAI/CrystalAI';
 import Recollections from './Pages/Recollections/Recollections';
 
 export const pages = {
@@ -22,6 +23,8 @@ export const pages = {
   'Am I Challenger Yet': UC,
   'Vereselyum': Sylems,
   'Personal Website': PWebsite,
-  Kaedim: Kaedim
+  Kaedim: Kaedim,
+  CrystalAI
+
   // 'Recollections of a Drowned Mind': Recollections,
 };

@@ -59,7 +59,18 @@ const names = [
   'ChakraUI',
   'Google Analytics',
   'Ko-fi',
-  'Riot Games API'
+  'Riot Games API',
+  'Blender',
+  'Discord',
+  'Tailwind CSS',
+  'ThreeJS',
+  'OpenAI',
+  'MySQL',
+  'Kaedim API',
+  'Cypress',
+  'Jest',
+  'CloudFlare',
+  'ElectronJS'
 ];
 
 const LogoSlider: React.FunctionComponent<LogoSliderType> = (props) => {

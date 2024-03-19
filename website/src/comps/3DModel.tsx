@@ -18,7 +18,7 @@ const ThreeDModel: React.FC<ThreeDModelDisplayProps> = ({ modelPath,
     if (mountRef === null || mountRef.current === null) return;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, (width < 700 ? window.innerWidth * 0.9 : width)/ height, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(width < 700 ? window.innerWidth * 0.9 : width, height);
     mountRef.current.appendChild(renderer.domElement);
@@ -36,6 +36,7 @@ const ThreeDModel: React.FC<ThreeDModelDisplayProps> = ({ modelPath,
     scene.add(ambientLight);
     scene.background = new THREE.Color(0x333333);
 
+    camera.far = 10000;
     camera.position.y = 200;
     camera.position.x = 300;
     camera.position.z = 400;
