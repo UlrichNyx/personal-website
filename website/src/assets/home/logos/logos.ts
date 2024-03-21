@@ -62,6 +62,10 @@ import JestLogo from './jest.png';
 import CloudFlareLogo from './cloudflare.png';
 import ElectronJSLogo from './electron.png';
 
+
+import PyboyLogo from './pyboy.png';
+import PyTorchLogo from './pytorch.png';
+
 export const logos = [
   ReactLogo,
   NodeLogo,
@@ -120,7 +124,9 @@ export const logos = [
   CypressLogo,
   JestLogo,
   CloudFlareLogo,
-  ElectronJSLogo
+  ElectronJSLogo,
+  PyboyLogo,
+  PyTorchLogo
 ];
 
 export const images = logos;

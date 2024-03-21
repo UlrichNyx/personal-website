@@ -19,6 +19,7 @@ const vsGray = '#3e3e42';
 const vsDarkGray = '#2d2d30';
 const vsAlmostBlack = '#252526';
 const vsBlack = '#1e1e1e';
+const draculaBlack = '#282a36';
 
 export default {
   white,
@@ -41,4 +42,5 @@ export default {
   vsDarkGray,
   vsAlmostBlack,
   vsBlack,
+  draculaBlack
 };

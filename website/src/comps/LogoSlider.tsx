@@ -70,7 +70,9 @@ const names = [
   'Cypress',
   'Jest',
   'CloudFlare',
-  'ElectronJS'
+  'ElectronJS',
+  'PyBoy',
+  'PyTorch'
 ];
 
 const LogoSlider: React.FunctionComponent<LogoSliderType> = (props) => {
