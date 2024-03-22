@@ -27,6 +27,7 @@ module.exports = {
     'no-template-curly-in-string': 'off',
     'typescript-eslint/strict-boolean-expressions': 'off',
     'typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/restrict-template-expressions': 'off',
   },
   settings: {
     'import/resolver': {

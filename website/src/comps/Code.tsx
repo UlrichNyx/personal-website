@@ -4,6 +4,7 @@ import { Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import ContentCopy from '@mui/icons-material/ContentCopy';
 import CopyButton from '../comps/CopyButton';
+import SyntaxHighlighter from './SyntaxHighlighter';
 
 interface CodeType {
   children: React.ReactNode;
@@ -12,7 +13,7 @@ interface CodeType {
 
 const Code: React.FunctionComponent<CodeType> = (props) => {
   const {children, language } = props;
-  
+  const codeText = typeof(children) === 'string' ? children : children?.toString();
 
   return (
     <div style={{ position:'relative' }}>
@@ -31,9 +32,9 @@ const Code: React.FunctionComponent<CodeType> = (props) => {
           <Typography>{language}</Typography>
           
         <pre style={{ whiteSpace: 'pre-wrap' }}>
-          <code>
-            {children}
-          </code>
+          <SyntaxHighlighter language={language}>
+            {codeText}
+            </SyntaxHighlighter>
         </pre>
 
         </pre>
@@ -42,6 +43,6 @@ const Code: React.FunctionComponent<CodeType> = (props) => {
   );
 };
 
-// <CopyButton content={children} style={{position:'absolute', top:'0%', right:'0'}}/>
+// <CopyButton content={codeText} style={{position:'absolute', top:'0%', right:'0'}}/>
 
 export default Code;
