@@ -12,12 +12,11 @@ interface CodeType {
 }
 
 const Code: React.FunctionComponent<CodeType> = (props) => {
-  const {children, language } = props;
-  const codeText = typeof(children) === 'string' ? children : children?.toString();
+  const { children, language } = props;
+  const codeText = typeof children === 'string' ? children : children?.toString();
 
   return (
-    <div style={{ position:'relative' }}>
-      
+    <div style={{ position: 'relative' }}>
       <code>
         <pre
           style={{
@@ -26,17 +25,14 @@ const Code: React.FunctionComponent<CodeType> = (props) => {
             borderRadius: 4,
             maxWidth: '80vw',
             overflow: 'auto',
-            textAlign:'justify'
+            textAlign: 'justify',
           }}
         >
           <Typography>{language}</Typography>
-          
-        <pre style={{ whiteSpace: 'pre-wrap' }}>
-          <SyntaxHighlighter language={language}>
-            {codeText}
-            </SyntaxHighlighter>
-        </pre>
 
+          <pre style={{ whiteSpace: 'pre-wrap' }}>
+            <SyntaxHighlighter language={language}>{codeText}</SyntaxHighlighter>
+          </pre>
         </pre>
       </code>
     </div>
