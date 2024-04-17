@@ -10,7 +10,7 @@ import Sylems from './Pages/Sylems/Sylems';
 import UC from './Pages/UC/UC';
 import Kaedim from './Pages/Kaedim/Kaedim';
 import CrystalAI from './Pages/CrystalAI/CrystalAI';
-import Recollections from './Pages/Recollections/Recollections';
+import PixelArt from './Pages/PixelArt/PixelArt';
 
 export const pages = {
   'University of Southampton': University,
@@ -21,10 +21,11 @@ export const pages = {
   ACT,
   FLL,
   'Am I Challenger Yet': UC,
-  'Vereselyum': Sylems,
+  Vereselyum: Sylems,
   'Personal Website': PWebsite,
   Kaedim: Kaedim,
-  CrystalAI
+  CrystalAI,
+  'Pixel Art Mastery': PixelArt,
 
   // 'Recollections of a Drowned Mind': Recollections,
 };
