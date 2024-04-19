@@ -1,13 +1,8 @@
 import Typography from '@mui/material/Typography';
 import Colors from '../../../styles/Colors';
-import Code from '../../../comps/Code';
-import FolderStructure from '../../../assets/pwebsite/folder-structure.png';
-import FolderIcon from '@mui/icons-material/Folder';
-import Image from '../../../comps/Image';
-import IconText from '../../../comps/IconText';
-import ColorPalette from '../../../comps/ColorPalette';
-import { archives } from '../../Archives';
 import TriforceDivider from '../../../comps/TriforceDivider';
+import TableOfContent from '../../../comps/TableOfContent';
+import { Button } from '@mui/material';
 
 const content = {
   description:
@@ -26,6 +21,27 @@ const content = {
         }}
       >
         <TriforceDivider upward color={Colors.onlineGreen} />
+        <Typography>
+          For the sake of this section, I will follow the format of the Udemy course which I have
+          been using which you can check out below:
+        </Typography>
+        <Button
+          variant='contained'
+          style={{
+            color: Colors.white,
+            backgroundColor: Colors.brillianceCoral,
+            textTransform: 'none',
+            alignSelf: 'center',
+          }}
+          onClick={() =>
+            window.open(
+              'https://www.udemy.com/course/pixel-art-master-course/?couponCode=ST7MT41824',
+            )
+          }
+        >
+          Udemy
+        </Button>
+        <TableOfContent color={Colors.onlineGreen} chapters={['Lines and Shapes']} />
       </div>
     </div>
   ),
