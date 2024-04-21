@@ -4,10 +4,11 @@ import * as React from 'react';
 interface TOCType {
   color?: string;
   chapters: string[];
+  refs: Array<HTMLSpanElement | null>;
 }
 
 const TableOfContent: React.FunctionComponent<TOCType> = (props) => {
-  const titlesRef = React.useRef<Array<HTMLSpanElement | null>>([]);
+  const titlesRef = React.useRef<Array<HTMLSpanElement | null>>(props.refs);
   const scrollTo = (index: number): void => {
     const i = index;
     if (titlesRef !== null) {

@@ -3,7 +3,29 @@ import Colors from '../../../styles/Colors';
 import TriforceDivider from '../../../comps/TriforceDivider';
 import TableOfContent from '../../../comps/TableOfContent';
 import { Button } from '@mui/material';
-
+import shapes from '../../../assets/pixelart/shapes.png';
+import shading from '../../../assets/pixelart/shading.png';
+import ChapterHeader from '../../../comps/ChapterHeader';
+const chapters = [
+  'Lines and Shapes',
+  'Shading and Lighting',
+  'Colours and Textures',
+  'Drawing simple objects',
+  'Tiles',
+  'Backgrounds',
+  'Basic Characters',
+  'Simple Animation',
+  'Platformer View',
+  'Top Down View',
+  'RPG View',
+  'Isometric View',
+  'Intermediate Shading',
+  'Materials',
+  'Highly Detailed Pixel Art',
+];
+const chapterHeaders = [];
+// Will feed this into Table of Contents
+// Table of Contents will handle all refs pushing internally
 const content = {
   description:
     'Phew! It has been a long time since I posted on Archives. Please be patient while this page is constructed! :3',
@@ -41,7 +63,21 @@ const content = {
         >
           Udemy
         </Button>
-        <TableOfContent color={Colors.onlineGreen} chapters={['Lines and Shapes']} />
+        <TableOfContent refs={[]} color={Colors.onlineGreen} chapters={chapters} />
+        <ChapterHeader index={0} color={Colors.onlineGreen} titlesRef={[]}>
+          {chapters[0]}
+        </ChapterHeader>
+        <img
+          style={{ width: '10vw', imageRendering: 'pixelated', height: 'auto', borderRadius: 4 }}
+          src={shapes}
+        />
+        <ChapterHeader index={1} color={Colors.onlineGreen} titlesRef={[]}>
+          {chapters[1]}
+        </ChapterHeader>
+        <img
+          style={{ width: '10vw', imageRendering: 'pixelated', height: 'auto', borderRadius: 4 }}
+          src={shading}
+        />
       </div>
     </div>
   ),
