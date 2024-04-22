@@ -4,7 +4,7 @@ import { archiveTags } from './Tags';
 import website from '../assets/pwebsite/bedroom.gif';
 import kanagawa from '../assets/recollections/kanagawa.jpeg';
 import wedding from '../assets/homebrew/thumbnail.png';
-import mockup from '../assets/mockup.png';
+import nightOwl from '../assets/pixelart/night_owl.png';
 import { ProjectProps } from './Projects';
 
 export const archives: ProjectProps[] = [
@@ -28,7 +28,7 @@ export const archives: ProjectProps[] = [
     title: 'Pixel Art Mastery',
     subtitle: 'My journey so far into pixel art.',
     date: '17/04/2024',
-    image: mockup,
+    image: nightOwl,
     color: Colors.onlineGreen,
     tags: [archiveTags.arts[0]],
   },
