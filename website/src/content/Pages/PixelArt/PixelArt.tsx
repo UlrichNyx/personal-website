@@ -27,7 +27,17 @@ import tilemap from '../../../assets/pixelart/tilemap/tilemap.png';
 import tileset from '../../../assets/pixelart/tilemap/tileset.png';
 
 import background from '../../../assets/pixelart/night_owl.png';
+
+// Characters
+
+const pngContext = require.context('../../../assets/pixelart/characters/8x8/', false, /\.png$/);
+
 const objectSprites = [arrow, book, gun, orange, potion, sword];
+
+const characterSprites = pngContext.keys().map((filename: string): string => filename);
+
+// Now objectSprites is an array of imported images
+console.log(characterSprites);
 
 const chapters = [
   'Lines and Shapes',
@@ -157,6 +167,9 @@ const content = {
           style={{ width: '80vw', imageRendering: 'pixelated', height: 'auto', borderRadius: 4 }}
           src={background}
         />
+        <ChapterHeader index={5} color={Colors.onlineGreen} titlesRef={[]}>
+          {chapters[6]}
+        </ChapterHeader>
       </div>
     </div>
   ),
