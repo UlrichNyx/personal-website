@@ -7,7 +7,7 @@ import Alert from '@mui/material/Alert';
 import Collapse from '@mui/material/Collapse';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Grow from '@mui/material/Grow';
-import {images} from '../assets/home/logos/logos';
+import { images } from '../assets/home/logos/logos';
 export interface LogoSliderType {
   logos?: string[];
   show?: boolean;
@@ -72,20 +72,17 @@ const names = [
   'CloudFlare',
   'ElectronJS',
   'PyBoy',
-  'PyTorch'
+  'PyTorch',
 ];
 
 const LogoSlider: React.FunctionComponent<LogoSliderType> = (props) => {
   const [show, setShow] = React.useState(false);
   const showLogos = props.show ?? true;
 
- 
-
   const copyFrameworks = (color: string): void => {
     navigator.clipboard
       .writeText(color)
       .then((res) => {
-        console.log('Copied to clipboard');
         setShow(true);
         setTimeout(() => {
           setShow(false);
@@ -95,8 +92,6 @@ const LogoSlider: React.FunctionComponent<LogoSliderType> = (props) => {
   };
   const logos = props.logos ?? names;
 
-  console.log(logos);
-
   interface FKeyType {
     [name: string]: FPropsType;
   }
@@ -104,7 +99,6 @@ const LogoSlider: React.FunctionComponent<LogoSliderType> = (props) => {
   interface FPropsType {
     category: 'Framework' | 'Language' | 'Tool';
   }
-  
 
   const frameworks = {
     'React.js': { category: 'Framework' },
@@ -151,7 +145,6 @@ const LogoSlider: React.FunctionComponent<LogoSliderType> = (props) => {
     R: { category: 'Language' },
     Figma: { category: 'Tool' },
   };
-
 
   return (
     <div>

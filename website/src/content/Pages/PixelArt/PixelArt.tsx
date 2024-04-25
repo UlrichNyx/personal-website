@@ -30,14 +30,14 @@ import background from '../../../assets/pixelart/night_owl.png';
 
 // Characters
 
-const pngContext = require.context('../../../assets/pixelart/characters/8x8/', false, /\.png$/);
-
+// Cant do it from here, will need to come up with a system for importing from the public folder
+// Essentially, src is not accessible dynamically
+const path8x8 = '../../../assets/pixelart/characters/8x8/';
+const context8x8 = require.context('../../../assets/pixelart/characters/8x8/', false, /\.png$/);
 const objectSprites = [arrow, book, gun, orange, potion, sword];
-
-const characterSprites = pngContext.keys().map((filename: string): string => filename);
-
-// Now objectSprites is an array of imported images
-console.log(characterSprites);
+const pngs8x8 = context8x8.keys().map((filename: string): string => filename);
+const sprites8x8 = pngs8x8.map((el) => path8x8 + el);
+console.log(sprites8x8);
 
 const chapters = [
   'Lines and Shapes',
@@ -170,6 +170,13 @@ const content = {
         <ChapterHeader index={5} color={Colors.onlineGreen} titlesRef={[]}>
           {chapters[6]}
         </ChapterHeader>
+        {sprites8x8.map((el, index) => (
+          <img
+            key={index}
+            style={{ width: '80vw', imageRendering: 'pixelated', height: 'auto', borderRadius: 4 }}
+            src={'../../../../public/8x8/char1.png'}
+          />
+        ))}
       </div>
     </div>
   ),
