@@ -38,6 +38,10 @@ const objectSprites = [arrow, book, gun, orange, potion, sword];
 const pngs8x8 = context8x8.keys().map((filename: string): string => filename);
 const sprites8x8 = pngs8x8.map((el) => el.replaceAll('./', ''));
 
+const context16x16 = require.context('../../../../public/16x16/', false, /\.png$/);
+const pngs16x16 = context16x16.keys().map((filename: string): string => filename);
+const sprites16x16 = pngs16x16.map((el) => el.replaceAll('./', ''));
+
 const chapters = [
   'Lines and Shapes',
   'Shading and Lighting',
@@ -184,6 +188,24 @@ const content = {
               key={index}
               style={{ width: '5vw', imageRendering: 'pixelated', height: 'auto', borderRadius: 4 }}
               src={`${process.env.PUBLIC_URL}/8x8/${el}`}
+            />
+          ))}
+        </div>
+        <div
+          style={{
+            overflow: 'auto',
+            justifyContent: 'flex-start',
+            width: '80vw',
+            maxWidth: '80vw',
+            display: 'flex',
+            gap: '1vw',
+          }}
+        >
+          {sprites16x16.map((el, index) => (
+            <img
+              key={index}
+              style={{ width: '5vw', imageRendering: 'pixelated', height: 'auto', borderRadius: 4 }}
+              src={`${process.env.PUBLIC_URL}/16x16/${el}`}
             />
           ))}
         </div>
