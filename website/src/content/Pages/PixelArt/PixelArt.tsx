@@ -30,6 +30,8 @@ import background from '../../../assets/pixelart/night_owl.png';
 
 // Characters
 
+import walkEight from '../../../assets/pixelart/characters/8x8/walk.gif';
+
 // Cant do it from here, will need to come up with a system for importing from the public folder
 // Essentially, src is not accessible dynamically
 const path8x8 = '../../../../public/8x8/';
@@ -41,6 +43,10 @@ const sprites8x8 = pngs8x8.map((el) => el.replaceAll('./', ''));
 const context16x16 = require.context('../../../../public/16x16/', false, /\.png$/);
 const pngs16x16 = context16x16.keys().map((filename: string): string => filename);
 const sprites16x16 = pngs16x16.map((el) => el.replaceAll('./', ''));
+
+const context32x32 = require.context('../../../../public/32x32/', false, /\.png$/);
+const pngs32x32 = context32x32.keys().map((filename: string): string => filename);
+const sprites32x32 = pngs32x32.map((el) => el.replaceAll('./', ''));
 
 const chapters = [
   'Lines and Shapes',
@@ -170,7 +176,7 @@ const content = {
           style={{ width: '80vw', imageRendering: 'pixelated', height: 'auto', borderRadius: 4 }}
           src={background}
         />
-        <ChapterHeader index={5} color={Colors.onlineGreen} titlesRef={[]}>
+        <ChapterHeader index={6} color={Colors.onlineGreen} titlesRef={[]}>
           {chapters[6]}
         </ChapterHeader>
         <div
@@ -209,6 +215,31 @@ const content = {
             />
           ))}
         </div>
+        <div
+          style={{
+            overflow: 'auto',
+            justifyContent: 'flex-start',
+            width: '80vw',
+            maxWidth: '80vw',
+            display: 'flex',
+            gap: '1vw',
+          }}
+        >
+          {sprites32x32.map((el, index) => (
+            <img
+              key={index}
+              style={{ width: '5vw', imageRendering: 'pixelated', height: 'auto', borderRadius: 4 }}
+              src={`${process.env.PUBLIC_URL}/32x32/${el}`}
+            />
+          ))}
+        </div>
+        <ChapterHeader index={7} color={Colors.onlineGreen} titlesRef={[]}>
+          {chapters[7]}
+        </ChapterHeader>
+        <img
+          style={{ width: '5vw', imageRendering: 'pixelated', height: 'auto', borderRadius: 4 }}
+          src={walkEight}
+        />
       </div>
     </div>
   ),
