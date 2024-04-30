@@ -31,7 +31,8 @@ import background from '../../../assets/pixelart/night_owl.png';
 // Characters
 
 import walkEight from '../../../assets/pixelart/characters/8x8/walk.gif';
-
+import runSixTeen from '../../../assets/pixelart/characters/16x16/run.gif';
+import walkSixTeen from '../../../assets/pixelart/characters/16x16/walk.gif';
 // Cant do it from here, will need to come up with a system for importing from the public folder
 // Essentially, src is not accessible dynamically
 const path8x8 = '../../../../public/8x8/';
@@ -240,6 +241,29 @@ const content = {
           style={{ width: '5vw', imageRendering: 'pixelated', height: 'auto', borderRadius: 4 }}
           src={walkEight}
         />
+        <img
+          style={{
+            width: '5vw',
+            backgroundColor: Colors.hyperlinkBlue,
+            imageRendering: 'pixelated',
+            height: 'auto',
+            borderRadius: 4,
+          }}
+          src={walkSixTeen}
+        />
+        <img
+          style={{
+            width: '5vw',
+            backgroundColor: Colors.idleYellow,
+            imageRendering: 'pixelated',
+            height: 'auto',
+            borderRadius: 4,
+          }}
+          src={runSixTeen}
+        />
+        <ChapterHeader index={8} color={Colors.onlineGreen} titlesRef={[]}>
+          {chapters[8]}
+        </ChapterHeader>
       </div>
     </div>
   ),
