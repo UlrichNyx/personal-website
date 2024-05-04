@@ -72,7 +72,6 @@ const Archives: React.FunctionComponent = () => {
           .map((prj, index) => {
             return (
               <Tooltip key={index} title={prj.date} disableFocusListener disableTouchListener>
-                <div>
                   <ContentPreview
                     target='archives'
                     key={index}
@@ -80,7 +79,6 @@ const Archives: React.FunctionComponent = () => {
                     archive
                     onClick={(path: string) => navigate(path)}
                   />
-                </div>
               </Tooltip>
             );
           })}

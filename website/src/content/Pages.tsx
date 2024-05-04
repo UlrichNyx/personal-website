@@ -11,6 +11,7 @@ import UC from './Pages/UC/UC';
 import Kaedim from './Pages/Kaedim/Kaedim';
 import CrystalAI from './Pages/CrystalAI/CrystalAI';
 import PixelArt from './Pages/PixelArt/PixelArt';
+import TheLibrary from './Pages/TheLibrary/TheLibrary';
 
 export const pages = {
   'University of Southampton': University,
@@ -26,6 +27,7 @@ export const pages = {
   Kaedim: Kaedim,
   CrystalAI,
   'Pixel Art Mastery': PixelArt,
+  'The Library': TheLibrary
 
   // 'Recollections of a Drowned Mind': Recollections,
 };

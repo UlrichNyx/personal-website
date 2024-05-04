@@ -5,6 +5,7 @@ import website from '../assets/pwebsite/bedroom.gif';
 import kanagawa from '../assets/recollections/kanagawa.jpeg';
 import wedding from '../assets/homebrew/thumbnail.png';
 import nightOwl from '../assets/pixelart/night_owl.png';
+import candlekeep from '../assets/candlekeep.jpg';
 import { ProjectProps } from './Projects';
 
 export const archives: ProjectProps[] = [
@@ -30,6 +31,14 @@ export const archives: ProjectProps[] = [
     date: '17/04/2024',
     image: nightOwl,
     color: Colors.onlineGreen,
+    tags: [archiveTags.arts[0]],
+  },
+  {
+    title: 'The Library',
+    subtitle: 'Every media in existence.',
+    date: '04/05/2024',
+    image: candlekeep,
+    color: Colors.blurple,
     tags: [archiveTags.arts[0]],
   },
   {

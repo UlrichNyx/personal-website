@@ -1,0 +1,35 @@
+.rainbow-box {
+  width: 180px;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.rainbow-border {
+  width: 200px;
+  padding: 20px;
+  border-radius: 2px;
+}
+
+@keyframes rainbow {
+  0% {
+    text-shadow: 5px 5px 5px red;
+  }
+  16% {
+    text-shadow: 5px 5px 5px orange;
+  }
+  32% {
+    text-shadow: 5px 5px 5px yellow;
+  }
+  48% {
+    text-shadow: 5px 5px 5px green;
+  }
+  64% {
+    text-shadow: 5px 5px 5px blue;
+  }
+  80% {
+    text-shadow: 5px 5px 5px indigo;
+  }
+  100% {
+    text-shadow: 5px 5px 5px violet;
+  }
+}
