@@ -34,7 +34,7 @@ const FilterSelect: React.FunctionComponent<FilterType> = (props) => {
         <MenuItem value='2000-2024'>(2000 - 2024) Total Year Range</MenuItem>
         <MenuItem value='2016-2018'>(2016 - 2018) IB Diploma 🇬🇷</MenuItem>
         <MenuItem value='2018-2022'>(2018 - 2022) Higher Education 🇬🇧</MenuItem>
-        <MenuItem value='2022-2024'>(2022 - 2024) Junior Development *</MenuItem>
+        <MenuItem value='2022-2025'>(2022 - 2025) Junior Development *</MenuItem>
       </Select>
     </FormControl>
   ) : (

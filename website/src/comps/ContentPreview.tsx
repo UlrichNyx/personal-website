@@ -3,6 +3,7 @@ import Colors from '../styles/Colors';
 import Typography from '@mui/material/Typography';
 
 import Image from './Image';
+import { alpha, Card, useTheme } from '@mui/material';
 
 export interface Props {
   title: string;
@@ -17,16 +18,17 @@ export interface Props {
 
 const ContentPreview: React.FunctionComponent<Props> = (props) => {
   const target = props.target ?? '';
+  const theme = useTheme();
   return (
-    <div
+    <Card
+
       style={{
+        backgroundColor: alpha(theme.palette.background.paper, 0.8),
         display: 'flex',
         flexDirection: 'column',
         gap: '1px',
         alignItems: 'center',
-        padding: 10,
-        borderRadius: 10,
-        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+        padding: 24,
       }}
     >
       <Image
@@ -55,7 +57,7 @@ const ContentPreview: React.FunctionComponent<Props> = (props) => {
       <Typography variant='caption' style={{ maxWidth: '90%' }}>
         {props.subtitle}
       </Typography>
-    </div>
+    </Card>
   );
 };
 

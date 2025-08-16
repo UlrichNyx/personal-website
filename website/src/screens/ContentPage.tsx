@@ -9,7 +9,6 @@ import { projects, ProjectProps } from '../content/Projects';
 import { archives } from '../content/Archives';
 import { Props } from '../comps/ContentPreview';
 import Colors from '../styles/Colors';
-import { Divider } from '@mui/material';
 import TriforceDivider from '../comps/TriforceDivider';
 import Image from '../comps/Image';
 

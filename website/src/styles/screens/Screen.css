@@ -1,7 +1,6 @@
 .screen-container {
-    padding-top: 10vh;
     align-items: center;
-    scroll-behavior: auto;
+    overflow-x:hidden;
 }
 
 .hidden {}
@@ -13,48 +12,98 @@
     width: 100%;
     padding-top: 5vh;
     padding-bottom: 5vh;
+}       /* how tall the fade is */
+
+html, body, .screen-container {
+  margin: 0;
+  background: transparent;      /* important: nothing dark shows through */
 }
 
-
-.content-box-bg-dark {
-    min-height: 100vh;
-    padding: 2vh;
-    background-color: #121212;
+:root {
+  --blend: 20vh; /* height of the fade overlap */
 }
 
-.content-box-bg-black {
-    background-color: black;
-    padding: 2vh;
+/* Base section styling */
+.section {
+  position: relative;
+  min-height: 120vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  gap:12px;
+  align-items: center;
 }
 
+/* Backgrounds */
+.bg-koi {
+  background-image: url('../../assets/home/koi_petals.gif');
+  background-position: center bottom; /* aligns bottom edge for blending */
+}
 
-.content-box-bg-gray {
-    background-color: #1e1e1e;
-    min-height: 100vh;
-    padding: 2vh;
+.bg-bg2 {
+  background-image: url('../../assets/home/tree.gif');
+  background-position: center bottom; /* aligns top edge for blending */
+}
+
+.bg-bg3 {
+  background-image: url('../../assets/home/shipwreck.gif');
+  background-position: center bottom; /* aligns top edge for blending */
+}
+
+.bg-bg4 {
+  background-image: url('../../assets/home/yellow.gif');
+  background-position: center bottom; /* aligns top edge for blending */
+}
+
+.bg-bg5 {
+  background-image: url('../../assets/home/background.gif');
+  background-position: center bottom; /* aligns top edge for blending */
+}
+
+.fade-both {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    white var(--blend),
+    white calc(100% - var(--blend)),
+    transparent 100%
+  );
+          mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    white var(--blend),
+    white calc(100% - var(--blend)),
+    transparent 100%
+  );
+  margin-top: 50vh;
 
 }
 
-.background-gif-3 {
-    background-image: linear-gradient(to top, rgba(245, 246, 252, 0.1), #1e1e1e), url('../../assets/home/background.gif');
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100vh
+/* Fade bottom of a section to transparent */
+.fade-out-bottom::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--blend);
+  background: inherit;
+  background-position: inherit;
+  background-size: inherit;
+  background-repeat: inherit;
+  -webkit-mask-image: linear-gradient(to bottom, white 0%, transparent 100%);
+          mask-image: linear-gradient(to bottom, white 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
 }
 
-.background-gif-1 {
-    background-image: linear-gradient(to top, rgba(30, 30, 30, 0.3), black), linear-gradient(to bottom, rgba(18, 18, 18, 0.1), rgba(18, 18, 18, 0.5), #121212), url('../../assets/home/background3.gif');
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100vh
+/* Pull the next section up so it sits under the fade */
+.stack-under {
+  margin-top: calc(-1 * var(--blend));
 }
 
-.background-gif-2 {
-    background-image: linear-gradient(to top, rgba(30, 30, 30, 0.1), #121212), linear-gradient(to bottom, rgba(18, 18, 18, 0.5), rgba(18, 18, 18, 0.5), #1e1e1e), url('../../assets/home/background2.gif');
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100vh
-}
 
 .grid {
     display: grid;

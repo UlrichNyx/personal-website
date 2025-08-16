@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/screens/Screen.css';
 import ContentPreview from '../comps/ContentPreview';
-import Colors from '../styles/Colors';
 import { projects, includesTime } from '../content/Projects';
 import FilterSelect from '../comps/FilterSelect';
 import Tag from '../comps/Tag';
@@ -10,7 +9,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { useNavigate } from 'react-router-dom';
 const Portfolio: React.FunctionComponent = () => {
   const navigate = useNavigate();
-  const [time, setTime] = React.useState('2000-2024');
+  const [time, setTime] = React.useState('2000-2025');
   const [activeTags, setActiveTags] = React.useState<boolean[]>(tags.map((t) => t.isActive));
   const toggleTag = (index: number): void => {
     setActiveTags(activeTags.map((t, idx) => (index === idx ? !t : t)));

@@ -148,20 +148,6 @@ const LogoSlider: React.FunctionComponent<LogoSliderType> = (props) => {
 
   return (
     <div>
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-        <div style={{ height: '5vh', margin: '5vh' }}>
-          <Button
-            onClick={() => copyFrameworks(logos.toString())}
-            startIcon={<ContentCopyIcon />}
-            variant='outlined'
-          >
-            Copy Frameworks
-          </Button>
-          <Collapse in={show}>
-            <Alert severity='info'>Copied to clipboard!</Alert>
-          </Collapse>
-        </div>
-      </div>
       <div
         className='frameworks-grid'
         style={{

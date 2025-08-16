@@ -20,25 +20,13 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark',
-    background: {
-      default: 'black',
-    },
+    mode: 'dark'
+
   },
-  typography: {
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-  },
+  typography:
+  {
+    fontFamily:'Segoe UI'
+  }
 });
 
 const App: React.FunctionComponent = () => {
