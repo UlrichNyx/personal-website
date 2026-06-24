@@ -219,7 +219,7 @@ const Home: React.FunctionComponent = () => {
               Although my professional career leans towards a certain direction, I have a wide variety of interests in the field.
             </Typography>
           </Box>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 20, gap: 12 }}>
+          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: 'center', justifyContent: 'center', padding: 20, gap: 24 }}>
             <Grow in={show[2]} timeout={500}>
               <div ref={(el) => (trackedElements.current[2] = el)}>
                 <ContentPreview
@@ -231,6 +231,15 @@ const Home: React.FunctionComponent = () => {
                   onClick={(path: string) => navigate(path)}
                   progress={5}
                   showProgress={show[2]}
+                />
+              </div>
+            </Grow>
+            <Grow in={show[3]} timeout={700}>
+              <div ref={(el) => (trackedElements.current[3] = el)}>
+                <ContentPreview
+                  {...projects[projects.length - 1]}
+                  target='portfolio'
+                  onClick={(path: string) => navigate(path)}
                 />
               </div>
             </Grow>

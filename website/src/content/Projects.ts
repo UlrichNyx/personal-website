@@ -124,6 +124,16 @@ export const projects: ProjectProps[] = [
     tags: [],
   },
 
+  {
+    title: 'Pirate SW GJ 14',
+    subtitle: 'Freedom V1.0',
+    date: '2025',
+    image: PirateSoftware,
+    color: Colors.idleYellow,
+    tags: [tags[1], tags[2]],
+    backgroundColor: Colors.vsBlack,
+  },
+
 ];
 
 export const includesTime = (value: string, time: string): boolean => {
