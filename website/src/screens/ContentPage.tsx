@@ -8,12 +8,12 @@ import { pages } from '../content/Pages';
 import { projects, ProjectProps } from '../content/Projects';
 import { archives } from '../content/Archives';
 import { Props } from '../comps/ContentPreview';
-import Colors from '../styles/Colors';
-import { Divider } from '@mui/material';
-import TriforceDivider from '../comps/TriforceDivider';
 import Image from '../comps/Image';
+import Divider from '@mui/material/Divider';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const ContentPage: React.FunctionComponent = () => {
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const location = useLocation();
   const section = location.pathname.split('/')[1];
   const params = useParams();
@@ -36,47 +36,89 @@ const ContentPage: React.FunctionComponent = () => {
           image: '',
           tags: [],
         };
+
   return (
     <div
       className='screen-container'
       style={{
-        alignItems: 'center',
-        textAlign: 'center',
+        paddingTop: '8vh',
+        paddingLeft: isMobile ? '6vw' : '6vw',
+        paddingRight: isMobile ? '6vw' : '6vw',
+        paddingBottom: '8vh',
+        alignItems: 'flex-start',
       }}
     >
       <div
-        className='content-box'
         style={{
           display: 'flex',
-          flexDirection: 'column',
-          gap: '1vh',
-          alignItems: 'center',
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: isMobile ? '3vh' : '4vw',
+          alignItems: 'flex-start',
+          width: '100%',
         }}
       >
-        <Image
-          src={cont.image}
+        <div
           style={{
-            width: section === 'portfolio' ? '20vw' : 940,
-            height: section === 'portfolio' ? '20vw' : 540,
-            maxWidth: '98vw',
-            maxHeight: '50vh',
-            borderRadius: 4,
-            backgroundColor: cont.backgroundColor,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 10,
+            alignItems: isMobile ? 'center' : 'flex-start',
+            flexShrink: 0,
+            width: isMobile ? '100%' : 'auto',
+            maxWidth: isMobile ? '100%' : 240,
           }}
-        />
-        <Typography variant='h3' style={{ color: cont.color }}>
-          {title}
-        </Typography>
-        <Typography variant='h4'>{cont.subtitle}</Typography>
-        <Typography variant='h5' style={{ color: Colors.vsGray }}>
-          {cont.date}
-        </Typography>
-        <TriforceDivider color={cont.color} />
-        <Typography style={{ marginLeft: '10vw', marginRight: '10vw', textAlign: 'justify' }}>
-          {page.description}
-        </Typography>
+        >
+          <Image
+            src={cont.image}
+            style={{
+              width: section === 'portfolio' ? (isMobile ? 110 : 140) : (isMobile ? 160 : 220),
+              height: isMobile ? 110 : 140,
+              borderRadius: section === 'portfolio' ? '50%' : 6,
+              objectFit: 'cover',
+              backgroundColor: cont.backgroundColor,
+            }}
+          />
+          <Typography variant={isMobile ? 'h6' : 'h5'} style={{ color: cont.color, textAlign: isMobile ? 'center' : 'left' }}>
+            {title}
+          </Typography>
+          <Typography variant='subtitle1' style={{ opacity: 0.8, textAlign: isMobile ? 'center' : 'left' }}>
+            {cont.subtitle}
+          </Typography>
+          {!isMobile && (page as any)?.sidebar !== undefined && (
+            <div style={{ width: '100%', alignSelf: 'stretch' }}>
+              <Divider style={{ opacity: 0.2, marginTop: 8, marginBottom: 12 }} />
+              {(page as any).sidebar}
+            </div>
+          )}
+        </div>
 
-        {page.html}
+        <div
+          style={{
+            flex: 1,
+            minWidth: 0,
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '2vh',
+          }}
+        >
+          {isMobile && (page as any)?.sidebar !== undefined && (
+            <>
+              {(page as any).sidebar}
+              <Divider style={{ opacity: 0.2 }} />
+            </>
+          )}
+          {page !== undefined && page !== null && (
+            <>
+              {page.description.length > 0 && (
+                <Typography style={{ textAlign: 'justify', opacity: 0.75 }}>
+                  {page.description}
+                </Typography>
+              )}
+              {page.html}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

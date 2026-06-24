@@ -23,3 +23,30 @@
     background: #555;
     border-radius: 2px;
 }
+
+:root {
+  --pixel-font: "Pixelify Sans", "Press Start 2P", monospace;
+}
+
+/* Default body font */
+body {
+  margin: 0;
+  padding: 0;
+  background: #0b0b0f;
+  color: #e9e9f1;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Pixel font class */
+.pixel {
+  font-family: var(--pixel-font);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Optional retro outline */
+.pixel-outline {
+  text-shadow:
+    0 1px 0 #000, 1px 0 0 #000, 0 -1px 0 #000, -1px 0 0 #000,
+    1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+}

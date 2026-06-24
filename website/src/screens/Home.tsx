@@ -1,4 +1,4 @@
-import React, { UIEvent } from 'react';
+import React from 'react';
 import '../styles/screens/Screen.css';
 
 import Image from '../comps/Image';
@@ -7,441 +7,257 @@ import LogoSlider from '../comps/LogoSlider';
 import Typography from '@mui/material/Typography';
 import ToonLink from '../assets/home/link.png';
 import Colors from '../styles/Colors';
-import Button from '@mui/material/Button';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import EmailIcon from '@mui/icons-material/Email';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import DND from '../assets/tags/dnd.jpeg';
-import { Grow, Collapse } from '@mui/material';
+import { Grow, Card, Divider, useTheme, useMediaQuery, alpha, Box, IconButton } from '@mui/material';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 import { projects } from '../content/Projects';
-import { archives } from '../content/Archives';
 
-import Nyan from '../assets/home/nyan.gif';
-import Suicune from '../assets/home/suicune.gif';
-import Pong from '../comps/Pong';
 import { useNavigate } from 'react-router-dom';
 
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import ContentPreview from '../comps/ContentPreview';
-
-import TriforceDivider from '../comps/TriforceDivider';
 
 import Fade from '@mui/material/Fade';
 
-import { logos } from '../assets/home/logos/logos';
-import LootSecret from '../comps/LootSecret';
-import ProgressBar from '../comps/ProgressBar';
+
+const NAV_BUTTON_STYLE = {
+  color: 'rgba(255,255,255,0.8)',
+  backgroundColor: 'rgba(255,255,255,0.1)',
+  border: '1px solid rgba(255,255,255,0.25)',
+  backdropFilter: 'blur(4px)',
+};
 
 const Home: React.FunctionComponent = () => {
-  const projectDisplay = [projects[1], projects[2], projects[3]];
+  const sectionRefs = React.useRef<Array<HTMLDivElement | null>>([null, null, null, null]);
+  const [currentSection, setCurrentSection] = React.useState<number>(0);
+
+  const scrollToSection = (index: number): void => {
+    sectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const navigate = useNavigate();
 
   const [fadeIn, setFadeIn] = React.useState(false);
 
   const trackedElements = React.useRef<Array<HTMLElement | null>>([
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    null, null, null, null, null, null, null, null,
   ]);
 
   const [show, setShow] = React.useState<boolean[]>([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
+    false, false, false, false, false, false, false, false,
   ]);
 
   const updateShow = (values: boolean[]): void => {
-    setShow(values.map((item, i) => item));
+    setShow(values.map((item) => item));
   };
 
   React.useEffect(() => {
-    // add scroll listener
     const localShow = [false, false, false, false, false, false, false, false];
     const handleScroll = (): void => {
-      if (trackedElements !== null) {
-        if (trackedElements.current !== null) {
-          for (let i = 0; i < localShow.length; i++) {
-            const trackedEl = trackedElements.current[i];
-            if (trackedEl !== null) {
-              if (trackedEl?.getBoundingClientRect() !== undefined) {
-                if (trackedEl.getBoundingClientRect().top < window.innerHeight) {
-                  if (!localShow[i]) {
-                    localShow[i] = true;
-                    const timeout = setInterval(() => {
-                      updateShow(localShow);
-                      clearInterval(timeout);
-                    }, 0);
-                  }
-                }
-              }
+      if (trackedElements.current !== null) {
+        for (let i = 0; i < localShow.length; i++) {
+          const trackedEl = trackedElements.current[i];
+          if (trackedEl !== null && trackedEl.getBoundingClientRect().top < window.innerHeight) {
+            if (!localShow[i]) {
+              localShow[i] = true;
+              const timeout = setInterval(() => {
+                updateShow(localShow);
+                clearInterval(timeout);
+              }, 0);
             }
           }
         }
       }
+      let active = 0;
+      for (let i = 0; i < sectionRefs.current.length; i++) {
+        const el = sectionRefs.current[i];
+        if (el !== null && el.getBoundingClientRect().top <= window.innerHeight * 0.5) {
+          active = i;
+        }
+      }
+      setCurrentSection(active);
     };
     window.addEventListener('scroll', handleScroll);
     const timeout = setInterval(() => {
       setFadeIn(true);
       clearInterval(timeout);
     }, 200);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  return (
-    <div
-      className='screen-container'
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: 'black',
-      }}
-    >
-      <div
-        className='content-box content-box-bg-black background-gif-1'
-        style={{ minHeight: '100vh' }}
-      >
-        <Image
-          src={ToonLink}
-          style={{
-            maxWidth: '80vw',
-            borderRadius: 10,
-            width: 360,
-            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-          }}
-        />
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            marginTop: '2vh',
-          }}
-        >
-          <Fade in={fadeIn}>
-            <Typography variant='h4'> Welcome to my domain!</Typography>
-          </Fade>
-          <div style={{ alignSelf: 'center' }}>
-            <TriforceDivider color={Colors.sylemsBlue} />
-          </div>
+  const cardStyle = (extraStyle?: React.CSSProperties): React.CSSProperties => ({
+    display: 'flex',
+    flexDirection: isMobile ? 'column' : 'row',
+    backgroundColor: alpha(theme.palette.background.paper, 0.8),
+    width: isMobile ? '90vw' : undefined,
+    ...extraStyle,
+  });
 
-          <Fade in={fadeIn}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh' }}>
-              <Typography>
-                {' '}
-                My name is{' '}
-                <strong style={{ color: Colors.sylemsBlue }}>Filippos Kontogiannis</strong>, nice to
-                meet you!
-              </Typography>
-              <Typography>
-                I have been programming for <strong>8 years of my life now</strong> and if I know
-                one thing it is that I know nothing.
-              </Typography>
-              <Typography> Feel free to explore around, you might even find something!</Typography>
-              <div>
-                <Button
-                  variant='contained'
-                  style={{
-                    color: Colors.white,
-                    backgroundColor: Colors.vsBlue,
-                    textTransform: 'none',
-                  }}
-                  endIcon={<ArrowForwardIosIcon />}
-                  onClick={() => navigate('/portfolio')}
-                >
-                  {' '}
-                  Projects
-                </Button>
-              </div>
+  const textBoxStyle: React.CSSProperties = {
+    zIndex: 100,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '2vh',
+    maxWidth: isMobile ? '100%' : '30vw',
+  };
+
+  return (
+    <div className='screen-container'>
+
+      {/* Welcome */}
+      <div ref={(el) => (sectionRefs.current[0] = el)} className='section bg-koi fade-out-bottom' style={{ justifyContent: 'center', paddingBottom: '20vh' }}>
+        <Fade in={fadeIn}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 64 }}>
+            <div
+              className='avatar-ring'
+              style={{
+                zIndex: 101,
+                marginBottom: isMobile ? -50 : -70,
+                width: isMobile ? 100 : 140,
+                height: isMobile ? 100 : 140,
+              }}
+            >
               <Image
-                src={Suicune}
-                style={{ width: 128, height: 64, marginTop: '5vh', alignSelf: 'center' }}
+                src={ToonLink}
+                style={{
+                  borderRadius: '50%',
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
               />
             </div>
-          </Fade>
-        </div>
+            <Card style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 100 }}>
+              <Box sx={{ pt: isMobile ? 8 : 10, pb: isMobile ? 2 : 3, px: isMobile ? 2 : 3 }} style={{ display: 'flex', flexDirection: 'column', gap: '1.5vh', maxWidth: 380, width: '100%' }}>
+                <Typography textAlign='center' variant='h6'>Welcome to my domain!</Typography>
+                <Divider flexItem />
+                <Typography variant='body2'>
+                  My name is{' '}
+                  <strong className='gradient-text'>Filippos Kontogiannis</strong>, nice to meet you!
+                </Typography>
+                <Typography variant='body2'>
+                  I have been programming for <strong>10 years of my life now</strong> and if I know one thing it is that I know nothing.
+                </Typography>
+                <Typography variant='body2'>Feel free to explore around, you might even find something!</Typography>
+              </Box>
+            </Card>
+          </div>
+        </Fade>
       </div>
-      <div
-        className='content-box content-box-bg-dark '
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '2vh',
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundImage: 'linear-gradient( rgba(30, 30, 30, 0.3),#121212, #121212, #121212)',
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '2vh',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Typography variant='h4'>About me</Typography>
-          <TriforceDivider color={Colors.dndRed} />
-          <Typography>
-            I am a <strong style={{ color: Colors.dndRed }}>MEng in Computer Science</strong>{' '}
-            graduate from the University of Southampton.
-          </Typography>
 
-          <Typography>
-            My professional career leans towards application, game and web developing.
-          </Typography>
-
-          <Typography>
-            I have a wide variety of hobbies which range from drawing pixel art to playing D&D.
-          </Typography>
-
-          <Typography>
-            You can read everything regarding my adventures in this world here.
-          </Typography>
-
-          <div>
-            <Typography style={{ margin: '2vh' }}>Below you can find my latest post: </Typography>
-            <Fade in={show[0]}>
+      {/* About me */}
+      <div ref={(el) => (sectionRefs.current[1] = el)} className='section bg-bg2 fade-both stack-under' style={{ justifyContent: 'center', paddingBottom: '20vh' }}>
+        <Card style={cardStyle()}>
+          <Box sx={{ p: isMobile ? 2 : 4, backgroundColor: 'rgba(0,0,0,0.15)' }} style={textBoxStyle}>
+            <Typography textAlign='center' variant='h6'>About me</Typography>
+            <Divider />
+            <Typography variant='body2'>
+              I am a <strong style={{ color: Colors.dndRed }}>MEng in Computer Science</strong>{' '}
+              graduate from the University of Southampton.
+            </Typography>
+            <Typography variant='body2'>
+              My professional career leans towards application, game and web developing.
+            </Typography>
+            <Typography variant='body2'>
+              I have a wide variety of hobbies which range from drawing pixel art to playing D&D.
+            </Typography>
+            <Typography variant='body2'>I am currently full-time employed as a Software Engineer.</Typography>
+          </Box>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <Fade in={show[0]} style={{ margin: 20 }}>
               <div ref={(el) => (trackedElements.current[0] = el)}>
                 <ContentPreview
-                  {...archives[archives.length - 1]}
-                  target='archives'
-                  archive
+                  {...projects[projects.length - 1]}
+                  target='portfolio'
                   onClick={(path: string) => navigate(path)}
                 />
               </div>
             </Fade>
           </div>
-        </div>
-        <Button
-          variant='contained'
-          style={{
-            color: Colors.white,
-            backgroundColor: Colors.dndRed,
-            textTransform: 'none',
-            marginTop: '1vh',
-          }}
-          endIcon={<ArrowForwardIosIcon />}
-          onClick={() => navigate('/archives')}
-        >
-          {' '}
-          Archives
-        </Button>
+        </Card>
       </div>
 
-      <div
-        className='content-box content-box-bg-gray background-gif-2'
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '2vh',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <Typography variant='h4'>Frameworks</Typography>
-        <TriforceDivider color={Colors.onlineGreen} />
-        <Typography>
-          This section displays the wide variety of tools and frameworks I have worked within the
-          past 8 years.
-        </Typography>
-        <Typography>
-          You can find all projects which incorporate these tools in my{' '}
-          <strong style={{ color: Colors.onlineGreen }}>Github</strong> repositories.
-        </Typography>
-        <div ref={(el) => (trackedElements.current[1] = el)}>
-          <LogoSlider show={show[1]} />
-        </div>
-
-        <Button
-          variant='contained'
-          style={{
-            color: Colors.white,
-            backgroundColor: Colors.onlineGreen,
-            textTransform: 'none',
-          }}
-          startIcon={<GitHubIcon />}
-          endIcon={<ArrowForwardIosIcon />}
-          onClick={() => window.open('https://github.com/UlrichNyx', '_blank')}
-        >
-          {' '}
-          Github
-        </Button>
-      </div>
-
-      <div
-        className='content-box content-box-bg-gray'
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '2vh',
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundImage:
-            'linear-gradient( rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.9), #1e1e1e,#1e1e1e)',
-        }}
-      >
-        <Typography variant='h4'>Projects</Typography>
-        <TriforceDivider color={Colors.idleYellow} />
-        <Typography>
-          In this section you will find the projects I have been working on
-          <strong style={{ color: Colors.idleYellow }}> recently</strong>.
-        </Typography>
-        <Typography>
-          Although my proffesional career leans towards a certain direction, I have a wide variety
-          of interests in the field.
-        </Typography>
-        <Typography>
-          I am particularly interested in finding ways to apply my solutions to my every day life.
-        </Typography>
-        <Typography> Current project I am working on: </Typography>
-        <Grow in={show[2]} timeout={500}>
-          <div ref={(el) => (trackedElements.current[2] = el)}>
-            <ContentPreview
-              title={projects[0].title}
-              target='portfolio'
-              subtitle={projects[0].subtitle}
-              image={projects[0].image}
-              color={projects[0].color}
-              onClick={(path: string) => navigate(path)}
-            />
+      {/* Frameworks */}
+      <div ref={(el) => (sectionRefs.current[2] = el)} className='section bg-bg3 fade-both stack-under' style={{ justifyContent: 'center', paddingBottom: '20vh' }}>
+        <Card style={cardStyle({ maxWidth: isMobile ? '90vw' : '75vw' })}>
+          <Box sx={{ p: isMobile ? 2 : 4, backgroundColor: 'rgba(0,0,0,0.15)' }} style={textBoxStyle}>
+            <Typography textAlign='center' variant='h6'>Frameworks</Typography>
+            <Divider />
+            <Typography variant='body2'>
+              This section displays the wide variety of tools and frameworks I have worked with in the past 10 years.
+            </Typography>
+            <Typography variant='body2'>
+              You can find all projects which incorporate these tools in my{' '}
+              <strong style={{ color: Colors.onlineGreen }}>Github</strong> repositories.
+            </Typography>
+          </Box>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20, overflow: 'hidden' }}>
+            <div ref={(el) => (trackedElements.current[1] = el)}>
+              <LogoSlider show={show[1]} />
+            </div>
           </div>
-        </Grow>
-        <div ref={(el) => (trackedElements.current[6] = el)}>
-          <ProgressBar progress={10} show={show[6]} color={projects[0].color} />
-        </div>
-        <Typography>Other recent projects: </Typography>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: '3vw',
-            padding:10,
-            maxWidth:'98vw',
-            textAlign: 'center',
-            paddingBottom: 20,
-            borderRadius: 10,
-            overflowX: 'auto'
-          }}
-        >
-          {projectDisplay.map((prj, index) => (
-            <Grow in={show[2 + index]} key={index} timeout={1000 + index * 500}>
-              <div ref={(el) => (trackedElements.current[3 + index] = el)}>
+        </Card>
+      </div>
+
+      {/* Projects */}
+      <div ref={(el) => (sectionRefs.current[3] = el)} className='section bg-bg4 fade-both stack-under' style={{ justifyContent: 'center', paddingBottom: '20vh' }}>
+        <Card style={cardStyle()}>
+          <Box sx={{ p: isMobile ? 2 : 4, backgroundColor: 'rgba(0,0,0,0.15)' }} style={textBoxStyle}>
+            <Typography textAlign='center' variant='h6'>Projects</Typography>
+            <Divider />
+            <Typography variant='body2'>
+              In this section you will find the projects I have been working on
+              <strong style={{ color: Colors.idleYellow }}> recently</strong>.
+            </Typography>
+            <Typography variant='body2'>
+              Although my professional career leans towards a certain direction, I have a wide variety of interests in the field.
+            </Typography>
+          </Box>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 20, gap: 12 }}>
+            <Grow in={show[2]} timeout={500}>
+              <div ref={(el) => (trackedElements.current[2] = el)}>
                 <ContentPreview
-                  title={prj.title}
+                  title={projects[0].title}
                   target='portfolio'
-                  subtitle={prj.subtitle}
-                  image={prj.image}
-                  color={prj.color}
+                  subtitle={projects[0].subtitle}
+                  image={projects[0].image}
+                  color={projects[0].color}
                   onClick={(path: string) => navigate(path)}
+                  progress={5}
+                  showProgress={show[2]}
                 />
               </div>
             </Grow>
-          ))}
-        </div>
-        <Button
-          variant='contained'
-          style={{
-            color: Colors.white,
-            backgroundColor: Colors.idleYellow,
-            textTransform: 'none',
-          }}
-          endIcon={<ArrowForwardIosIcon />}
-          onClick={() => navigate('/portfolio')}
-        >
-          {' '}
-          Projects
-        </Button>
-      </div>
-      <div
-        className='content-box background-gif-3'
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '2vh',
-          textAlign: 'center',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Typography variant='h4'>Socials</Typography>
-        <TriforceDivider upward color={Colors.streamerPurple} />
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-          }}
-        >
-          <EmailIcon style={{ marginRight: 5, marginLeft: 10, color: Colors.streamerPurple }} />
-          <Typography
-            style={{
-              color: Colors.streamerPurple,
-              fontWeight: 'bold',
-            }}
-          >
-            fkont@sylems.com
-          </Typography>
-        </div>
-
-        <Typography>You can also find me in the platforms below.</Typography>
-
-        <div
-          style={{ display: 'flex', flexDirection: 'row', gap: '2vw', justifyContent: 'center' }}
-        >
-          <Button
-            variant='contained'
-            style={{
-              color: Colors.white,
-              backgroundColor: Colors.sylemsBlue,
-              textTransform: 'none',
-            }}
-            startIcon={<LinkedInIcon />}
-            endIcon={<ArrowForwardIosIcon />}
-            onClick={() =>
-              window.open('https://www.linkedin.com/in/filippos-kontogiannis-868504171/', '_blank')
-            }
-          >
-            {' '}
-            LinkedIn
-          </Button>
-
-          <Button
-            variant='contained'
-            style={{
-              color: Colors.white,
-              backgroundColor: Colors.onlineGreen,
-              textTransform: 'none',
-            }}
-            startIcon={<GitHubIcon />}
-            endIcon={<ArrowForwardIosIcon />}
-            onClick={() => window.open('https://github.com/UlrichNyx', '_blank')}
-          >
-            {' '}
-            Github
-          </Button>
-        </div>
-
-        <Fade in={show[7]} timeout={1000}>
-          <div ref={(el) => (trackedElements.current[7] = el)}>
-            <LootSecret />
           </div>
-        </Fade>
+        </Card>
       </div>
+
+      {/* Nav arrows */}
+      <div style={{ position: 'fixed', top: 72, left: '50%', transform: 'translateX(-50%)', zIndex: 1000 }}>
+        <IconButton
+          className='nav-arrow-up'
+          style={{ ...NAV_BUTTON_STYLE, opacity: currentSection > 0 ? 1 : 0, pointerEvents: currentSection > 0 ? 'auto' : 'none' }}
+          onClick={() => scrollToSection(currentSection - 1)}
+        >
+          <KeyboardArrowUpIcon />
+        </IconButton>
+      </div>
+      <div style={{ position: 'fixed', bottom: 28, left: '50%', transform: 'translateX(-50%)', zIndex: 1000 }}>
+        <IconButton
+          className='nav-arrow-down'
+          style={{ ...NAV_BUTTON_STYLE, opacity: currentSection < sectionRefs.current.length - 1 ? 1 : 0, pointerEvents: currentSection < sectionRefs.current.length - 1 ? 'auto' : 'none' }}
+          onClick={() => scrollToSection(currentSection + 1)}
+        >
+          <KeyboardArrowDownIcon />
+        </IconButton>
+      </div>
+
     </div>
   );
 };

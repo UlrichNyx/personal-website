@@ -4,7 +4,6 @@ import Navbar from './comps/Navbar';
 
 import Home from './screens/Home';
 import Portfolio from './screens/Portfolio';
-import Archives from './screens/Archives';
 import ContentPage from './screens/ContentPage';
 import Error from './screens/Error';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -22,22 +21,12 @@ const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     background: {
-      default: 'black',
+      default: '#050505',
+      paper: '#0d0d0d',
     },
   },
   typography: {
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
+    fontFamily: 'Segoe UI',
   },
 });
 
@@ -52,11 +41,10 @@ const App: React.FunctionComponent = () => {
           <Route path='*' element={<Error />} />
           <Route path='/' element={<Home />} />
           <Route path='/portfolio' element={<Portfolio />} />
-          <Route path='/archives' element={<Archives />} />
+          <Route path='/portfolio/Recollections-of-a-Drowned-Mind' element={<Recollections />} />
           <Route path='/portfolio/:post' element={<ContentPage />} />
-          <Route path='/archives/:post' element={<ContentPage />} />
-          <Route path='/archives/Recollections-of-a-Drowned-Mind' element={<Recollections />} />
           <Route path='/archives/Wedding-night-in-the-bowels-of-hell' element={<Homebrew />} />
+          <Route path='/archives/:post' element={<ContentPage />} />
         </Routes>
       </Router>
     </ThemeProvider>

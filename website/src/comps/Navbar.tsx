@@ -13,11 +13,11 @@ import IconButton from '@mui/material/IconButton';
 import Divider from '@mui/material/Divider';
 
 import ArticleIcon from '@mui/icons-material/Article';
-import BookIcon from '@mui/icons-material/Book';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import ElseCaller from '../assets/elsecaller.png';
 import Image from './Image';
+import { Home } from '@mui/icons-material';
 
 const Navbar: React.FunctionComponent = () => {
   const navigate = useNavigate();
@@ -55,24 +55,18 @@ const Navbar: React.FunctionComponent = () => {
           onClick={() => navigate('/')}
         >
           <Image src={pokemonSrc} style={{ width: 32, height: 32, borderRadius: 32, margin: 5 }} />
+        
+        
         </div>
+
+
         <Button
-          color='inherit'
           startIcon={<ArticleIcon />}
           onClick={() => navigate('/portfolio')}
-          style={{ textTransform: 'none' }}
+          style={{ textTransform: 'none', color:'white'}}
         >
           Projects
         </Button>
-        <Button
-          color='inherit'
-          startIcon={<BookIcon />}
-          onClick={() => navigate('/archives')}
-          style={{ textTransform: 'none' }}
-        >
-          Archives
-        </Button>
-
         <IconButton
           onClick={() => window.open('https://github.com/UlrichNyx', '_blank')}
           style={{ textTransform: 'none', color: Colors.onlineGreen }}

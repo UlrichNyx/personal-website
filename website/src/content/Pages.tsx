@@ -12,6 +12,9 @@ import Kaedim from './Pages/Kaedim/Kaedim';
 import CrystalAI from './Pages/CrystalAI/CrystalAI';
 import PixelArt from './Pages/PixelArt/PixelArt';
 import TheLibrary from './Pages/TheLibrary/TheLibrary';
+import Symbiotic from './Pages/Symbiotic/Symbiotic';
+import PirateSWGJ14 from './Pages/PirateSWGJ14/PirateSWGJ14';
+import DelianAlliance from './Pages/DelianAlliance/DelianAlliance';
 
 export const pages = {
   'University of Southampton': University,
@@ -27,7 +30,10 @@ export const pages = {
   Kaedim: Kaedim,
   CrystalAI,
   'Pixel Art Mastery': PixelArt,
-  'The Library': TheLibrary
+  'The Library': TheLibrary,
+  Symbiotic,
+  'Pirate SW GJ 14': PirateSWGJ14,
+  'Delian Alliance': DelianAlliance,
 
   // 'Recollections of a Drowned Mind': Recollections,
 };

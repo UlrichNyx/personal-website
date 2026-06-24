@@ -2,8 +2,7 @@ import * as React from 'react';
 import Colors from '../styles/Colors';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
-import Alert from '@mui/material/Alert';
-import Collapse from '@mui/material/Collapse';
+import CheckIcon from '@mui/icons-material/Check';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 const palette = [
@@ -25,60 +24,67 @@ const palette = [
 ];
 
 const ColorPalette: React.FunctionComponent = () => {
-  const [show, setShow] = React.useState(false);
+  const [copied, setCopied] = React.useState<string | null>(null);
+  const [paletteCopied, setPaletteCopied] = React.useState(false);
 
-  const copyPalette = (color: string): void => {
-    navigator.clipboard
-      .writeText(color)
-      .then((res) => {
-        console.log('Copied to clipboard');
-        setShow(true);
-        setTimeout(() => {
-          setShow(false);
-        }, 3000);
-      })
-      .catch((err) => console.error(err));
+  const copy = (color: string): void => {
+    navigator.clipboard.writeText(color).catch(console.error);
+    setCopied(color);
+    setTimeout(() => setCopied(null), 1500);
   };
+
+  const copyPalette = (): void => {
+    navigator.clipboard.writeText(palette.join(', ')).catch(console.error);
+    setPaletteCopied(true);
+    setTimeout(() => setPaletteCopied(false), 2000);
+  };
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'auto auto auto auto auto',
-          gridRowGap: '5px',
-          gridColumnGap: '5px',
-          justifyContent: 'center',
-        }}
-      >
-        {palette.map((color, index) => (
-          <Tooltip key={index} title={color} onClick={() => copyPalette(color)}>
-            <div
-              key={index}
-              style={{
-                width: 32,
-                height: 32,
-                margin: 1,
-                cursor: 'pointer',
-                borderRadius: 4,
-                borderColor: 'white',
-                border: '1px solid',
-                backgroundColor: color,
-              }}
-            />
-          </Tooltip>
-        ))}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10, paddingTop: 4 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+      {palette.map((color) => (
+        <Tooltip key={color} title={color} placement='top'>
+          <div
+            onClick={() => copy(color)}
+            style={{
+              width: 42,
+              height: 42,
+              borderRadius: 8,
+              backgroundColor: color,
+              border: '1px solid rgba(255,255,255,0.12)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+              transform: copied === color ? 'scale(0.88)' : 'scale(1)',
+              boxShadow: copied === color ? `0 0 14px ${color}90` : 'none',
+              transition: 'transform 0.15s ease, box-shadow 0.15s ease',
+            }}
+          >
+            {copied === color && (
+              <CheckIcon style={{ fontSize: 16, color: 'white', filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.8))' }} />
+            )}
+          </div>
+        </Tooltip>
+      ))}
       </div>
       <Button
-        onClick={() => copyPalette(palette.toString())}
-        startIcon={<ContentCopyIcon />}
+        size='small'
         variant='outlined'
+        startIcon={paletteCopied ? <CheckIcon fontSize='inherit' style={{ color: '#4ec9b0' }} /> : <ContentCopyIcon fontSize='inherit' />}
+        onClick={copyPalette}
+        style={{
+          alignSelf: 'flex-start',
+          textTransform: 'none',
+          opacity: 0.6,
+          borderColor: paletteCopied ? '#4ec9b0' : 'rgba(255,255,255,0.2)',
+          color: paletteCopied ? '#4ec9b0' : 'inherit',
+          transition: 'border-color 0.2s ease, color 0.2s ease',
+        }}
       >
-        {' '}
-        Copy Palette{' '}
+        {paletteCopied ? 'Copied!' : 'Copy palette'}
       </Button>
-      <Collapse in={show}>
-        <Alert severity='info'>Copied to clipboard!</Alert>
-      </Collapse>
     </div>
   );
 };

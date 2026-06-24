@@ -5,65 +5,68 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 interface ThreeDModelDisplayProps {
   modelPath: string;
-  width?: number; // Optional width for the viewer
-  height?: number; // Optional height for the viewer
+  height?: number;
 }
 
-const ThreeDModel: React.FC<ThreeDModelDisplayProps> = ({ modelPath,
-    width = window.innerWidth / 2, // Default width if not specified
-    height = window.innerHeight * 0.7, }) => {
+const ThreeDModel: React.FC<ThreeDModelDisplayProps> = ({ modelPath, height = window.innerHeight * 0.7 }) => {
   const mountRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (mountRef === null || mountRef.current === null) return;
+    if (mountRef.current === null) return;
+    const container = mountRef.current;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, (width < 700 ? window.innerWidth * 0.9 : width)/ height, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(width < 700 ? window.innerWidth * 0.9 : width, height);
-    mountRef.current.appendChild(renderer.domElement);
+    scene.background = new THREE.Color(0x333333);
+    scene.position.set(0, -100, 0);
+
+    const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 10000);
+    camera.position.set(300, 200, 400);
+    camera.updateProjectionMatrix();
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(1, height);
+    container.appendChild(renderer.domElement);
 
     const loader = new GLTFLoader();
-    loader.load(modelPath, (gltf) => {
-      scene.add(gltf.scene);
-    }, undefined, (error) => {
-      console.error(error);
-    });
+    loader.load(modelPath, (gltf) => { scene.add(gltf.scene); }, undefined, console.error);
 
-    const light = new THREE.HemisphereLight(0xffffbb, 0xffffbb, 4);
-    scene.add(light);
-    const ambientLight = new THREE.AmbientLight(0x404040, 5); // Soft white light with intensity 1
-    scene.add(ambientLight);
-    scene.background = new THREE.Color(0x333333);
-
-    camera.far = 10000;
-    camera.position.y = 200;
-    camera.position.x = 300;
-    camera.position.z = 400;
-    camera.fov = 60;
-    camera.updateProjectionMatrix();
-    scene.position.set(0, -100, 0); 
+    scene.add(new THREE.HemisphereLight(0xffffbb, 0xffffbb, 4));
+    scene.add(new THREE.AmbientLight(0x404040, 5));
 
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.25;
 
+    let rafId = 0;
     const animate = (): void => {
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
       controls.update();
       renderer.render(scene, camera);
     };
-
     animate();
 
+    const observer = new ResizeObserver((entries) => {
+      const w = entries[0].contentRect.width;
+      if (w !== 0) {
+        camera.aspect = w / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, height);
+      }
+    });
+    observer.observe(container);
+
     return () => {
-      if (mountRef.current !== null) {
-        mountRef.current.removeChild(renderer.domElement);
+      cancelAnimationFrame(rafId);
+      observer.disconnect();
+      renderer.dispose();
+      if (container.contains(renderer.domElement)) {
+        container.removeChild(renderer.domElement);
       }
     };
-  }, [modelPath]);
+  }, [modelPath, height]);
 
-  return <div ref={mountRef} style={{borderRadius:'20px', alignSelf:'center'}} />;
+  return <div ref={mountRef} style={{ borderRadius: 12, width: '100%', overflow: 'hidden' }} />;
 };
 
 export default ThreeDModel;
