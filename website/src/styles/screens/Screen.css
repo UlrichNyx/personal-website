@@ -25,7 +25,7 @@ html, body {
 
 html, body, .screen-container {
   margin: 0;
-  background: transparent;      /* important: nothing dark shows through */
+  background-color: #0d1e2e;    /* dark teal — blends with section GIFs at seams */
 }
 
 :root {
@@ -114,26 +114,22 @@ html, body, .screen-container {
 }
 
 @media only screen and (max-width: 768px) {
-  .section {
-    min-height: 100vh;
-  }
-
-  .fade-both {
-    -webkit-mask-image: none;
-    mask-image: none;
-    margin-top: 0;
+  /* Replace ::after fade with mask-image so koi blends same way as other sections */
+  .fade-out-bottom {
+    -webkit-mask-image: linear-gradient(to bottom, white 0, white calc(100% - var(--blend)), transparent 100%);
+    mask-image: linear-gradient(to bottom, white 0, white calc(100% - var(--blend)), transparent 100%);
   }
 
   .fade-out-bottom::after {
     display: none;
   }
 
-  .fade-both.stack-under {
+  .fade-both {
     margin-top: 0;
   }
 
-  .stack-under {
-    margin-top: 0;
+  .fade-both.stack-under {
+    margin-top: calc(-1 * var(--blend));
   }
 }
 
