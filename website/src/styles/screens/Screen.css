@@ -113,6 +113,30 @@ html, body, .screen-container {
   margin-top: calc(-1 * var(--blend));
 }
 
+@media only screen and (max-width: 768px) {
+  .section {
+    min-height: 100vh;
+  }
+
+  .fade-both {
+    -webkit-mask-image: none;
+    mask-image: none;
+    margin-top: 0;
+  }
+
+  .fade-out-bottom::after {
+    display: none;
+  }
+
+  .fade-both.stack-under {
+    margin-top: 0;
+  }
+
+  .stack-under {
+    margin-top: 0;
+  }
+}
+
 
 .grid {
     display: flex;
