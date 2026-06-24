@@ -25,7 +25,7 @@ html, body {
 
 html, body, .screen-container {
   margin: 0;
-  background-color: #0d1e2e;    /* dark teal — blends with section GIFs at seams */
+  background: transparent;
 }
 
 :root {
