@@ -12,6 +12,8 @@ import { tags } from './Tags';
 import { TagType } from '../comps/Tag';
 import Delian from '../assets/delian_logo.jpeg';
 import PirateSoftware from '../assets/pirate_software.jpg';
+import website from '../assets/pwebsite/bedroom.gif';
+import kanagawa from '../assets/recollections/kanagawa.jpeg';
 
 export interface ProjectProps {
   title: string;
@@ -24,27 +26,6 @@ export interface ProjectProps {
 }
 
 export const projects: ProjectProps[] = [
-
-    {
-    title: 'Symbiotic',
-    subtitle: 'Survival Horror Game',
-    date: '2025',
-    image: PirateSoftware,
-    color: Colors.idleYellow,
-    tags: [tags[1], tags[2]],
-    backgroundColor: Colors.vsBlack,
-  },
-
-
-  {
-  title: 'Pirate SW GJ 14',
-  subtitle: 'Freedom V1.0',
-  date: '2025',
-  image: PirateSoftware,
-  color: Colors.idleYellow,
-  tags: [tags[1], tags[2]],
-  backgroundColor: Colors.vsBlack,
-},
 
   {
   title: 'Am I Challenger Yet',
@@ -81,17 +62,6 @@ export const projects: ProjectProps[] = [
     color: Colors.boostPink,
     tags: [tags[1]],
   },
-
-    {
-    title: 'Delian Alliance',
-    subtitle: 'Defense Tech for Europe',
-    date: '2025',
-    image: Delian,
-    color: Colors.idleYellow,
-    tags: [tags[0], tags[1], tags[2]],
-    backgroundColor: Colors.vsAlmostBlack,
-  },
-
 
   {
     title: 'University of Southampton',
@@ -137,6 +107,22 @@ export const projects: ProjectProps[] = [
     backgroundColor: Colors.white,
     tags: [tags[2]],
   },
+  {
+    title: 'Personal Website',
+    subtitle: 'A deeper look into development.',
+    date: '2022',
+    image: website,
+    color: Colors.hyperlinkBlue,
+    tags: [tags[1]],
+  },
+  {
+    title: 'Recollections of a Drowned Mind',
+    subtitle: 'A poem collection.',
+    date: '2023',
+    image: kanagawa,
+    color: '#6495ED',
+    tags: [],
+  },
 
 ];
 
@@ -180,6 +166,36 @@ export const includesTime = (value: string, time: string): boolean => {
 };
 
 /*
+
+  {
+    title: 'Symbiotic',
+    subtitle: 'Survival Horror Game',
+    date: '2025',
+    image: PirateSoftware,
+    color: Colors.idleYellow,
+    tags: [tags[1], tags[2]],
+    backgroundColor: Colors.vsBlack,
+  },
+
+  {
+    title: 'Pirate SW GJ 14',
+    subtitle: 'Freedom V1.0',
+    date: '2025',
+    image: PirateSoftware,
+    color: Colors.idleYellow,
+    tags: [tags[1], tags[2]],
+    backgroundColor: Colors.vsBlack,
+  },
+
+  {
+    title: 'Delian Alliance',
+    subtitle: 'Defense Tech for Europe',
+    date: '2025',
+    image: Delian,
+    color: Colors.idleYellow,
+    tags: [tags[0], tags[1], tags[2]],
+    backgroundColor: Colors.vsAlmostBlack,
+  },
 
   {
     title: 'CrystalAI',

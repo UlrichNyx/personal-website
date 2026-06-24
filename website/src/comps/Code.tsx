@@ -1,44 +1,71 @@
 import * as React from 'react';
-import Colors from '../styles/Colors';
-import { Typography } from '@mui/material';
+import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import ContentCopy from '@mui/icons-material/ContentCopy';
-import CopyButton from '../comps/CopyButton';
-import SyntaxHighlighter from './SyntaxHighlighter';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import CheckIcon from '@mui/icons-material/Check';
 
 interface CodeType {
   children: React.ReactNode;
-  language?: 'json' | 'python';
+  language?: string;
 }
 
-const Code: React.FunctionComponent<CodeType> = (props) => {
-  const { children, language } = props;
-  const codeText = typeof children === 'string' ? children : children?.toString();
+const Code: React.FunctionComponent<CodeType> = ({ children, language }) => {
+  const [copied, setCopied] = React.useState(false);
+
+  const copy = (): void => {
+    navigator.clipboard.writeText(children?.toString() ?? '').catch(console.error);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
-    <div style={{ position: 'relative' }}>
-      <code>
-        <pre
-          style={{
-            backgroundColor: Colors.draculaBlack,
-            padding: 10,
-            borderRadius: 4,
-            maxWidth: '80vw',
-            overflow: 'auto',
-            textAlign: 'justify',
-          }}
+    <div
+      style={{
+        borderRadius: 6,
+        overflow: 'hidden',
+        border: '1px solid rgba(255,255,255,0.08)',
+        width: '100%',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '5px 12px 5px 16px',
+          backgroundColor: 'rgba(255,255,255,0.06)',
+          borderBottom: '1px solid rgba(255,255,255,0.08)',
+        }}
+      >
+        <Typography
+          variant='caption'
+          style={{ opacity: 0.35, letterSpacing: 1.5, fontFamily: 'monospace', fontSize: 10 }}
         >
-          <Typography>{language}</Typography>
+          {language?.toUpperCase() ?? 'SHELL'}
+        </Typography>
+        <IconButton size='small' onClick={copy} style={{ opacity: 0.5, padding: 4 }}>
+          {copied
+            ? <CheckIcon style={{ fontSize: 14, color: '#4ec9b0' }} />
+            : <ContentCopyIcon style={{ fontSize: 14 }} />}
+        </IconButton>
+      </div>
 
-          <pre style={{ whiteSpace: 'pre-wrap' }}>
-            <SyntaxHighlighter language={language}>{codeText}</SyntaxHighlighter>
-          </pre>
-        </pre>
-      </code>
+      <pre
+        style={{
+          margin: 0,
+          padding: '12px 16px',
+          backgroundColor: 'rgba(255,255,255,0.03)',
+          overflowX: 'auto',
+          whiteSpace: 'pre-wrap',
+          wordBreak: 'break-all',
+        }}
+      >
+        <code style={{ fontFamily: 'monospace', fontSize: 13, lineHeight: 1.7, opacity: 0.85 }}>
+          {children}
+        </code>
+      </pre>
     </div>
   );
 };
-
-// <CopyButton content={codeText} style={{position:'absolute', top:'0%', right:'0'}}/>
 
 export default Code;

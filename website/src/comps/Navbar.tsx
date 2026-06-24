@@ -13,7 +13,6 @@ import IconButton from '@mui/material/IconButton';
 import Divider from '@mui/material/Divider';
 
 import ArticleIcon from '@mui/icons-material/Article';
-import BookIcon from '@mui/icons-material/Book';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import ElseCaller from '../assets/elsecaller.png';
@@ -68,15 +67,6 @@ const Navbar: React.FunctionComponent = () => {
         >
           Projects
         </Button>
-        <Button
-
-          startIcon={<BookIcon />}
-          onClick={() => navigate('/archives')}
-          style={{ textTransform: 'none', color:'white' }}
-        >
-          Archives
-        </Button>
-
         <IconButton
           onClick={() => window.open('https://github.com/UlrichNyx', '_blank')}
           style={{ textTransform: 'none', color: Colors.onlineGreen }}

@@ -1,90 +1,124 @@
+import React from 'react';
 import Typography from '@mui/material/Typography';
 import Colors from '../../../styles/Colors';
 import { images } from './Images';
 import ImageSlider from '../../../comps/ImageSlider';
-import CHEP from '../../../assets/learningarcade/chep.jpeg';
-import TriforceDivider from '../../../comps/TriforceDivider';
 
-const content = {
-  description:
-    'This was an internship that I worked on directly after graduation regarding the use of gamification in education. The purpose of the project was to build an application that students could use in and out of class in order to improve their understanding of the subjects they were studying in a fun and engaging way. The initial step of this project was to create a template application similar to Kahoot where students could create accounts and compete on/create online quizzes that regard a certain subject. I was mostly responsible for the Front-end of the application as well as some of the research that was conducted for the project.',
-  html: (
+const Stat = ({ label, value, color }: { label: string; value: string; color: string }): JSX.Element => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+    <Typography variant='caption' style={{ opacity: 0.4, letterSpacing: 1 }}>
+      {label.toUpperCase()}
+    </Typography>
+    <Typography variant='body2' style={{ color, fontWeight: 'bold' }}>
+      {value}
+    </Typography>
+  </div>
+);
+
+const Chip = ({ label, color }: { label: string; color: string }): JSX.Element => {
+  const [hovered, setHovered] = React.useState<boolean>(false);
+  return (
     <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       style={{
         display: 'flex',
-        flexDirection: 'column',
-        gap: '10vh',
         alignItems: 'center',
+        gap: 6,
+        padding: '6px 14px',
+        border: `1px solid ${color}`,
+        borderRadius: 20,
+        backgroundColor: hovered ? `${color}20` : 'transparent',
+        boxShadow: hovered ? `0 0 10px ${color}30` : 'none',
+        transform: hovered ? 'translateY(-2px)' : 'none',
+        transition: 'background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease',
+        cursor: 'default',
       }}
     >
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh', alignItems: 'center' }}>
-        <Typography variant='h4' style={{ color: Colors.braveryPurple }}>
-          Front-End
-        </Typography>
-        <Typography>
-          {' '}
-          The front end was built using React as well as Material UI components.
-        </Typography>
-        <ImageSlider images={images} width='80vw' color={Colors.braveryPurple} />
-        <TriforceDivider color={Colors.braveryPurple} />
+      <Typography variant='body2' style={{ color: hovered ? color : 'inherit', transition: 'color 0.15s ease', whiteSpace: 'nowrap' }}>
+        {label}
+      </Typography>
+    </div>
+  );
+};
 
-        <Typography variant='h4' style={{ color: Colors.onlineGreen }}>
-          Documentation & Research
+const content = {
+  description: '',
+  sidebar: (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <Stat label='Period' value='2022' color={Colors.onlineGreen} />
+      <Stat label='Type' value='Internship' color={Colors.onlineGreen} />
+      <Stat label='Domain' value='EdTech / Gamification' color={Colors.hyperlinkBlue} />
+      <Stat label='Location' value='Southampton, UK' color={Colors.idleYellow} />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <Typography variant='caption' style={{ opacity: 0.4, letterSpacing: 1 }}>STACK</Typography>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6, alignItems: 'flex-start' }}>
+          <Chip label='React' color={Colors.onlineGreen} />
+          <Chip label='MUI' color={Colors.onlineGreen} />
+          <Chip label='Gamification' color={Colors.onlineGreen} />
+        </div>
+      </div>
+    </div>
+  ),
+  html: (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '3vh', width: '100%' }}>
+
+      <Typography style={{ opacity: 0.75, lineHeight: 1.7 }}>
+        An internship directly after graduation focused on applying gamification to education. The
+        goal was to build a Kahoot-style platform where students create accounts and compete on
+        subject-based quizzes. I was primarily responsible for the front-end and contributed to
+        the research and documentation side of the project.
+      </Typography>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '14px 18px', borderLeft: `3px solid ${Colors.braveryPurple}`, backgroundColor: 'rgba(255,255,255,0.02)' }}>
+        <Typography variant='subtitle1' style={{ color: Colors.braveryPurple, fontWeight: 'bold' }}>Front-End</Typography>
+        <Typography variant='body2' style={{ opacity: 0.65, lineHeight: 1.7 }}>
+          Built with React and MUI, the front-end covered the full student journey — registration,
+          login, quiz lobby, live question rounds with a countdown timer, and a post-game leaderboard.
+          The interface was designed to feel competitive and responsive, adapting to different screen sizes.
         </Typography>
-        <Typography style={{ maxWidth: '80vw' }}>
-          As part of this project it was also necessary to do some literary review on the aspect of
-          gamification being used in education as well as conduct a few focus groups that regard
-          gamifciation. As part of the funding of the project, our team presented at the{' '}
+        <ImageSlider images={images} color={Colors.braveryPurple} />
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '14px 18px', borderLeft: `3px solid ${Colors.onlineGreen}`, backgroundColor: 'rgba(255,255,255,0.02)' }}>
+        <Typography variant='subtitle1' style={{ color: Colors.onlineGreen, fontWeight: 'bold' }}>Research & Conference</Typography>
+        <Typography variant='body2' style={{ opacity: 0.65, lineHeight: 1.7 }}>
+          The project included a literary review on gamification in education and a focus group
+          study on how students perceive leaderboards, road maps, and other game mechanics. Key
+          findings from the study:
+        </Typography>
+        <ul style={{ margin: 0, paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 4 }}>
+          {[
+            'Leaderboards are best limited to the top 5 rather than the full cohort',
+            'Users should be able to opt out of leaderboard visibility',
+            'Road maps were the most positively received mechanic',
+          ].map((point) => (
+            <li key={point}>
+              <Typography variant='body2' style={{ opacity: 0.65, lineHeight: 1.7 }}>{point}</Typography>
+            </li>
+          ))}
+        </ul>
+        <Typography variant='body2' style={{ opacity: 0.65, lineHeight: 1.7 }}>
+          As part of the project&apos;s funding, the team presented findings at the{' '}
           <strong
             style={{ color: Colors.onlineGreen, cursor: 'pointer', textDecoration: 'underline' }}
-            onClick={() =>
-              window.open(
-                'https://www.southampton.ac.uk/blog/sussed-news/2022/09/08/2022-chep-festival-of-learning-and-teaching-one-week-to-go/',
-              )
-            }
+            onClick={() => window.open('https://www.southampton.ac.uk/blog/sussed-news/2022/09/08/2022-chep-festival-of-learning-and-teaching-one-week-to-go/')}
           >
             CHEP Conference of Learning
-          </strong>{' '}
-          hosted in Southampton on September 14th, 2022.
+          </strong>
+          {' '}in Southampton, September 2022. A recording of the presentation is available below.
         </Typography>
-        <img src={CHEP} style={{ alignSelf: 'center', maxWidth: '80vw' }} />
-        <Typography variant='caption' style={{ maxWidth: '80vw' }}>
-          There is a live recording of our presentation that you can watch here.
-        </Typography>
-
-        <iframe
-          style={{ maxWidth: '95vw', height: '50vh' }}
-          width='950'
-          height='315'
-          src='https://www.youtube.com/embed/t6JUlq-ywug?start=1443'
-          title='YouTube video player'
-          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-          allowFullScreen={true}
-        />
-
-        <Typography style={{ maxWidth: '80vw' }}>
-          There was also a group study conducted regarding how students view gamifciation, what
-          aspects of it they like or dislike and much more. Some of the interesting insights gained
-          from that session include:
-        </Typography>
-
-        <ul style={{ textAlign: 'left' }}>
-          <li>
-            <Typography>
-              Leaderboards should not include the entire system but rather only the Top 5
-            </Typography>
-          </li>
-          <li>
-            <Typography>
-              Users should be able to opt out of being displayed in a Leaderboard
-            </Typography>
-          </li>
-          <li>
-            <Typography>Road Maps were particularly favorable</Typography>
-          </li>
-        </ul>
+        <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%', borderRadius: 6, overflow: 'hidden' }}>
+          <iframe
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none' }}
+            src='https://www.youtube.com/embed/t6JUlq-ywug?start=1443'
+            title='CHEP 2022 presentation'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+            allowFullScreen={true}
+          />
+        </div>
       </div>
-      <TriforceDivider upward color={Colors.onlineGreen} />
+
     </div>
   ),
 };

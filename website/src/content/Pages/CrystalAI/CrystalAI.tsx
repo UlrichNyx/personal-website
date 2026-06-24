@@ -1,95 +1,141 @@
-import { Typography } from '@mui/material';
+import React from 'react';
+import Typography from '@mui/material/Typography';
 import Screenshot from '../../../assets/crystalai/screenshot.png';
 import LogoSlider from '../../../comps/LogoSlider';
 import Colors from '../../../styles/Colors';
 import Code from '../../../comps/Code';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import CodeIcon from '@mui/icons-material/Code';
 
-const content = {
-  description: `This is a project that I had been wanting to do for a while now. I drew inspiration from the multitude of YouTube videos where an AI algorithm is trained to beat a certain video game. 
-  The gist of this project is, I am going to be using a reinforcement learning approach in order to beat Pokemon Crystal!`,
-  html: (
+const Stat = ({ label, value, color }: { label: string; value: string; color: string }): JSX.Element => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+    <Typography variant='caption' style={{ opacity: 0.4, letterSpacing: 1 }}>
+      {label.toUpperCase()}
+    </Typography>
+    <Typography variant='body2' style={{ color, fontWeight: 'bold' }}>
+      {value}
+    </Typography>
+  </div>
+);
+
+const StatDivider = (): JSX.Element => (
+  <div style={{ width: 1, height: 32, backgroundColor: 'rgba(255,255,255,0.1)', alignSelf: 'center' }} />
+);
+
+const Chip = ({ label, icon, color }: { label: string; icon: React.ReactNode; color: string }): JSX.Element => {
+  const [hovered, setHovered] = React.useState<boolean>(false);
+  return (
     <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       style={{
         display: 'flex',
-        flexDirection: 'column',
-        gap: '5vh',
-        marginTop: '5vh',
-        justifyContent: 'center',
-        maxWidth: '90vw',
+        alignItems: 'center',
+        gap: 6,
+        padding: '6px 14px',
+        border: `1px solid ${color}`,
+        borderRadius: 20,
+        backgroundColor: hovered ? `${color}20` : 'transparent',
+        boxShadow: hovered ? `0 0 10px ${color}30` : 'none',
+        transform: hovered ? 'translateY(-2px)' : 'none',
+        transition: 'background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease',
+        cursor: 'default',
       }}
     >
-      <Typography variant='h4' style={{ color: Colors.blurple, paddingTop: '5vh' }}>
-        The New Stack
+      <span style={{ color, display: 'flex', fontSize: 15, opacity: hovered ? 1 : 0.6, transition: 'opacity 0.15s' }}>
+        {icon}
+      </span>
+      <Typography variant='body2' style={{ color: hovered ? color : 'inherit', transition: 'color 0.15s ease', whiteSpace: 'nowrap' }}>
+        {label}
       </Typography>
-      <LogoSlider logos={['PyBoy', 'PyTorch']} />
-      <Typography>
-        This is currently a project in the making, so I will make sure to update it as progress goes
-        along!
+    </div>
+  );
+};
+
+const SectionHeader = ({ title, color }: { title: string; color: string }): JSX.Element => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+    <div style={{ width: 3, height: 24, backgroundColor: color, borderRadius: 2 }} />
+    <Typography variant='h6' style={{ color, fontWeight: 'bold' }}>
+      {title}
+    </Typography>
+  </div>
+);
+
+const content = {
+  description: '',
+  html: (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '3vh', width: '100%' }}>
+
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '2vw', flexWrap: 'wrap', alignItems: 'center' }}>
+        <Stat label='Period' value='2023–2024' color={Colors.blurple} />
+        <StatDivider />
+        <Stat label='Domain' value='Reinforcement Learning' color={Colors.blurple} />
+        <StatDivider />
+        <Stat label='Game' value='Pokémon Crystal' color={Colors.idleYellow} />
+        <StatDivider />
+        <Stat label='Status' value='In Progress' color={Colors.dndRed} />
+        <StatDivider />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <Typography variant='caption' style={{ opacity: 0.4, letterSpacing: 1 }}>STACK</Typography>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
+            <Chip label='PyBoy' icon={<SportsEsportsIcon fontSize='inherit' />} color={Colors.blurple} />
+            <Chip label='PyTorch' icon={<PsychologyIcon fontSize='inherit' />} color={Colors.blurple} />
+            <Chip label='Python' icon={<CodeIcon fontSize='inherit' />} color={Colors.blurple} />
+          </div>
+        </div>
+      </div>
+
+      <Typography style={{ opacity: 0.75, lineHeight: 1.7 }}>
+        Inspired by YouTube videos of AI algorithms trained to beat video games, this project uses
+        a reinforcement learning approach to beat Pok&eacute;mon Crystal using PyBoy as the emulator
+        and PyTorch for the model. This is a project in the making — updates will be posted as
+        progress continues.
       </Typography>
 
-      <Typography variant='h4' style={{ color: Colors.blurple, paddingTop: '5vh' }}>
-        Interfacing the emulator
-      </Typography>
-      <Typography>
-        In order to begin working, we will need the emulator and a .rom file of the game!
-      </Typography>
-      <Typography>
-        For the emulator, I am going to be using PyBoy which offers a lot of built in functions that
-        will make our lives easier.
-      </Typography>
-      <Typography>As for the .rom file, that is a very simple Google search :3</Typography>
-      <Typography>Here is some code to get PyBoy started up!</Typography>
-      <Code language='python'>{`
-      def setup_emulator():
-          pyboy = PyBoy('pokemon_crystal.gbc')
-          pyboy.set_emulation_speed(10)
-          pokemon = pyboy.game_wrapper
-          pokemon.start_game()
-          return pyboy`}</Code>
-      <img src={Screenshot} style={{ borderRadius: 4 }} />
-      <Typography>
-        The way I have thought of splitting up the classes of the project is as follows:
-      </Typography>
-      <Typography>
-        <span style={{ fontWeight: 'bold' }}>Pyboy Interface</span>- There needs to be a small
-        interface between pyboy and my program due to how ticking works in the emulator
-      </Typography>
-      <Typography>
-        Essentially, every time the tick() function is called, the emulator plays exactly the next
-        frame of the game.
-      </Typography>
-      <Typography>
-        In different parts of the game, according to the input we want to achieve, we might need to
-        press a button, tick for a certain amount (thus holding the button for a certain amount)
-        then release.
-      </Typography>
-      <Typography>
-        Creating an interface will allow us to do this multiple times with little to no code
-        duplication.
-      </Typography>
-      <Typography>
-        As you can see it has not yet managed to leave the room yet :P (but it got close!)
-      </Typography>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh' }}>
+        <SectionHeader title='The New Stack' color={Colors.blurple} />
+        <LogoSlider logos={['PyBoy', 'PyTorch']} />
+      </div>
 
-      <Typography>
-        The next class we need to think about is the AI model. For this, we will use a direct
-        example from pytorch&#39;s reinforcement learning
-      </Typography>
-      <Code language='python'>
-        {`
-      
-import torch
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh' }}>
+        <SectionHeader title='Interfacing the emulator' color={Colors.blurple} />
+        <Typography>
+          PyBoy offers built-in functions that make interacting with the emulator significantly easier.
+          Here is some code to get PyBoy started:
+        </Typography>
+        <Code language='python'>{`def setup_emulator():
+    pyboy = PyBoy('pokemon_crystal.gbc')
+    pyboy.set_emulation_speed(10)
+    pokemon = pyboy.game_wrapper
+    pokemon.start_game()
+    return pyboy`}</Code>
+        <img src={Screenshot} style={{ borderRadius: 4 }} />
+        <Typography>
+          Every call to <code>tick()</code> advances the emulator by exactly one frame. A small
+          interface class handles button presses and releases cleanly across the codebase.
+        </Typography>
+        <Typography>
+          As you can see it has not yet managed to leave the room yet :P (but it got close!)
+        </Typography>
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh' }}>
+        <SectionHeader title='The AI Model' color={Colors.blurple} />
+        <Typography>
+          Using a direct example from PyTorch&apos;s reinforcement learning documentation as the
+          starting point:
+        </Typography>
+        <Code language='python'>
+          {`import torch
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
 import pyboy_interface
 
-# Setting up the environment
 env = pyboy_interface.setup_emulator()
+action_space = [0,1,2,3,4,5]
 
-action_space = [0,1,2,3,4,5,]
-
-# Building the model
 class PolicyNet(nn.Module):
     def __init__(self):
         super(PolicyNet, self).__init__()
@@ -99,16 +145,13 @@ class PolicyNet(nn.Module):
             nn.Linear(len(env.game_area()), len(action_space)),
             nn.Softmax(dim=-1)
         )
-    
+
     def forward(self, x):
         return self.fc(x)
 
-# Initializing the model and optimizer
 policy_net = PolicyNet()
 optimizer = optim.Adam(policy_net.parameters(), lr=1e-2)
 
-
-# Training loop
 for episode in range(1000):
     env.game_wrapper.reset_game()
     done = False
@@ -117,33 +160,21 @@ for episode in range(1000):
         state = env.game_area().astype('int32')
         state = torch.FloatTensor(state).unsqueeze(0)
         action_probs = policy_net(state)
-        action = np.random.choice(np.arange(len(action_space)), p=action_probs.detach().numpy()[0][0])
-        # Find max probability and execute command
+        action = np.random.choice(
+            np.arange(len(action_space)),
+            p=action_probs.detach().numpy()[0][0]
+        )
         pyboy_interface.make_choice(env, action)
-        # Here we would calculate the loss and update the model
-        
-        # The loss function needs to reflect a change in pixel values
-
-        # If the pixel values have changed from the previous tick, then we have done well
-
-
 
 pyboy.stop()`}
-      </Code>
-      <Typography>
-        In the code above, I build a model using some standard settings and have set the main game
-        loop for that model, including feeding it the input and it giving me output in return (a
-        number from 0 to 5 representing the inputs &#34;A&#34;, &#34;B&#34;, &#34;UP&#34;,
-        &#34;DOWN&#34;, &#34;LEFT&#34;, &#34;RIGHT&#34;). (But no fitness function yet!)
-      </Typography>
-      <Typography>
-        The input I am giving to the model at the moment is the 32x32 array of pixels that denote
-        the game area, effectively the pixels surrounding the player.
-      </Typography>
-      <Typography>
-        The next goal is to write a proper fitness function which will allow the player to traverse
-        the map efficiently by rewarding a change of pixels!
-      </Typography>
+        </Code>
+        <Typography>
+          The model receives a 32x32 pixel array of the game area as input and outputs an action
+          (0–5 mapping to A, B, UP, DOWN, LEFT, RIGHT). The next goal is a proper fitness function
+          that rewards pixel-value changes — effectively rewarding movement.
+        </Typography>
+      </div>
+
     </div>
   ),
 };
