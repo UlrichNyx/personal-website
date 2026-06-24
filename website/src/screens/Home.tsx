@@ -173,7 +173,7 @@ const Home: React.FunctionComponent = () => {
             <Fade in={show[0]} style={{ margin: 20 }}>
               <div ref={(el) => (trackedElements.current[0] = el)}>
                 <ContentPreview
-                  {...projects[projects.length - 1]}
+                  {...(projects.find((p) => p.title === 'Recollections of a Drowned Mind') ?? projects[0])}
                   target='portfolio'
                   onClick={(path: string) => navigate(path)}
                 />
@@ -219,7 +219,7 @@ const Home: React.FunctionComponent = () => {
               Although my professional career leans towards a certain direction, I have a wide variety of interests in the field.
             </Typography>
           </Box>
-          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: 'center', justifyContent: 'center', padding: 20, gap: 24 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
             <Grow in={show[2]} timeout={500}>
               <div ref={(el) => (trackedElements.current[2] = el)}>
                 <ContentPreview
@@ -231,15 +231,6 @@ const Home: React.FunctionComponent = () => {
                   onClick={(path: string) => navigate(path)}
                   progress={5}
                   showProgress={show[2]}
-                />
-              </div>
-            </Grow>
-            <Grow in={show[3]} timeout={700}>
-              <div ref={(el) => (trackedElements.current[3] = el)}>
-                <ContentPreview
-                  {...projects[projects.length - 1]}
-                  target='portfolio'
-                  onClick={(path: string) => navigate(path)}
                 />
               </div>
             </Grow>
