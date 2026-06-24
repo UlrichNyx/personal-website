@@ -26,7 +26,7 @@ const darkTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Segoe UI',
+    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
   },
 });
 
